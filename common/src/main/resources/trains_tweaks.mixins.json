@@ -10,7 +10,9 @@
     "MobDrops_FoxMixin",
     "MobDrops_LivingEntityMixin",
     "MobDrops_WitherBossMixin",
-    "Ocelot_OcelotMixin"
+    "Ocelot_OcelotMixin",
+    "Rarity_ItemMixin",
+    "Rarity_ItemStackMixin"
   ],
   "client": [
   ],

@@ -1,8 +1,8 @@
-package info.partonetrain.trains_tweaks.feature.ocelot;
+package info.partonetrain.trains_tweaks.feature.tameocelot;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class OcelotFeatureConfig {
+public class TameOcelotFeatureConfig {
     public static ModConfigSpec.Builder builder;
     public final static ModConfigSpec SPEC;
 
