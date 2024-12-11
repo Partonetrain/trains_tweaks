@@ -1,0 +1,22 @@
+package info.partonetrain.trains_tweaks;
+
+import info.partonetrain.trains_tweaks.feature.experience.ExperienceFeature;
+import info.partonetrain.trains_tweaks.feature.mobdrops.MobDropsFeature;
+import info.partonetrain.trains_tweaks.feature.ocelot.OcelotFeature;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AllFeatures {
+    public static List<ModFeature> list = new ArrayList<>();
+
+    public static final ModFeature EXPERIENCE_FEATURE = new ExperienceFeature();
+    public static final ModFeature OCELOT_FEATURE = new OcelotFeature();
+    public static final ModFeature MOB_DROPS_FEATURE = new MobDropsFeature();
+
+    static{
+        list.add(EXPERIENCE_FEATURE);
+        list.add(OCELOT_FEATURE);
+        list.add(MOB_DROPS_FEATURE);
+    }
+}

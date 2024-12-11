@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.example.examplemod.ExampleMod"
+            "info.partonetrain.trains_tweaks.TrainsTweaksFabric"
         ]
     },
     "mixins": [

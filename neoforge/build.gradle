@@ -36,4 +36,11 @@ neoForge {
     }
 }
 
+repositories {
+    maven {
+        name = "Fuzs Mod Resources"
+        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+    }
+}
+
 sourceSets.main.resources { srcDir 'src/generated/resources' }

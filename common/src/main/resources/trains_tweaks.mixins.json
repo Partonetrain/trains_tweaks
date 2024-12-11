@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "info.partonetrain.trains_tweaks.mixin",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_18",
+  "mixins": [
+    "Experience_PlayerMixin",
+    "MobDrops_ChickenMixin",
+    "MobDrops_LivingEntityMixin",
+    "MobDrops_WitherBossMixin",
+    "Ocelot_OcelotMixin"
+  ],
+  "client": [
+    "MixinMinecraft"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+
