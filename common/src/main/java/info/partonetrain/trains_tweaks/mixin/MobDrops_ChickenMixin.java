@@ -32,11 +32,11 @@ public class MobDrops_ChickenMixin {
         if(!AllFeatures.MOB_DROPS_FEATURE.isIncompatibleLoaded() && MobDropsFeatureConfig.ENABLED.getAsBoolean() && MobDropsFeatureConfig.APPLY_TO_CHICKEN_EGG.getAsBoolean()) {
             Chicken self = (Chicken) (Object) this;
             ServerLevel serverlevel = (ServerLevel) self.level();
-            LootTable loottable = serverlevel.getServer().reloadableRegistries().getLootTable(Constants.EGG_LOOT_TABLE);
-            LootParams lootparams = (new LootParams.Builder(serverlevel)).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.THIS_ENTITY, self).create(LootContextParamSets.GIFT);
+            LootTable lootTable = serverlevel.getServer().reloadableRegistries().getLootTable(Constants.EGG_LOOT_TABLE);
+            LootParams lootParams = (new LootParams.Builder(serverlevel)).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.THIS_ENTITY, self).create(LootContextParamSets.GIFT);
             //LootContextParamSets.GIFT is the same one panda sneeze uses.
 
-            for (ItemStack itemstack : loottable.getRandomItems(lootparams)) {
+            for (ItemStack itemstack : lootTable.getRandomItems(lootParams)) {
                 self.spawnAtLocation(itemstack);
             }
         }

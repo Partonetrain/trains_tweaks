@@ -7,12 +7,12 @@
   "mixins": [
     "Experience_PlayerMixin",
     "MobDrops_ChickenMixin",
+    "MobDrops_FoxMixin",
     "MobDrops_LivingEntityMixin",
     "MobDrops_WitherBossMixin",
     "Ocelot_OcelotMixin"
   ],
   "client": [
-    "MixinMinecraft"
   ],
   "server": [],
   "injectors": {

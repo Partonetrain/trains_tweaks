@@ -3,7 +3,7 @@ package info.partonetrain.trains_tweaks.feature.experience;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class ExperienceFeatureConfig {
-    public static ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
+    public static ModConfigSpec.Builder builder;
     public final static ModConfigSpec SPEC;
 
     public static ModConfigSpec.BooleanValue ENABLED;

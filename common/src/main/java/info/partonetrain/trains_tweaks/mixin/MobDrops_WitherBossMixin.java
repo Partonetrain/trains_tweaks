@@ -44,9 +44,9 @@ public class MobDrops_WitherBossMixin extends Monster {
             WitherBoss self = (WitherBoss)(Object)this;
             LootTable lootTable = self.level().getServer().reloadableRegistries().getLootTable(Constants.STAR_LOOT_TABLE);
             LootParams.Builder lootparams$builder = (new LootParams.Builder((ServerLevel)self.level())).withParameter(LootContextParams.THIS_ENTITY, self).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.DAMAGE_SOURCE, damageSource).withOptionalParameter(LootContextParams.ATTACKING_ENTITY, damageSource.getEntity()).withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, damageSource.getDirectEntity());
-            LootParams lootparams = lootparams$builder.create(LootContextParamSets.ENTITY);
+            LootParams lootParams = lootparams$builder.create(LootContextParamSets.ENTITY);
 
-            ObjectArrayList<ItemStack> items = lootTable.getRandomItems(lootparams, self.getLootTableSeed());
+            ObjectArrayList<ItemStack> items = lootTable.getRandomItems(lootParams, self.getLootTableSeed());
             for(ItemStack stack : items){
                 ItemEntity spawnedStack = self.spawnAtLocation(stack);
                 if (spawnedStack != null) {
