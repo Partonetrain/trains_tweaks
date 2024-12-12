@@ -28,4 +28,10 @@ public final class Constants {
 	public static final TagKey<Item> UNCOMMON_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "uncommon"));
 	public static final TagKey<Item> RARE_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "rare"));
 	public static final TagKey<Item> EPIC_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "epic"));
+
+	public static final TagKey<Item> FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fire_resistant"));
+	public static final TagKey<Item> NOT_FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "not_fire_resistant"));
+
+	public static final TagKey<Item> POWDER_WALKER_ARMOR_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "powder_walking_armor"));
+	public static final TagKey<Item> POWDER_WALKER_ITEM_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "powder_walking_item"));
 }

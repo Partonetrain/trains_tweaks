@@ -6,11 +6,14 @@
   "compatibilityLevel": "JAVA_18",
   "mixins": [
     "Experience_PlayerMixin",
+    "FireResistant_ItemEntityMixin",
+    "FireResistant_ItemMixin",
     "MobDrops_ChickenMixin",
     "MobDrops_FoxMixin",
     "MobDrops_LivingEntityMixin",
     "MobDrops_WitherBossMixin",
     "Ocelot_OcelotMixin",
+    "PowderWalking_PowderSnowMixin",
     "Rarity_ItemMixin",
     "Rarity_ItemStackMixin"
   ],

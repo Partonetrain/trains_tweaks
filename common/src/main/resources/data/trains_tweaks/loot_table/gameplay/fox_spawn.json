@@ -1,43 +1,58 @@
 {
-  "type": "minecraft:entity",
-  "pools": [
-    {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:group",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "name": "minecraft:diamond",
-              "weight": 5
-            },
-            {
-              "type": "minecraft:item",
-              "name": "minecraft:gold_ingot",
-              "weight": 10
-            },
-            {
-              "type": "minecraft:item",
-              "name": "minecraft:iron_ingot",
-              "weight": 15
-            },
-            {
-              "type": "minecraft:item",
-              "name": "minecraft:copper_ingot",
-              "weight": 20
-            }
-          ]
-        }
-      ],
-      "functions": [],
-      "conditions": [
-        {
-          "condition": "minecraft:random_chance",
-          "chance": 1
-        }
-      ]
-    }
-  ],
-  "random_sequence": "trains_tweaks:gameplay/fox_spawn"
-}
+    "type": "minecraft:entity",
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:group",
+            "children": [
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:emerald",
+                "weight": 5
+              },
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:rabbit_foot",
+                "weight": 10
+              },
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:rabbit_hide",
+                "weight": 10
+              },
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:egg",
+                "weight": 15
+              },
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:wheat",
+                "weight": 20
+              },
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:leather",
+                "weight": 20
+              },
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:feather",
+                "weight": 20
+              }
+            ]
+          }
+        ],
+        "functions": [],
+        "conditions": [
+          {
+            "condition": "minecraft:random_chance",
+            "chance": 0.2
+          }
+        ]
+      }
+    ],
+    "random_sequence": "trains_tweaks:gameplay/fox_spawn"
+  }

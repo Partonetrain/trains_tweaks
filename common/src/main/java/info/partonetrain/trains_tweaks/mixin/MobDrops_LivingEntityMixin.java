@@ -50,7 +50,6 @@ public class MobDrops_LivingEntityMixin {
         if(!AllFeatures.MOB_DROPS_FEATURE.isIncompatibleLoaded() && MobDropsFeatureConfig.ENABLED.getAsBoolean()
                 && MobDropsFeatureConfig.BABIES_DROP_LOOT.getAsBoolean() && self.isBaby()){
             cir.setReturnValue(true);
-            cir.cancel();
         }
     }
 
@@ -60,7 +59,6 @@ public class MobDrops_LivingEntityMixin {
         if(!AllFeatures.MOB_DROPS_FEATURE.isIncompatibleLoaded() && MobDropsFeatureConfig.ENABLED.getAsBoolean()
                 && MobDropsFeatureConfig.BABIES_DROP_EXPERIENCE.getAsBoolean() && self.isBaby()){
             cir.setReturnValue(true);
-            cir.cancel();
         }
     }
 }
