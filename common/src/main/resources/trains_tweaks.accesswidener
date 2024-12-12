@@ -1,2 +1,5 @@
 accessWidener v2 named
 accessible method net/minecraft/world/entity/animal/Ocelot isTrusting ()Z
+accessible method net/minecraft/world/entity/monster/ZombieVillager finishConversion (Lnet/minecraft/server/level/ServerLevel;)V
+accessible method net/minecraft/world/entity/monster/ZombieVillager startConverting (Ljava/util/UUID;I)V
+accessible field net/minecraft/world/entity/monster/ZombieVillager conversionStarter Ljava/util/UUID;

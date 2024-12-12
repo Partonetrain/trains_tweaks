@@ -2,6 +2,7 @@ package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
+import info.partonetrain.trains_tweaks.feature.tameocelot.TameOcelotFeature;
 import info.partonetrain.trains_tweaks.feature.tameocelot.TameOcelotFeatureConfig;
 import net.minecraft.ResourceLocationException;
 import net.minecraft.core.Holder;
@@ -41,17 +42,10 @@ public class Ocelot_OcelotMixin {
                     //but as far as I can tell this is only a rendering thing?
 
                     if(!TameOcelotFeatureConfig.FORCE_TYPE.get().equals("none")){
-                        Holder.Reference<CatVariant> variant;
-                        try {
-                            variant = BuiltInRegistries.CAT_VARIANT.getHolderOrThrow(
-                                    ResourceKey.create(Registries.CAT_VARIANT, ResourceLocation.parse(TameOcelotFeatureConfig.FORCE_TYPE.get())));
-
-                            cat.setVariant(variant);
+                        if(!TameOcelotFeature.variantParsed){
+                            TameOcelotFeature.parseCatVariant();
                         }
-                        catch (ResourceLocationException e){
-                            Constants.LOG.error("Invalid cat variant: " + e);
-                        }
-
+                        cat.setVariant(TameOcelotFeature.parsedCatVariant);
                     }
 
                 }
