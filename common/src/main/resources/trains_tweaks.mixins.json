@@ -6,6 +6,8 @@
   "compatibilityLevel": "JAVA_18",
   "mixins": [
     "Cure_ZombieVillagerMixin",
+    "Difficulty_DamageSourceMixin",
+    "Difficulty_DifficultyInstanceMixin",
     "Experience_PlayerMixin",
     "FireResistant_ItemEntityMixin",
     "FireResistant_ItemMixin",

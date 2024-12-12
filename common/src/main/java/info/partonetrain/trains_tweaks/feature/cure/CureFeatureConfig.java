@@ -23,7 +23,7 @@ public class CureFeatureConfig {
         ENABLED = builder.comment("Whether or not to enable the options in this tweak")
                 .define("Cure tweaks",true);
 
-        WEAKENING_EFFECTS = builder.comment("A list of potion effects that act like weakness in Zombie Villager curing, separated by comma")
+        WEAKENING_EFFECTS = builder.comment("A list of potion effects that act like weakness in Zombie Villager curing, separated by a comma (no spaces)")
                 .define("Weakening Effects", "minecraft:weakness");
 
         CURING_ITEMS_TAG_ENABLED = builder.comment("Whether or not items in the trains_tweaks:curing_items tag should be used to cure weakened Zombie Villagers instead of hardcoded Golden Apples")
