@@ -6,6 +6,7 @@ import info.partonetrain.trains_tweaks.feature.experience.ExperienceFeature;
 import info.partonetrain.trains_tweaks.feature.fireresistant.FireResistantFeature;
 import info.partonetrain.trains_tweaks.feature.mobdrops.MobDropsFeature;
 import info.partonetrain.trains_tweaks.feature.powderwalking.PowderWalkingFeature;
+import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.tameocelot.TameOcelotFeature;
 import info.partonetrain.trains_tweaks.feature.rarity.RarityFeature;
 
@@ -22,7 +23,8 @@ public class AllFeatures {
     public static final ModFeature MOB_DROPS_FEATURE = new MobDropsFeature();
     public static final ModFeature POWDER_WALKING_FEATURE = new PowderWalkingFeature();
     public static final ModFeature RARITY_FEATURE = new RarityFeature();
-    public static final ModFeature OCELOT_FEATURE = new TameOcelotFeature();
+    public static final ModFeature SPAWNS_WITH_FEATURE = new SpawnsWithFeature();
+    public static final ModFeature TAME_OCELOT_FEATURE = new TameOcelotFeature();
 
     static{
         list.add(CURE_FEATURE);
@@ -31,7 +33,8 @@ public class AllFeatures {
         list.add(FIRE_RESISTANT_FEATURE);
         list.add(MOB_DROPS_FEATURE);
         list.add(POWDER_WALKING_FEATURE);
-        list.add(OCELOT_FEATURE);
         list.add(RARITY_FEATURE);
+        list.add(SPAWNS_WITH_FEATURE);
+        list.add(TAME_OCELOT_FEATURE);
     }
 }

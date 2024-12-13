@@ -12,7 +12,7 @@
     "FireResistant_ItemEntityMixin",
     "FireResistant_ItemMixin",
     "MobDrops_ChickenMixin",
-    "MobDrops_FoxMixin",
+    "SpawnsWith_FoxMixin",
     "MobDrops_LivingEntityMixin",
     "MobDrops_WitherBossMixin",
     "Ocelot_OcelotMixin",
