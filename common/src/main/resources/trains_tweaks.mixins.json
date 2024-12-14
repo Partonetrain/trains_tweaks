@@ -12,13 +12,15 @@
     "FireResistant_ItemEntityMixin",
     "FireResistant_ItemMixin",
     "MobDrops_ChickenMixin",
-    "SpawnsWith_FoxMixin",
     "MobDrops_LivingEntityMixin",
     "MobDrops_WitherBossMixin",
     "Ocelot_OcelotMixin",
     "PowderWalking_PowderSnowMixin",
     "Rarity_ItemMixin",
-    "Rarity_ItemStackMixin"
+    "Rarity_ItemStackMixin",
+    "SpawnsWith_FoxMixin",
+    "SpawnsWith_MobMixin",
+    "SpawnsWith_ZombieMixin"
   ],
   "client": [
   ],

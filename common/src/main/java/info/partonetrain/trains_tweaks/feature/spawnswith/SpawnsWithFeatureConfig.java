@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.spawnswith;
 
+import info.partonetrain.trains_tweaks.Constants;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class SpawnsWithFeatureConfig {
@@ -7,7 +8,13 @@ public class SpawnsWithFeatureConfig {
     public final static ModConfigSpec SPEC;
 
     public static ModConfigSpec.BooleanValue ENABLED;
+    public static ModConfigSpec.BooleanValue GENERIC_MOB_TABLES;
+    public static ModConfigSpec.BooleanValue GENERIC_TABLE_ONLY_ARMOR;
+    public static ModConfigSpec.DoubleValue GENERIC_TABLE_DROP_CHANCE;
+
     public static ModConfigSpec.BooleanValue APPLY_TO_FOX_SPAWN;
+    public static ModConfigSpec.BooleanValue APPLY_TO_ZOMBIE_SPAWN;
+
     static {
         builder = new ModConfigSpec.Builder();
         registerConfig(builder);
@@ -17,10 +24,27 @@ public class SpawnsWithFeatureConfig {
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
         ENABLED = builder.comment("Whether or not to enable any of the tweaks relating to mob spawn equipment")
-                .define("Enable equipment spawn tweaks",false);
+                .define("Enable equipment spawn tweaks",/*false*/ true);
 
-        APPLY_TO_FOX_SPAWN = builder.comment("Whether or not to convert the hardcoded fox spawn held item to the loot table trains_tweaks:equipment/fox")
+        GENERIC_MOB_TABLES = builder.comment("If set to true, mobs that can spawn with armor in vanilla will roll " + Constants.GENERIC_EQUIPMENT_LOOT_TABLE.location() + " instead of the vanilla calculation")
+                .comment("In this case, regional difficulty is passed to the table as a luck value, changing the weight of entries with a quality set")
+                .comment("Note that this loot table does NOT match vanilla behavior by default, so only enable if you intend to overwrite the table in a datapack")
+                .define("Generic Mob Tables", /*false*/ true);
+
+        GENERIC_TABLE_ONLY_ARMOR = builder.comment("If set to true, the generic table will be considered to only have armor")
+                .comment("This should only be false if you have defined mainhand/offhand items in the table, and want most mobs to have the same equipment rolls, including mainhand and offhand")
+                .define("Generic Table Only Armor", true);
+
+        GENERIC_TABLE_DROP_CHANCE = builder.comment("The drop chance for every equipment item in the generic mob equipment table")
+                .comment("For reference, 8.5% is the default chance for a mob to drop a piece of equipment it spawned with, with the exception of trial chamber spawns")
+                .defineInRange("Generic Table Drop Chance", 0.085D, 0D, 1D);
+
+        APPLY_TO_FOX_SPAWN = builder.comment("Whether or not to convert the hardcoded fox spawn held item roll to the loot table " + Constants.FOX_SPAWN_LOOT_TABLE.location())
                 .define("Convert Fox Spawn", true);
+
+        APPLY_TO_ZOMBIE_SPAWN = builder.comment("Whether or not to convert the hardcoded zombie spawn held item roll to the loot table " + Constants.ZOMBIE_SPAWN_LOOT_TABLE.location())
+                .comment("This happens after the generic roll")
+                .define("Convert Zombie Spawn", /*false*/ true);
 
     }
 }

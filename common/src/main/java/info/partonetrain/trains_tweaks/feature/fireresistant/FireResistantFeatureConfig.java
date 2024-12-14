@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.fireresistant;
 
+import info.partonetrain.trains_tweaks.Constants;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class FireResistantFeatureConfig {
@@ -16,7 +17,7 @@ public class FireResistantFeatureConfig {
 
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
-        ENABLED = builder.comment("Whether or not to enable the functionality of the trains_tweaks:fire_resistant and trains_tweaks:not_fire_resistant item tags")
+        ENABLED = builder.comment("Whether or not to enable the functionality of the "+ Constants.FIRE_RESISTANT_TAG.location() + " and " + Constants.NOT_FIRE_RESISTANT_TAG + " item tags")
                 .define("Fire Resistant tweak",true);
     }
 }

@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.mobdrops;
 
+import info.partonetrain.trains_tweaks.Constants;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class MobDropsFeatureConfig {
@@ -25,15 +26,15 @@ public class MobDropsFeatureConfig {
         ENABLED = builder.comment("Whether or not to enable any of the tweaks relating to mob drops")
                 .define("Enable drop tweaks",false);
 
-        APPLY_TO_WITHER_DEATH = builder.comment("Whether or not to convert the hardcoded Nether Star (that takes longer to despawn) drop to the loot table trains_tweaks:entites/extended_wither_drop")
+        APPLY_TO_WITHER_DEATH = builder.comment("Whether or not to convert the hardcoded Nether Star (that takes longer to despawn) drop to the loot table " + Constants.STAR_LOOT_TABLE.location())
                 .define("Convert Nether Star Drop", true);
 
-        APPLY_TO_WITHER_ROSE = builder.comment("Whether or not to convert the hardcoded Wither Rose drop to the loot table trains_tweaks:gameplay/wither_rose_drop")
-                .comment("If enabled, and entity tagged with trains_tweaks:causes_wither_rose_drop will cause this loot table to generate")
+        APPLY_TO_WITHER_ROSE = builder.comment("Whether or not to convert the hardcoded Wither Rose drop to the loot table " + Constants.ROSE_LOOT_TABLE.location())
+                .comment("If enabled, and entity tagged with " + Constants.ROSE_KILLER_TAG.location() + " will cause this loot table to be rolled")
                 .comment("This will disable the placement of the block")
                 .define("Convert Wither Rose Drop", false);
 
-        APPLY_TO_CHICKEN_EGG = builder.comment("Whether or not to convert the hardcoded chicken egg lay to the loot table trains_tweaks:gameplay/chicken_lay")
+        APPLY_TO_CHICKEN_EGG = builder.comment("Whether or not to convert the hardcoded chicken egg lay to the loot table " + Constants.EGG_LOOT_TABLE.location())
                 .define("Convert Chicken Egg", true);
 
         BABIES_DROP_LOOT = builder.comment("Allow baby mobs to drop their standard loot table")

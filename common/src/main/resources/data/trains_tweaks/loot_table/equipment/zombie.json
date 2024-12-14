@@ -1,0 +1,62 @@
+{
+    "type": "minecraft:equipment",
+    "pools": [
+      {
+        "bonus_rolls": 0,
+        "entries": [
+          {
+            "type": "minecraft:empty",
+            "weight": 4,
+            "quality": -1s
+          },
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:rotten_flesh",
+            "weight": 4
+          },
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:iron_sword",
+            "weight": 2,
+            "quality": 1
+          }
+        ],
+        "rolls": 1
+      },
+      {
+        "rolls": 0,
+        "entries": [
+          {
+            "type": "minecraft:alternatives",
+            "children": [
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:grass_block",
+                "conditions": [
+                  {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                      "dimension": "minecraft:overworld"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "minecraft:item",
+                "name": "minecraft:netherrack",
+                "conditions": [
+                  {
+                    "condition": "minecraft:location_check",
+                    "predicate": {
+                      "dimension": "minecraft:the_nether"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "random_sequence": "trains_tweaks:equipment/zombie"
+  }

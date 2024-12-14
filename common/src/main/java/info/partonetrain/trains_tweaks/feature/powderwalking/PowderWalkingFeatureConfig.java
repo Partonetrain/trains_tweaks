@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.powderwalking;
 
+import info.partonetrain.trains_tweaks.Constants;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class PowderWalkingFeatureConfig {
@@ -16,7 +17,7 @@ public class PowderWalkingFeatureConfig {
 
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
-        ENABLED = builder.comment("Whether or not to enable the functionality of the trains_tweaks:powder_walking_armor and trains_tweaks:powder_walking_item item tags")
+        ENABLED = builder.comment("Whether or not to enable the functionality of the " + Constants.POWDER_WALKER_ARMOR_TAG.location() + " and " + Constants.POWDER_WALKER_ITEM_TAG.location() +" item tags")
                 .comment("Reminder: there is a vanilla entity tag for this named minecraft:powder_snow_walkable_mobs")
                 .define("Powder Walking tweak",true);
     }

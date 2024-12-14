@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.rarity;
 
+import info.partonetrain.trains_tweaks.Constants;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class RarityFeatureConfig {
@@ -25,7 +26,7 @@ public class RarityFeatureConfig {
                 .define("Prevent Enchantment Altering", true);
 
         DATA_TAG_ENABLED = builder.comment("If true, any item in one of the following item tags will automatically have its rarity set to that rarity")
-                .comment("trains_tweaks:common, trains_tweaks:uncommon, trains_tweaks:rare, trains_tweaks:epic")
+                .comment(Constants.COMMON_TAG.location() + ", " + Constants.UNCOMMON_TAG.location() + ", " + Constants.RARE_TAG.location() + ", " + Constants.EPIC_TAG.location())
                 .define("Rarity Tagging", true);
 
     }

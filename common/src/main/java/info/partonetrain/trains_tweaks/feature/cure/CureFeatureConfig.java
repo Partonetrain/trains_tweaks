@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.cure;
 
+import info.partonetrain.trains_tweaks.Constants;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class CureFeatureConfig {
@@ -26,10 +27,10 @@ public class CureFeatureConfig {
         WEAKENING_EFFECTS = builder.comment("A list of potion effects that act like weakness in Zombie Villager curing, separated by a comma (no spaces)")
                 .define("Weakening Effects", "minecraft:weakness");
 
-        CURING_ITEMS_TAG_ENABLED = builder.comment("Whether or not items in the trains_tweaks:curing_items tag should be used to cure weakened Zombie Villagers instead of hardcoded Golden Apples")
+        CURING_ITEMS_TAG_ENABLED = builder.comment("Whether or not items in the " + Constants.CURING_TAG.location() + " tag should be used to cure weakened Zombie Villagers instead of hardcoded Golden Apples")
                 .define("Use Curing Tag", true);
 
-        INSTANT_CURE_TAG_ENABLED = builder.comment("Whether or not items in the trains_tweaks:instant_curing_items tag should be used to cure Zombie Villagers instantly without an effect")
+        INSTANT_CURE_TAG_ENABLED = builder.comment("Whether or not items in the " + Constants.INSTANT_CURING_TAG.location() + " tag should be used to cure Zombie Villagers instantly without an effect")
                 .define("Use Instant Curing Tag", true);
 
         INSTANT_CURE_GRANTS_ADVANCEMENT = builder.comment("If enabled, Instant Cures will grant the vanilla Zombie Doctor advancement")
