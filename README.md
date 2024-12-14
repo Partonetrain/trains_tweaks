@@ -26,10 +26,10 @@ You can even request a tweak (assuming it isn't already possible with datapacks,
 ### SpawnsWith details
 
 If the SpawnsWith feature and "Generic Mob Tables" option are enabled, mobs that are capable of spawning with armor (in technical terms, mobs that call `super.populateDefaultEquipmentSlots` [or initEquipment in Yarn]) in vanilla will instead roll the `trains_tweaks:equipment/generic` loot table.
-From here, equipment that is rolled will be equipped on the mob.
+From here, equipment that is rolled will be equipped on the mob. The loot table is rolled with the local difficulty where the mob is spawning as the luck value, making it possible for different rates on different difficulties.
 The drop chance of **all** items generated when `trains_tweaks:equipment/generic` is rolled is not defined in the table, but rather the config file.
 
-Additionally, for vanilla mobs that have specific spawning equipment (TODO currently only fox and zombie), there are config options to use a loot table instead of their hardcoded equipment setters. 
+Additionally, for vanilla mobs that have specific spawning equipment (TODO currently only fox and zombie), there are config options to use a loot table instead of their hardcoded equipment setters. These loot tables can be found (here). I tried to make them as 1:1 with vanilla (TODO make the zombie loottable accurate) as possible (unlike the generic loot table). 
 
-Unfortunately, there's no way that I know of to programmatically mixin to any arbitrary mobs' populateDefaultEquipment. It's probably possible to use an event on Neo, but I'd prefer the implementation of this to not be platform-dependent.
+Unfortunately, there's no way that I know of to programmatically mixin to any arbitrary mobs' populateDefaultEquipment. It's probably possible to use an event on Neo to achieve a similar result, but I'd prefer the implementation of this to not be platform-dependent.
 If *I* were making a mob that I wanted to have random equipment and I wanted that equipment to be customizable by the end-user, I would define it in a loot table of type `minecraft:equipment` and then use that in its populateDefaultEquipmentSlots/initEquipment method.
