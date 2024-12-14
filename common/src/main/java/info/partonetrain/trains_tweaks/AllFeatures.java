@@ -9,6 +9,7 @@ import info.partonetrain.trains_tweaks.feature.powderwalking.PowderWalkingFeatur
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.tameocelot.TameOcelotFeature;
 import info.partonetrain.trains_tweaks.feature.rarity.RarityFeature;
+import info.partonetrain.trains_tweaks.feature.yeet.YeetFeature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class AllFeatures {
     public static final ModFeature RARITY_FEATURE = new RarityFeature();
     public static final ModFeature SPAWNS_WITH_FEATURE = new SpawnsWithFeature();
     public static final ModFeature TAME_OCELOT_FEATURE = new TameOcelotFeature();
+    public static final ModFeature YEET_FEATURE = new YeetFeature();
 
     static{
         list.add(CURE_FEATURE);
@@ -36,5 +38,6 @@ public class AllFeatures {
         list.add(RARITY_FEATURE);
         list.add(SPAWNS_WITH_FEATURE);
         list.add(TAME_OCELOT_FEATURE);
+        list.add(YEET_FEATURE);
     }
 }

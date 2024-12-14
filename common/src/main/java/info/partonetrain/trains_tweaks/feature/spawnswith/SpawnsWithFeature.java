@@ -55,7 +55,6 @@ public class SpawnsWithFeature extends ModFeature {
         return map;
     }
 
-    //this is used for
     public static List<ItemStack> getEquipmentFromLootTableForSpecificMob(Mob mob, ResourceKey<LootTable> tableKey){
         ServerLevel serverLevel = (ServerLevel) mob.level();
         float luck = serverLevel.getCurrentDifficultyAt(mob.blockPosition()).getEffectiveDifficulty();

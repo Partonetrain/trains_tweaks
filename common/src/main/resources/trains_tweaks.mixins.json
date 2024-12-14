@@ -20,7 +20,10 @@
     "Rarity_ItemStackMixin",
     "SpawnsWith_FoxMixin",
     "SpawnsWith_MobMixin",
-    "SpawnsWith_ZombieMixin"
+    "SpawnsWith_ZombieMixin",
+    "Yeet_FireChargeItemMixin",
+    "Yeet_SmallFireballMixin",
+    "Yeet_SnowballMixin"
   ],
   "client": [
   ],
