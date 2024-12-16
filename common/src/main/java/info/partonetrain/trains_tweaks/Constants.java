@@ -22,6 +22,9 @@ public final class Constants {
 	//FireResistant
 	public static final TagKey<Item> FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fire_resistant"));
 	public static final TagKey<Item> NOT_FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "not_fire_resistant"));
+	//Loot
+	public static final ResourceLocation ENCHANT_TREASURE = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "enchant_treasure");
+	public static final ResourceLocation ENCHANT_CURSE = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "enchant_curse");
 	//MobDrops
 	public static ResourceKey<LootTable> STAR_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "entities/extended_wither_drop"));
 	public static ResourceKey<LootTable> ROSE_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "gameplay/wither_rose_drop"));

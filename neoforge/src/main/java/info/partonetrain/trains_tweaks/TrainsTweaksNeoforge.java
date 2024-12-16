@@ -10,7 +10,10 @@ public class TrainsTweaksNeoforge {
 
     public TrainsTweaksNeoforge(ModContainer container, IEventBus eventBus) {
         for(ModFeature mf : AllFeatures.list){
-            container.registerConfig(ModConfig.Type.COMMON, mf.configSpec, mf.getConfigPath());
+            if(mf.configSpec != null) {
+                container.registerConfig(ModConfig.Type.COMMON, mf.configSpec, mf.getConfigPath());
+            }
         }
     }
+
 }

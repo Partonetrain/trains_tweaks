@@ -11,8 +11,10 @@ public class TrainsTweaksFabric implements ModInitializer {
     public void onInitialize() {
 
         for(ModFeature mf : AllFeatures.list){
-            NeoForgeConfigRegistry.INSTANCE.register(Constants.MOD_ID, ModConfig.Type.COMMON,
-                    mf.configSpec, mf.getConfigPath());
+            if(mf.configSpec != null){
+                NeoForgeConfigRegistry.INSTANCE.register(Constants.MOD_ID, ModConfig.Type.COMMON,
+                        mf.configSpec, mf.getConfigPath());
+            }
         }
         CommonClass.init();
     }
