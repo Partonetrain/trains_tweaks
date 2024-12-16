@@ -8,7 +8,6 @@ import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfi
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.monster.Drowned;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,7 +25,7 @@ public class SpawnsWith_DrownedMixin {
             Drowned self = (Drowned) (Object) this;
 
             List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.DROWNED_SPAWN_LOOT_TABLE);
-            SpawnsWithFeature.equipMob(loot, self, EquipType.MAIN_HAND_ONLY);
+            SpawnsWithFeature.equipMobWithRolledStacks(loot, self, EquipType.MAIN_HAND_ONLY);
 
             ci.cancel();
         }

@@ -8,7 +8,6 @@ import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfi
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,7 +24,7 @@ public class SpawnsWith_AbstractSkeletonMixin {
             AbstractSkeleton self = (AbstractSkeleton) (Object) this;
 
             List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.ZOMBIE_SPAWN_LOOT_TABLE);
-            SpawnsWithFeature.equipMob(loot, self, EquipType.BOTH_HANDS);
+            SpawnsWithFeature.equipMobWithRolledStacks(loot, self, EquipType.BOTH_HANDS);
 
             ci.cancel();
         }

@@ -22,7 +22,7 @@ public class YeetFeatureConfig {
 
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
-        ENABLED = builder.comment("Whether or not to enable configs related to throwing things")
+        ENABLED = builder.comment("Whether or not to enable tweaks related to throwing things")
                 .define("Yeet Tweaks",true);
 
         THROW_FIRE_CHARGES = builder.comment("If enabled, you will be able to right-click the air with a fire charge to throw it")

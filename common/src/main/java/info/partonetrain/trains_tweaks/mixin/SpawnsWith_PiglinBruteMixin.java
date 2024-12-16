@@ -7,7 +7,8 @@ import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfig;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.piglin.Piglin;
+import net.minecraft.world.entity.monster.piglin.PiglinBrute;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,15 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-@Mixin(Zombie.class)
-public class SpawnsWith_ZombieMixin {
-    //for some reason INVOKE_ASSIGN targeting super.populateDefaultEquipmentSlots fails
-    @Inject(method = "populateDefaultEquipmentSlots", at= @At(value = "INVOKE", target = "Lnet/minecraft/util/RandomSource;nextFloat()F"), cancellable = true)
-    public void trains_tweaks$populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty, CallbackInfo ci){
-        if(!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean() && SpawnsWithFeatureConfig.APPLY_TO_ZOMBIE_SPAWN.getAsBoolean()){
-            Zombie self = (Zombie) (Object) this;
+@Mixin(PiglinBrute.class)
+public class SpawnsWith_PiglinBruteMixin {
+    @Inject(method = "populateDefaultEquipmentSlots", at = @At("HEAD"), cancellable = true)
+    public void trains_tweaks$populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty, CallbackInfo ci) {
+        if (!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean() && SpawnsWithFeatureConfig.APPLY_TO_PIGLIN_BRUTE_SPAWN.getAsBoolean()) {
+            PiglinBrute self = (PiglinBrute)(Object)this;
 
-            List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.ZOMBIE_SPAWN_LOOT_TABLE);
+            List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.PIGLIN_BRUTE_SPAWN_LOOT_TABLE);
             SpawnsWithFeature.equipMobWithRolledStacks(loot, self, EquipType.BOTH_HANDS);
 
             ci.cancel();

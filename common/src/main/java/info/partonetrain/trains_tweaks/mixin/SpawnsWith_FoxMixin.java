@@ -7,7 +7,6 @@ import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfig;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,7 +24,7 @@ public class SpawnsWith_FoxMixin {
             Fox self = (Fox) (Object) this;
 
             List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.FOX_SPAWN_LOOT_TABLE);
-            SpawnsWithFeature.equipMob(loot, self, EquipType.MAIN_HAND_ONLY);
+            SpawnsWithFeature.equipMobWithRolledStacks(loot, self, EquipType.MAIN_HAND_ONLY);
 
             ci.cancel();
         }
