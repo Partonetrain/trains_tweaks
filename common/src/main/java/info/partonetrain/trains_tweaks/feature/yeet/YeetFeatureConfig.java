@@ -12,6 +12,7 @@ public class YeetFeatureConfig {
     public static ModConfigSpec.IntValue FIRE_CHARGES_COOLDOWN;
     public static ModConfigSpec.IntValue SNOWBALL_FREEZE_TICKS;
     public static ModConfigSpec.IntValue SNOWBALL_FREEZE_MAX;
+    public static ModConfigSpec.IntValue EXPERIENCE_BOTTLE_AMOUNT;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -36,7 +37,10 @@ public class YeetFeatureConfig {
                 .defineInRange("Snowball Freeze Ticks", 40, 0, 2000);
 
         SNOWBALL_FREEZE_MAX = builder.comment("The maximum amount of freeze ticks consecutive snowball projectiles can inflict")
-                .defineInRange("Snowball Max Freeze", 500, 40, 2000);
+                .defineInRange("Snowball Max Freeze", 500, 0, 2000);
 
+        EXPERIENCE_BOTTLE_AMOUNT = builder.comment("The amount of experience points granted from thrown Bottles o' Enchanting")
+                .comment("Set to -1 to use the vanilla value (random amount between 3 and 13)")
+                .defineInRange("Experience Bottle Amount", 10, -1, 2477);
     }
 }

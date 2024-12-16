@@ -30,7 +30,7 @@ public class MobDropsFeatureConfig {
                 .define("Convert Nether Star Drop", true);
 
         APPLY_TO_WITHER_ROSE = builder.comment("Whether or not to convert the hardcoded Wither Rose drop to the loot table " + Constants.ROSE_LOOT_TABLE.location())
-                .comment("If enabled, and entity tagged with " + Constants.ROSE_KILLER_TAG.location() + " will cause this loot table to be rolled")
+                .comment("If enabled, any entity tagged with " + Constants.ROSE_KILLER_TAG.location() + " will cause this loot table to be rolled")
                 .comment("This will disable the placement of the block")
                 .define("Convert Wither Rose Drop", false);
 

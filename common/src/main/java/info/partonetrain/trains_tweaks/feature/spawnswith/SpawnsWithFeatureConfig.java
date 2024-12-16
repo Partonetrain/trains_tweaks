@@ -10,9 +10,12 @@ public class SpawnsWithFeatureConfig {
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.BooleanValue GENERIC_MOB_TABLES;
     public static ModConfigSpec.BooleanValue GENERIC_TABLE_ONLY_ARMOR;
-    public static ModConfigSpec.DoubleValue GENERIC_TABLE_DROP_CHANCE;
+    public static ModConfigSpec.DoubleValue EQUIPMENT_TABLE_DROP_CHANCE;
 
+    public static ModConfigSpec.BooleanValue APPLY_TO_ABSTRACT_SKELETON_SPAWN;
+    public static ModConfigSpec.BooleanValue APPLY_TO_DROWNED_SPAWN;
     public static ModConfigSpec.BooleanValue APPLY_TO_FOX_SPAWN;
+    public static ModConfigSpec.BooleanValue APPLY_TO_PILLAGER_SPAWN;
     public static ModConfigSpec.BooleanValue APPLY_TO_ZOMBIE_SPAWN;
 
     static {
@@ -35,16 +38,25 @@ public class SpawnsWithFeatureConfig {
                 .comment("This should only be false if you have defined mainhand/offhand items in the table, and want most mobs to have the same equipment rolls, including mainhand and offhand")
                 .define("Generic Table Only Armor", true);
 
-        GENERIC_TABLE_DROP_CHANCE = builder.comment("The drop chance for every equipment item in the generic mob equipment table")
-                .comment("For reference, 8.5% is the default chance for a mob to drop a piece of equipment it spawned with, with the exception of trial chamber spawns")
-                .defineInRange("Generic Table Drop Chance", 0.085D, 0D, 1D);
+        EQUIPMENT_TABLE_DROP_CHANCE = builder.comment("The drop chance for every equipment item generated from equipment loot tables")
+                .comment("For reference, 8.5% is the default chance for a mob to drop a piece of equipment it spawned with (with the exception of trial chamber spawns, which is 0%)")
+                .defineInRange("Equipment Table Drop Chance", 0.085D, 0D, 1D);
 
-        APPLY_TO_FOX_SPAWN = builder.comment("Whether or not to convert the hardcoded fox spawn held item roll to the loot table " + Constants.FOX_SPAWN_LOOT_TABLE.location())
+        APPLY_TO_ABSTRACT_SKELETON_SPAWN = builder.comment("Whether or not to convert the hardcoded skeleton/stray/bogged spawn held item to the loot table " + Constants.ABSTRACT_SKELETON_SPAWN_LOOT_TABLE.location())
+                .define("Convert Skeletons Spawn", true);
+
+        APPLY_TO_DROWNED_SPAWN = builder.comment("Whether or not to convert the hardcoded drowned spawn held item to the loot table " + Constants.DROWNED_SPAWN_LOOT_TABLE.location())
+                .define("Convert Drowned Spawn", true);
+
+        APPLY_TO_FOX_SPAWN = builder.comment("Whether or not to convert the hardcoded fox spawn held item to the loot table " + Constants.FOX_SPAWN_LOOT_TABLE.location())
                 .define("Convert Fox Spawn", true);
 
-        APPLY_TO_ZOMBIE_SPAWN = builder.comment("Whether or not to convert the hardcoded zombie spawn held item roll to the loot table " + Constants.ZOMBIE_SPAWN_LOOT_TABLE.location())
-                .comment("This happens after the generic roll")
-                .define("Convert Zombie Spawn", /*false*/ true);
+        APPLY_TO_PILLAGER_SPAWN = builder.comment("Whether or not to convert the hardcoded pillager spawn held items to the loot table " + Constants.PILLAGER_SPAWN_LOOT_TABLE.location())
+                .define("Convert Pillager Spawn", false);
+
+        APPLY_TO_ZOMBIE_SPAWN = builder.comment("Whether or not to convert the hardcoded zombie/zombie villager/husk spawn held items to the loot table " + Constants.ZOMBIE_SPAWN_LOOT_TABLE.location())
+                .comment("This happens after the generic table is rolled")
+                .define("Convert Zombie Spawn", false);
 
     }
 }

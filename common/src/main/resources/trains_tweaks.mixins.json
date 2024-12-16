@@ -18,9 +18,13 @@
     "PowderWalking_PowderSnowMixin",
     "Rarity_ItemMixin",
     "Rarity_ItemStackMixin",
+    "SpawnsWith_AbstractSkeletonMixin",
+    "SpawnsWith_DrownedMixin",
     "SpawnsWith_FoxMixin",
     "SpawnsWith_MobMixin",
+    "SpawnsWith_PillagerMixin",
     "SpawnsWith_ZombieMixin",
+    "Yeet_ExperienceBottleMixin",
     "Yeet_FireChargeItemMixin",
     "Yeet_SmallFireballMixin",
     "Yeet_SnowballMixin"

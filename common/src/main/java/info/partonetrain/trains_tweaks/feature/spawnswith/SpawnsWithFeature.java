@@ -6,7 +6,6 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentTable;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +34,7 @@ public class SpawnsWithFeature extends ModFeature {
     * but it provides far more customization than the vanilla game allows.
     */
 
+
     public static List<EquipmentSlot> armorSlots = Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
     public static List<EquipmentSlot> allSlots = Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET, EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND);
 
@@ -46,7 +45,7 @@ public class SpawnsWithFeature extends ModFeature {
     //creates a drop chance map that contains either armor slots or all slots depending on config and the configured drop chance
     public static Map<EquipmentSlot, Float> createDropChanceMap() {
         List<EquipmentSlot> equipmentSlots = SpawnsWithFeatureConfig.GENERIC_TABLE_ONLY_ARMOR.getAsBoolean() ? armorSlots : allSlots;
-        float dropChance = (float) SpawnsWithFeatureConfig.GENERIC_TABLE_DROP_CHANCE.getAsDouble();
+        float dropChance = (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble();
 
         Map<EquipmentSlot, Float> map = Maps.newHashMap();
         for(EquipmentSlot e : equipmentSlots){
@@ -67,5 +66,28 @@ public class SpawnsWithFeature extends ModFeature {
 
         ObjectArrayList<ItemStack> loot = lootTable.getRandomItems(params);
         return loot.stream().toList();
+    }
+
+    public static void equipMob(List<ItemStack> rolledStacks, Mob mob, EquipType equipType){
+        if(!rolledStacks.isEmpty()) {
+            ItemStack first = rolledStacks.get(0);
+            mob.setItemSlot(EquipmentSlot.MAINHAND, first);
+            mob.setDropChance(EquipmentSlot.MAINHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
+
+            if(rolledStacks.size() != 1 && equipType == EquipType.BOTH_HANDS) {
+                ItemStack second = rolledStacks.get(1);
+                mob.setItemSlot(EquipmentSlot.OFFHAND, second);
+                mob.setDropChance(EquipmentSlot.OFFHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
+
+                //drop any extra items on the ground
+                //this is not tested. It's best if the loot table
+                //can only ever generate the amount of stacks it expects.
+                for (ItemStack itemStack : rolledStacks) {
+                    if (!itemStack.equals(first) && !itemStack.equals(second)) {
+                        mob.spawnAtLocation(itemStack);
+                    }
+                }
+            }
+        }
     }
 }
