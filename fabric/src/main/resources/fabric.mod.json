@@ -9,10 +9,10 @@
     ],
     "contact": {
         "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "sources": "https://github.com/Partonetrain/trains_tweaks"
     },
     "license": "${license}",
-    "icon": "${mod_id}.png",
+    "icon": "assets/trains_tweaks/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [

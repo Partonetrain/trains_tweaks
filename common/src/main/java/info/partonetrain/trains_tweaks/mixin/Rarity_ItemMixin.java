@@ -22,20 +22,7 @@ public class Rarity_ItemMixin {
     @Inject(at = @At("HEAD"), method = "inventoryTick")
     private void trains_tweaks$inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected, CallbackInfo ci) {
         if(!AllFeatures.RARITY_FEATURE.isIncompatibleLoaded() && RarityFeatureConfig.ENABLED.getAsBoolean()) {
-            if(RarityFeatureConfig.DATA_TAG_ENABLED.getAsBoolean()){
-                if (stack.is(Constants.COMMON_TAG)) {
-                    stack.set(DataComponents.RARITY, Rarity.COMMON);
-                }
-                else if(stack.is(Constants.UNCOMMON_TAG)){
-                    stack.set(DataComponents.RARITY, Rarity.UNCOMMON);
-                }
-                else if(stack.is(Constants.RARE_TAG)){
-                    stack.set(DataComponents.RARITY, Rarity.RARE);
-                }
-                else if(stack.is(Constants.EPIC_TAG)){
-                    stack.set(DataComponents.RARITY, Rarity.EPIC);
-                }
-            }
+            RarityFeature.setTaggedRarity(stack);
         }
     }
 

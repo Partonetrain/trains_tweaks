@@ -19,6 +19,9 @@ public class SpawnsWithFeatureConfig {
     public static ModConfigSpec.BooleanValue APPLY_TO_PIGLIN_SPAWN;
     public static ModConfigSpec.BooleanValue APPLY_TO_PIGLIN_BRUTE_SPAWN;
     public static ModConfigSpec.BooleanValue APPLY_TO_PILLAGER_SPAWN;
+    public static ModConfigSpec.BooleanValue APPLY_TO_VEX_SPAWN;
+    public static ModConfigSpec.BooleanValue APPLY_TO_VINDICATOR_SPAWN;
+    public static ModConfigSpec.BooleanValue APPLY_TO_WITHER_SKELETON_SPAWN;
     public static ModConfigSpec.BooleanValue APPLY_TO_ZOMBIE_SPAWN;
     public static ModConfigSpec.BooleanValue APPLY_TO_ZOMBIFIED_PIGLIN_SPAWN;
 
@@ -65,7 +68,18 @@ public class SpawnsWithFeatureConfig {
                 .define("Convert Piglin Brute Spawn", trueIfDev);
 
         APPLY_TO_PILLAGER_SPAWN = builder.comment("Whether or not to convert the hardcoded pillager spawn held items to the loot table " + Constants.PILLAGER_SPAWN_LOOT_TABLE.location())
+                .comment("This does not effect pillagers spawned as part of a raid")
                 .define("Convert Pillager Spawn", trueIfDev);
+
+        APPLY_TO_VEX_SPAWN = builder.comment("Whether or not to convert the hardcoded vex spawn held items to the loot table " + Constants.VEX_SPAWN_LOOT_TABLE.location())
+                .define("Convert Vex Spawn", trueIfDev);
+
+        APPLY_TO_VINDICATOR_SPAWN = builder.comment("Whether or not to convert the hardcoded vindicator spawn held items to the loot table " + Constants.VINDICATOR_SPAWN_LOOT_TABLE.location())
+                .comment("This does not effect vindicators spawned as part of a raid")
+                .define("Convert Vindicator Spawn", trueIfDev);
+
+        APPLY_TO_WITHER_SKELETON_SPAWN = builder.comment("Whether or not to convert the hardcoded wither skeleton spawn held items to the loot table " + Constants.WITHER_SKELETON_SPAWN_LOOT_TABLE.location())
+                .define("Convert Wither Skeleton Spawn", trueIfDev);
 
         APPLY_TO_ZOMBIE_SPAWN = builder.comment("Whether or not to convert the hardcoded zombie/zombie villager/husk spawn held items to the loot table " + Constants.ZOMBIE_SPAWN_LOOT_TABLE.location())
                 .comment("This happens after the generic table is rolled")

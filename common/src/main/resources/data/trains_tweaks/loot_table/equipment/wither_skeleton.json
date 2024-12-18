@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stone_sword"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "trains_tweaks:equipment/wither_skeleton"
+}
