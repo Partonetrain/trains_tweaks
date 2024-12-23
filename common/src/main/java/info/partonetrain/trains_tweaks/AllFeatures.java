@@ -10,6 +10,7 @@ import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.tameocelot.TameOcelotFeature;
 import info.partonetrain.trains_tweaks.feature.rarity.RarityFeature;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeature;
+import info.partonetrain.trains_tweaks.feature.zzz.ZzzFeature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class AllFeatures {
     public static final ModFeature SPAWNS_WITH_FEATURE = new SpawnsWithFeature();
     public static final ModFeature TAME_OCELOT_FEATURE = new TameOcelotFeature();
     public static final ModFeature YEET_FEATURE = new YeetFeature();
+    public static final ModFeature ZZZ_FEATURE = new ZzzFeature();
 
     static{
         list.add(CURE_FEATURE);
@@ -39,5 +41,6 @@ public class AllFeatures {
         list.add(SPAWNS_WITH_FEATURE);
         list.add(TAME_OCELOT_FEATURE);
         list.add(YEET_FEATURE);
+        list.add(ZZZ_FEATURE);
     }
 }

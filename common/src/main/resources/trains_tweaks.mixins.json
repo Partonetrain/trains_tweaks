@@ -34,9 +34,13 @@
     "Yeet_ExperienceBottleMixin",
     "Yeet_FireChargeItemMixin",
     "Yeet_SmallFireballMixin",
-    "Yeet_SnowballMixin"
+    "Yeet_SnowballMixin",
+    "Zzz_LivingEntityMixin",
+    "Zzz_PlayerMixin",
+    "Zzz_ServerLevelMixin"
   ],
   "client": [
+    "Zzz_GuiMixin"
   ],
   "server": [],
   "injectors": {
