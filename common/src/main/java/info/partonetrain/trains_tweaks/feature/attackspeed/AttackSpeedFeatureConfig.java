@@ -30,24 +30,25 @@ public class AttackSpeedFeatureConfig {
                 .comment("Instead, they properly affect the " + Attributes.BLOCK_BREAK_SPEED.getRegisteredName() + " attribute")
                 .comment("The mining speed calculation will no longer consider the presence of these effects, only the attribute they modify")
                 .comment("However, as a side effect, Conduit Power will no longer grant a Haste-like effect")
-                .comment("This makes Haste and Mining Fatigue behave similar to Bedrock Edition ")
+                .comment("This makes Haste and Mining Fatigue behave similar to Bedrock Edition")
                 .define("Fix Effects",true);
-
-        ADD_EFFECTS = builder.comment("If enabled, the effects " + Constants.DEXTERITY_EFFECT_ID + " and " + Constants.CLUMSY_EFFECT_ID + " will be registered")
-                .comment("There is no potion defined for these, and they are simply substitutes for the attack speed part of Haste/Fatigue that is disabled from Fix Effects")
-                .comment("However, this does not explicitly require Fix Effects to be enabled")
-                .define("Add Effects", true);
 
         FIXED_EFFECT_MODIFIER = builder.comment("If Fix Effects is enabled, this is the value of the Haste attribute modifier")
                 .comment("Mining Fatigue's modifier will have the negative version of this value")
-                .defineInRange("Fixed Effects Modifier", 0.25D, 0.1D, 1D);
+                .defineInRange("Fixed Effects Modifier", 0.2D, 0.01D, 1D);
+
+        ADD_EFFECTS = builder.comment("If enabled, the effects " + Constants.DEXTERITY_EFFECT_ID + " and " + Constants.CLUMSY_EFFECT_ID + " will be registered")
+                .comment("There is no potion defined for these, and they are simply substitutes for the attack speed part of Haste/Fatigue that is disabled by Fix Effects")
+                .comment("However, this option does not explicitly require Fix Effects to be enabled")
+                .define("Add Effects", true);
 
         ADD_HASTE_TO_CONDUIT = builder.comment("If enabled, Haste will be granted by the Conduit in addition to Conduit Power")
                 .comment("This makes up for the fact that Conduit Power no longer influences block break speed if Fix Effects is enabled")
-                .define("Add Haste to Conduit", false);
+                .define("Haste from Conduit", false);
 
         ELDER_GUARDIAN_FATIGUE_AMPLIFIER = builder.comment("If > 2, Elder Guardians will grant Mining Fatigue with this amplifier")
                 .comment("This makes up for a potentially weaker Mining Fatigue effect from Fixed Effects being enabled")
+                .comment("This is recommended to be set to at least 3 if Fix Effects is enabled and Fix Effects Modifier is set to 0.2")
                 .defineInRange("Elder Guardian Fatigue Amplifier", 2, 2, 9);
 
     }
