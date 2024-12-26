@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedEffects;
+import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeatureConfig;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.bus.api.IEventBus;
@@ -19,9 +20,11 @@ public class TrainsTweaksNeoForge {
             if(mf.configSpec != null) {
                 container.registerConfig(ModConfig.Type.COMMON, mf.configSpec, mf.getConfigPath());
             }
-            if(mf.getFeatureName().equals("AttackSpeed") && AttackSpeedFeatureConfig.ADD_EFFECTS.getAsBoolean()){
-                MOB_EFFECTS.register("dexterity", () -> AttackSpeedEffects.d);
-                MOB_EFFECTS.register("clumsy", () -> AttackSpeedEffects.c);
+            if(mf.getFeatureName().equals("AttackSpeed")) {
+                if(AttackSpeedFeature.addEffects) {
+                    MOB_EFFECTS.register("dexterity", () -> AttackSpeedEffects.d);
+                    MOB_EFFECTS.register("clumsy", () -> AttackSpeedEffects.c);
+                }
             }
         }
         CommonClass.init();
