@@ -6,7 +6,6 @@ import com.llamalad7.mixinextras.sugar.Local;
 import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.feature.zzz.ZzzFeatureConfig;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,8 +17,7 @@ public class Zzz_LivingEntityMixin {
     public void trains_tweaks$hurt(LivingEntity instance, Operation<Void> original, @Local(argsOnly = true) DamageSource source){
         if(!AllFeatures.ZZZ_FEATURE.isIncompatibleLoaded() && ZzzFeatureConfig.ENABLED.getAsBoolean()
             && ZzzFeatureConfig.SLEEP_THROUGH_DAMAGE.getAsBoolean()) {
-            Constants.LOG.info(source.type().toString());
-
+            //Constants.LOG.info(source.type().toString());
             if(!source.is(Constants.SLEEP_THROUGH_DAMAGE_TAG)){
                 original.call(instance);
             }

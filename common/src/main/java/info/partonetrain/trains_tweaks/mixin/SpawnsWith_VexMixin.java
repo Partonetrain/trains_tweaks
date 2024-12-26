@@ -7,7 +7,6 @@ import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfig;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

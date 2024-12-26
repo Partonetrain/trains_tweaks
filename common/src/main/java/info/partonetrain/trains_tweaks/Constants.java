@@ -17,6 +17,9 @@ public final class Constants {
 	public static final String MOD_ID = "trains_tweaks";
 	public static final String MOD_NAME = "Train's Tweaks";
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+	//AttackSpeed
+	public static final ResourceLocation DEXTERITY_EFFECT_ID = getResourceLocation("dexterity");
+	public static final ResourceLocation CLUMSY_EFFECT_ID = getResourceLocation("clumsy");
 	//Cure
 	public static final TagKey<Item> CURING_TAG = TagKey.create(Registries.ITEM, getResourceLocation("curing_items"));
 	public static final TagKey<Item> INSTANT_CURING_TAG = TagKey.create(Registries.ITEM, getResourceLocation("instant_curing_items"));

@@ -3,7 +3,9 @@
   "minVersion": "0.8",
   "package": "info.partonetrain.trains_tweaks.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "NeoForge_AttackSpeed_PlayerMixin"
+  ],
   "client": [
   ],
   "server": [],

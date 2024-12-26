@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks;
 
+import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
 import info.partonetrain.trains_tweaks.feature.cure.CureFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeature;
 import info.partonetrain.trains_tweaks.feature.experience.ExperienceFeature;
@@ -16,8 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllFeatures {
-    public static List<ModFeature> list = new ArrayList<>();
 
+    public static List<ModFeature> features = new ArrayList<>();
+
+    public static final ModFeature ATTACK_SPEED_FEATURE = new AttackSpeedFeature();
     public static final ModFeature CURE_FEATURE = new CureFeature();
     public static final ModFeature DIFFICULTY_FEATURE = new DifficultyFeature();
     public static final ModFeature EXPERIENCE_FEATURE = new ExperienceFeature();
@@ -31,16 +34,17 @@ public class AllFeatures {
     public static final ModFeature ZZZ_FEATURE = new ZzzFeature();
 
     static{
-        list.add(CURE_FEATURE);
-        list.add(DIFFICULTY_FEATURE);
-        list.add(EXPERIENCE_FEATURE);
-        list.add(FIRE_RESISTANT_FEATURE);
-        list.add(MOB_DROPS_FEATURE);
-        list.add(POWDER_WALKING_FEATURE);
-        list.add(RARITY_FEATURE);
-        list.add(SPAWNS_WITH_FEATURE);
-        list.add(TAME_OCELOT_FEATURE);
-        list.add(YEET_FEATURE);
-        list.add(ZZZ_FEATURE);
+        features.add(ATTACK_SPEED_FEATURE);
+        features.add(CURE_FEATURE);
+        features.add(DIFFICULTY_FEATURE);
+        features.add(EXPERIENCE_FEATURE);
+        features.add(FIRE_RESISTANT_FEATURE);
+        features.add(MOB_DROPS_FEATURE);
+        features.add(POWDER_WALKING_FEATURE);
+        features.add(RARITY_FEATURE);
+        features.add(SPAWNS_WITH_FEATURE);
+        features.add(TAME_OCELOT_FEATURE);
+        features.add(YEET_FEATURE);
+        features.add(ZZZ_FEATURE);
     }
 }

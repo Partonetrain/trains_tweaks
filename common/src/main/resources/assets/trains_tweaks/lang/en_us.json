@@ -1,4 +1,12 @@
 {
+  "effect.trains_tweaks.dexterity": "Dexterity",
+  "effect.trains_tweaks.dexterity.desc": "Increases attack speed by 10% each level",
+  "effect.trains_tweaks.dexterity.description": "Increases attack speed by 10% each level",
+
+  "effect.trains_tweaks.clumsy": "Clumsy",
+  "effect.trains_tweaks.Clumsy.desc": "Decreases attack speed by 10% each level",
+  "effect.trains_tweaks.Clumsy.description": "Decreases attack speed by 10% each level",
+
   "tag.item.trains_tweaks.curing_items": "Curing items",
   "tag.item.trains_tweaks.instant_curing_items": "Instant cure items",
 

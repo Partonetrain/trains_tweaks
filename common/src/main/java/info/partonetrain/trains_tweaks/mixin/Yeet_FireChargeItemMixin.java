@@ -1,22 +1,16 @@
 package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.AllFeatures;
-import info.partonetrain.trains_tweaks.feature.yeet.YeetFeature;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeatureConfig;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.monster.Blaze;
-import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.SmallFireball;
-import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 

@@ -2,17 +2,18 @@ package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.platform.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class CommonClass {
 
     public static void init() {
-        Constants.LOG.info("TrainsTweaks has " + AllFeatures.list.size() + " Features");
+        Constants.LOG.info("TrainsTweaks has " + AllFeatures.features.size() + " Features");
         determineIncompatibleMods();
     }
 
     public static void determineIncompatibleMods(){
-        for(ModFeature mf : AllFeatures.list){
+        for(ModFeature mf : AllFeatures.features){
             List<String> incompatibleMods = mf.getIncompatibleMods();
             if(!incompatibleMods.isEmpty()){
                 for(String s : incompatibleMods){

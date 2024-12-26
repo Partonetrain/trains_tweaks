@@ -4,7 +4,10 @@
   "package": "info.partonetrain.trains_tweaks.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "Fabric_AttackSpeed_MobEffectsMixin",
+    "Fabric_AttackSpeed_PlayerMixin"
+  ],
   "client": [
   ],
   "server": [],

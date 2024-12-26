@@ -1,10 +1,7 @@
 package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.AllFeatures;
-import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeatureConfig;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Final;

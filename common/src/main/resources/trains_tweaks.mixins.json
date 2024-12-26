@@ -5,6 +5,10 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
   "mixins": [
+    "AttackSpeed_ConduitBlockEntityMixin",
+    "AttackSpeed_ElderGuardianMixin",
+    "AttackSpeed_MobEffectsMixin",
+    "AttackSpeed_MobEffectUtilMixin",
     "Cure_ZombieVillagerMixin",
     "Difficulty_DamageSourceMixin",
     "Difficulty_DifficultyInstanceMixin",
