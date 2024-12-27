@@ -3,6 +3,7 @@ package info.partonetrain.trains_tweaks;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedEffects;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeatureConfig;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -13,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 @Mod(Constants.MOD_ID)
 public class TrainsTweaksNeoForge {
 
-    public static DeferredRegister<MobEffect> MOB_EFFECTS;
+    public static DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Constants.MOD_ID);
 
     public TrainsTweaksNeoForge(ModContainer container, IEventBus eventBus) {
         for(ModFeature mf : AllFeatures.features){

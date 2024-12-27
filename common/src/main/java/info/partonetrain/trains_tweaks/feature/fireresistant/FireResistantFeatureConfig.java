@@ -17,7 +17,7 @@ public class FireResistantFeatureConfig {
 
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
-        ENABLED = builder.comment("Whether or not to enable the functionality of the "+ Constants.FIRE_RESISTANT_TAG.location() + " and " + Constants.NOT_FIRE_RESISTANT_TAG + " item tags")
+        ENABLED = builder.comment("Whether or not to enable the functionality of the "+ Constants.FIRE_RESISTANT_TAG.location() + " and " + Constants.NOT_FIRE_RESISTANT_TAG.location() + " item tags")
                 .define("Fire Resistant tweak",true);
     }
 }
