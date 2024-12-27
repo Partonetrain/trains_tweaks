@@ -9,12 +9,12 @@
           "name": "book",
           "functions": [
             {
-              "function": "trains_tweaks:enchant_treasure"
+              "function": "trains_tweaks:enchant_curse"
             }
           ]
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:demo_enchant_treasure"
+  "random_sequence": "trains_tweaks:demo_enchant_curse"
 }

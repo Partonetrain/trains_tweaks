@@ -2,7 +2,6 @@ package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedEffects;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
-import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeatureConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.bus.api.IEventBus;

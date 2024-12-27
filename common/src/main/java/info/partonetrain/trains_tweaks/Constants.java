@@ -29,6 +29,8 @@ public final class Constants {
 	//Loot
 	public static final ResourceLocation ENCHANT_TREASURE = getResourceLocation( "enchant_treasure");
 	public static final ResourceLocation ENCHANT_CURSE = getResourceLocation( "enchant_curse");
+	public static final ResourceLocation ENCHANT_MAX = getResourceLocation( "enchant_max");
+	public static final ResourceLocation ENCHANT_ALL = getResourceLocation( "enchant_all");
 	//MobDrops
 	public static ResourceKey<LootTable> STAR_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/extended_wither_drop"));
 	public static ResourceKey<LootTable> ROSE_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/wither_rose_drop"));

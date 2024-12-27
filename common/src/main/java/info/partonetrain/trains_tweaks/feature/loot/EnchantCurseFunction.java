@@ -33,8 +33,8 @@ public class EnchantCurseFunction extends LootItemConditionalFunction {
             recordCodecBuilder -> commonFields(recordCodecBuilder)
                     .and(
                             recordCodecBuilder.group(
-                                    RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter(enchantTreasureFunction -> enchantTreasureFunction.options),
-                                    Codec.BOOL.optionalFieldOf("only_compatible", Boolean.valueOf(true)).forGetter(thisTreasureFunction -> thisTreasureFunction.onlyCompatible)
+                                    RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).optionalFieldOf("options").forGetter(thisCurseFunction -> thisCurseFunction.options),
+                                    Codec.BOOL.optionalFieldOf("only_compatible", Boolean.TRUE).forGetter(thisCurseFunction -> thisCurseFunction.onlyCompatible)
                             )
                     )
                     .apply(recordCodecBuilder, EnchantCurseFunction::new)
@@ -48,8 +48,8 @@ public class EnchantCurseFunction extends LootItemConditionalFunction {
         this.onlyCompatible = onlyCompatible;
     }
 
-    public @NotNull LootItemFunctionType<EnchantRandomlyFunction> getType() {
-        return LootItemFunctions.ENCHANT_RANDOMLY;
+    public @NotNull LootItemFunctionType<EnchantCurseFunction> getType() {
+        return LootFeature.ENCHANT_CURSE_FUNCTION;
     }
 
     public @NotNull ItemStack run(ItemStack stack, LootContext context) {

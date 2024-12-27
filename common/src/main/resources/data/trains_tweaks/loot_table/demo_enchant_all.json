@@ -1,0 +1,79 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_pickaxe",
+          "functions": [
+            {
+              "function": "trains_tweaks:enchant_all",
+              "check_compatible": true,
+              "sort": true
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": "Check Compatible True, Sort True"
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                "sort: true attempts to apply high-value enchantments first"
+              ],
+              "mode": "append"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_pickaxe",
+          "functions": [
+            {
+              "function": "trains_tweaks:enchant_all",
+              "check_compatible": true,
+              "sort": false
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": "Check Compatible True, Sort False"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_pickaxe",
+          "functions": [
+            {
+              "function": "trains_tweaks:enchant_all",
+              "check_compatible": false
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": "Check Compatible False"
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                "sort is irrelevant if check_compatible is false"
+              ],
+              "mode": "append"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "trains_tweaks:demo_enchant_all"
+}
