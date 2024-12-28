@@ -23,7 +23,7 @@ public class SpawnsWith_AbstractSkeletonMixin {
         if(!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean() && SpawnsWithFeatureConfig.APPLY_TO_ABSTRACT_SKELETON_SPAWN.getAsBoolean()){
             AbstractSkeleton self = (AbstractSkeleton) (Object) this;
 
-            List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.ZOMBIE_SPAWN_LOOT_TABLE);
+            List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.ABSTRACT_SKELETON_SPAWN_LOOT_TABLE);
             SpawnsWithFeature.equipMobWithRolledStacks(loot, self, EquipType.BOTH_HANDS);
 
             ci.cancel();

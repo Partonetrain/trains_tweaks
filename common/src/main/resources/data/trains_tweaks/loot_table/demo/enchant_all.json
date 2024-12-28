@@ -43,6 +43,13 @@
             {
               "function": "minecraft:set_name",
               "name": "Check Compatible True, Sort False"
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                "check_compatible checks the previously applied enchantments"
+              ],
+              "mode": "append"
             }
           ]
         }

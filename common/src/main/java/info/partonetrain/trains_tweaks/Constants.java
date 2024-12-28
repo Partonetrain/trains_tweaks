@@ -57,6 +57,8 @@ public final class Constants {
 	public static ResourceKey<LootTable> WITHER_SKELETON_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/wither_skeleton"));
 	public static ResourceKey<LootTable> ZOMBIE_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/zombie"));
 	public static ResourceKey<LootTable> ZOMBIFIED_PIGLIN_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/zombified_piglin"));
+	//Yeet
+	public static TagKey<Item> CONVENTION_SHIELD_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/shield"));
 	//Zzz
 	public static TagKey<DamageType> SLEEP_THROUGH_DAMAGE_TAG = TagKey.create(Registries.DAMAGE_TYPE, getResourceLocation( "does_not_wake"));
 

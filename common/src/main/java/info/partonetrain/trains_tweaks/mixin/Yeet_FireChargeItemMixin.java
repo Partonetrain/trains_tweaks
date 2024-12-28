@@ -23,7 +23,9 @@ public class Yeet_FireChargeItemMixin extends Item {
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if(!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.THROW_FIRE_CHARGES.getAsBoolean()) {
-            if (!player.getCooldowns().isOnCooldown(Items.FIRE_CHARGE) && !level.isClientSide()) {
+            ItemStack itemStack = player.getItemInHand(interactionHand);
+            if (itemStack.is(Items.FIRE_CHARGE) && !level.isClientSide())  //mods may extend FireChargeItem so check for vanilla item
+            {
                 Vec3 look = new Vec3(player.position().x, player.getEyePosition().y(), player.position().z);
                 SmallFireball smallFireball = new SmallFireball(level, player, look);
                 smallFireball.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1.0F, 2.5F);
@@ -31,11 +33,11 @@ public class Yeet_FireChargeItemMixin extends Item {
                 level.addFreshEntity(smallFireball);
             }
             level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 2.0F, ((player.getRandom().nextFloat() - player.getRandom().nextFloat()) * 0.2F + 1.0F));
-            ItemStack itemStack = player.getItemInHand(interactionHand);
             player.getCooldowns().addCooldown(Items.FIRE_CHARGE, YeetFeatureConfig.FIRE_CHARGES_COOLDOWN.getAsInt());
             player.awardStat(Stats.ITEM_USED.get(this));
             itemStack.consume(1, player);
             return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
+
         }
         return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
     }
