@@ -49,6 +49,7 @@ public class SpawnsWithFeatureConfig {
 
         EQUIPMENT_TABLE_DROP_CHANCE = builder.comment("The drop chance for every equipment item generated from equipment loot tables")
                 .comment("For reference, 8.5% is the default chance for a mob to drop a piece of equipment it spawned with (with the exception of trial chamber spawns, which is 0%)")
+                .comment("See also: MobDrops.toml - \"Mob Equipment Drop Chance\"")
                 .defineInRange("Equipment Table Drop Chance", 0.085D, 0D, 1D);
 
         APPLY_TO_ABSTRACT_SKELETON_SPAWN = builder.comment("Whether or not to convert the hardcoded skeleton/stray/bogged spawn held item to the loot table " + Constants.ABSTRACT_SKELETON_SPAWN_LOOT_TABLE.location())

@@ -1,9 +1,7 @@
 package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.AllFeatures;
-import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeatureConfig;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.windcharge.WindCharge;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;

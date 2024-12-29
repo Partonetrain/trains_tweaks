@@ -15,9 +15,9 @@ public class YeetFeatureConfig {
     public static ModConfigSpec.IntValue SNOWBALL_FREEZE_MAX;
     public static ModConfigSpec.IntValue EXPERIENCE_BOTTLE_AMOUNT;
     public static ModConfigSpec.BooleanValue PREVENT_WIND_INTERACTIONS;
-    public static ModConfigSpec.BooleanValue FIX_REDIRECTED_ARROWS; //MC-270834
     public static ModConfigSpec.BooleanValue ANY_IMPACT_BREAKS_DRIPSTONE;
     public static ModConfigSpec.BooleanValue REFLECT_ANYTHING;
+    public static ModConfigSpec.BooleanValue FIX_REDIRECTED_ARROWS; //MC-270834
 
     static {
         builder = new ModConfigSpec.Builder();

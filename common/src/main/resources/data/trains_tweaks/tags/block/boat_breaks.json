@@ -1,0 +1,18 @@
+{   
+    "replace": false,
+    "values": [
+        "minecraft:lily_pad",
+        {
+            "required": false,
+            "id": "twilightforest:huge_water_lily"
+        },
+        {
+            "required": false,
+            "id": "twilightforest:huge_lily_pad"
+        },
+        {
+            "required": false,
+            "id": "biomesoplenty:huge_lily_pad"
+        }
+    ]
+}

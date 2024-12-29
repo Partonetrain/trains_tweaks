@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:egg"
+          "name": "minecraft:turtle_scute"
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:gameplay/chicken_lay"
+  "random_sequence": "trains_tweaks:gameplay/turtle_grow"
 }

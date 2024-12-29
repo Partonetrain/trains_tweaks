@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -35,7 +36,14 @@ public final class Constants {
 	public static ResourceKey<LootTable> STAR_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/extended_wither_drop"));
 	public static ResourceKey<LootTable> ROSE_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/wither_rose_drop"));
 	public static ResourceKey<LootTable> EGG_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/chicken_lay"));
+	public static ResourceKey<LootTable> ARMADILLO_SHED_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/armadillo_shed"));
+	public static ResourceKey<LootTable> BRUSH_ARMADILLO_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/brush_armadillo"));
+	public static ResourceKey<LootTable> TURTLE_GROW_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/turtle_grow"));
+	public static ResourceKey<LootTable> TURTLE_BRUSH_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/brush_turtle"));
 	public static TagKey<EntityType<?>> ROSE_KILLER_TAG = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation( "causes_wither_rose_drop"));
+	//Ocelot
+	public static TagKey<EntityType<?>> OCELOT_HUNT_TARGETS = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation( "ocelot_hunt_targets"));
+	public static ResourceLocation OCELOT_SIZE_MODIFIER = getResourceLocation("scale");
 	//PowderWalking
 	public static final TagKey<Item> POWDER_WALKER_ARMOR_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "powder_walking_armor"));
 	public static final TagKey<Item> POWDER_WALKER_ITEM_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "powder_walking_item"));
@@ -57,8 +65,8 @@ public final class Constants {
 	public static ResourceKey<LootTable> WITHER_SKELETON_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/wither_skeleton"));
 	public static ResourceKey<LootTable> ZOMBIE_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/zombie"));
 	public static ResourceKey<LootTable> ZOMBIFIED_PIGLIN_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/zombified_piglin"));
-	//Yeet
-	public static TagKey<Item> CONVENTION_SHIELD_TAG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/shield"));
+	//Vehicle
+	public static TagKey<Block> BOAT_BREAKS_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("boat_breaks"));
 	//Zzz
 	public static TagKey<DamageType> SLEEP_THROUGH_DAMAGE_TAG = TagKey.create(Registries.DAMAGE_TYPE, getResourceLocation( "does_not_wake"));
 
