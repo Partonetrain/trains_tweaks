@@ -6,6 +6,8 @@ import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.feature.mobdrops.MobDropsFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfig;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -40,6 +42,11 @@ public abstract class SpawnsWith_MobMixin {
     @ModifyReturnValue(method = "createEquipmentParams", at=@At("RETURN"))
     private LootParams trains_tweaks$createEquipmentParams(LootParams original){
         if(!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean() && SpawnsWithFeatureConfig.GENERIC_MOB_TABLES.getAsBoolean()) {
+            //prevent worldgen hang (?)
+            if(original.getLevel() instanceof ServerLevel){
+                return original;
+            }
+
             Mob self = (Mob) (Object) this;
             LootParams.Builder builder = new LootParams.Builder(original.getLevel());
             builder.withLuck(original.getLevel().getCurrentDifficultyAt(self.getOnPos()).getEffectiveDifficulty())

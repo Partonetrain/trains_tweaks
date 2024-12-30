@@ -30,7 +30,7 @@ public class OcelotFeatureConfig {
                 .define("Tame Ocelots",true);
 
         PRESERVE_SCALE = builder.comment("If true, cats that were tamed from ocelots will preserve the size of an ocelot (Cats are usually 80% the size of ocelots)")
-                .comment("This uses the " + Attributes.SCALE.getRegisteredName() +" attribute so it has the side effect of increasing the hitbox slightly")
+                .comment("This uses the " + Attributes.SCALE.getRegisteredName() + " attribute so it has the side effect of increasing the hitbox slightly")
                 .define("Preserve Ocelot Scale", false);
 
         FORCE_TYPE = builder.comment("Force tamed ocelots to be a specific variant of cat")
