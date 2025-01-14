@@ -1,0 +1,40 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "trains_tweaks"
+        ]
+      }
+    }
+  ],
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:hanging_roots"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "TT Demo Root"
+    },
+    "description": {
+      "text": ""
+    },
+    "hidden": false
+  },
+  "sends_telemetry_event": true
+}

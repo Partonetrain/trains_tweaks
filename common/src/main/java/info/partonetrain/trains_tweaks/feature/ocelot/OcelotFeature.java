@@ -9,11 +9,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.CatVariant;
 
-import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 public class OcelotFeature extends ModFeature {

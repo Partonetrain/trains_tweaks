@@ -1,0 +1,45 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "trains_tweaks"
+        ]
+      }
+    }
+  ],
+  "parent": "trains_tweaks:demo/root",
+  "criteria": {
+    "day": {
+      "trigger": "trains_tweaks:day",
+      "conditions": {
+        "day": {
+          "min": 3
+        }
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:daylight_detector"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "TT Demo Day"
+    },
+    "description": {
+      "text": "You have been playing for 3 in-game days"
+    },
+    "hidden": false
+  },
+  "sends_telemetry_event": true
+}

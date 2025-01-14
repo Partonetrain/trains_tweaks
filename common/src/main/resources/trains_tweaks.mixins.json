@@ -38,6 +38,8 @@
     "SpawnsWith_WitherSkeletonMixin",
     "SpawnsWith_ZombieMixin",
     "SpawnsWith_ZombifiedPiglinMixin",
+    "Trigger_CriteriaTriggersMixin",
+    "Trigger_ServerPlayerMixin",
     "Vehicle_BoatMixin",
     "Vehicle_VehicleEntityMixin",
     "Vehicle_WaterLilyBlockMixin",
