@@ -4,8 +4,6 @@ import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.feature.ocelot.OcelotFeature;
 import info.partonetrain.trains_tweaks.feature.ocelot.OcelotFeatureConfig;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
@@ -23,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import net.minecraft.world.entity.animal.Parrot;
 
 @Mixin(Ocelot.class)
 public abstract class Ocelot_OcelotMixin extends Animal {

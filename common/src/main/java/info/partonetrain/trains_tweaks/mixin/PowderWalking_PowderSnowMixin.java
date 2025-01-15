@@ -21,7 +21,8 @@ public class PowderWalking_PowderSnowMixin {
                 if(le.getItemBySlot(EquipmentSlot.FEET).is(Constants.POWDER_WALKER_ARMOR_TAG)
                     || le.getItemBySlot(EquipmentSlot.LEGS).is(Constants.POWDER_WALKER_ARMOR_TAG)
                     || le.getItemBySlot(EquipmentSlot.CHEST).is(Constants.POWDER_WALKER_ARMOR_TAG)
-                    || le.getItemBySlot(EquipmentSlot.HEAD).is(Constants.POWDER_WALKER_ARMOR_TAG)){
+                    || le.getItemBySlot(EquipmentSlot.HEAD).is(Constants.POWDER_WALKER_ARMOR_TAG)
+                    || le.getItemBySlot(EquipmentSlot.BODY).is(Constants.POWDER_WALKER_ARMOR_TAG)){ //for wolves horse etc
                         cir.setReturnValue(true);
                 }
 

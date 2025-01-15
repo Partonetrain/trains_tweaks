@@ -10,7 +10,9 @@ import info.partonetrain.trains_tweaks.feature.powderwalking.PowderWalkingFeatur
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.ocelot.OcelotFeature;
 import info.partonetrain.trains_tweaks.feature.rarity.RarityFeature;
+import info.partonetrain.trains_tweaks.feature.trigger.TriggerFeature;
 import info.partonetrain.trains_tweaks.feature.vehicle.VehicleFeature;
+import info.partonetrain.trains_tweaks.feature.wolf.WolfFeature;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeature;
 import info.partonetrain.trains_tweaks.feature.zzz.ZzzFeature;
 
@@ -31,7 +33,9 @@ public class AllFeatures {
     public static final ModFeature POWDER_WALKING_FEATURE = new PowderWalkingFeature();
     public static final ModFeature RARITY_FEATURE = new RarityFeature();
     public static final ModFeature SPAWNS_WITH_FEATURE = new SpawnsWithFeature();
+    public static final ModFeature TRIGGER_FEATURE = new TriggerFeature();
     public static final ModFeature VEHICLE_FEATURE = new VehicleFeature();
+    public static final ModFeature WOLF_FEATURE = new WolfFeature();
     public static final ModFeature YEET_FEATURE = new YeetFeature();
     public static final ModFeature ZZZ_FEATURE = new ZzzFeature();
 
@@ -46,7 +50,9 @@ public class AllFeatures {
         features.add(POWDER_WALKING_FEATURE);
         features.add(RARITY_FEATURE);
         features.add(SPAWNS_WITH_FEATURE);
+        features.add(TRIGGER_FEATURE);
         features.add(VEHICLE_FEATURE);
+        features.add(WOLF_FEATURE);
         features.add(YEET_FEATURE);
         features.add(ZZZ_FEATURE);
     }

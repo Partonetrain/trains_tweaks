@@ -1,0 +1,44 @@
+{
+  "values": [
+    "minecraft:creeper",
+    "minecraft:ghast",
+    "minecraft:armor_stand",
+    "minecraft:wolf",
+    {
+      "id": "#c:creepers",
+      "required": false
+    },
+    {
+      "id": "grimoireofgaia:creep",
+      "required": false
+    },
+    {
+      "id": "enemyexpansion:crawler",
+      "required": false
+    },
+    {
+      "id": "enemyexpansion:faller",
+      "required": false
+    },
+    {
+      "id": "enemyexpansion:intruder",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:deeper",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:peeper",
+      "required": false
+    },
+    {
+      "id": "alexscaves:gumbeeper",
+      "required": false
+    },
+    {
+      "id": "alexscaves:nucleeper",
+      "required": false
+    }
+  ]
+}
