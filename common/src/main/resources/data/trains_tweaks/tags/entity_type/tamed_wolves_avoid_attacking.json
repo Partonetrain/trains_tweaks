@@ -3,7 +3,6 @@
     "minecraft:creeper",
     "minecraft:ghast",
     "minecraft:armor_stand",
-    "minecraft:wolf",
     {
       "id": "#c:creepers",
       "required": false

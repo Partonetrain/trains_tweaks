@@ -111,34 +111,8 @@ public abstract class Wolf_WolfMixin extends Animal {
     *
      */
 
-    @WrapOperation(method = "wantsToAttack", constant = @Constant(classValue =  Creeper.class))
+    @WrapOperation(method = "wantsToAttack", constant = {@Constant(classValue = Creeper.class), @Constant(classValue =  Ghast.class), @Constant(classValue =  ArmorStand.class)})
     private boolean trains_tweaks$wantsToAttack(Object obj, Operation<Boolean> original){
-        if(WolfFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.WOLF_FEATURE.isIncompatibleLoaded() && WolfFeatureConfig.AVOIDS_ATTACKING_TAG.getAsBoolean()) {
-            return canAttack((LivingEntity) obj);
-        }
-        return original.call(obj);
-    }
-
-    //technically we are checking against the tag 4 times, but idk a better way to remove the hardcoded checks
-    //I want users to be able to remove ghast etc from the tag
-    @WrapOperation(method = "wantsToAttack", constant = @Constant(classValue =  Ghast.class))
-    private boolean trains_tweaks$wantsToAttack2(Object obj, Operation<Boolean> original){
-        if(WolfFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.WOLF_FEATURE.isIncompatibleLoaded() && WolfFeatureConfig.AVOIDS_ATTACKING_TAG.getAsBoolean()) {
-            return canAttack((LivingEntity) obj);
-        }
-        return original.call(obj);
-    }
-
-    @WrapOperation(method = "wantsToAttack", constant = @Constant(classValue =  ArmorStand.class))
-    private boolean trains_tweaks$wantsToAttack3(Object obj, Operation<Boolean> original){
-        if(WolfFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.WOLF_FEATURE.isIncompatibleLoaded() && WolfFeatureConfig.AVOIDS_ATTACKING_TAG.getAsBoolean()) {
-            return canAttack((LivingEntity) obj);
-        }
-        return original.call(obj);
-    }
-
-    @WrapOperation(method = "wantsToAttack", constant = @Constant(classValue =  Wolf.class))
-    private boolean trains_tweaks$wantsToAttack4(Object obj, Operation<Boolean> original){
         if(WolfFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.WOLF_FEATURE.isIncompatibleLoaded() && WolfFeatureConfig.AVOIDS_ATTACKING_TAG.getAsBoolean()) {
             return canAttack((LivingEntity) obj);
         }
