@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
+import info.partonetrain.trains_tweaks.feature.bee.BeeFeature;
 import info.partonetrain.trains_tweaks.feature.cure.CureFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeature;
 import info.partonetrain.trains_tweaks.feature.experience.ExperienceFeature;
@@ -24,6 +25,7 @@ public class AllFeatures {
     public static List<ModFeature> features = new ArrayList<>();
 
     public static final ModFeature ATTACK_SPEED_FEATURE = new AttackSpeedFeature();
+    public static final ModFeature BEE_FEATURE = new BeeFeature();
     public static final ModFeature CURE_FEATURE = new CureFeature();
     public static final ModFeature DIFFICULTY_FEATURE = new DifficultyFeature();
     public static final ModFeature EXPERIENCE_FEATURE = new ExperienceFeature();
@@ -41,6 +43,7 @@ public class AllFeatures {
 
     static{
         features.add(ATTACK_SPEED_FEATURE);
+        features.add(BEE_FEATURE);
         features.add(CURE_FEATURE);
         features.add(DIFFICULTY_FEATURE);
         features.add(EXPERIENCE_FEATURE);

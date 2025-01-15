@@ -9,6 +9,7 @@
     "AttackSpeed_ElderGuardianMixin",
     "AttackSpeed_MobEffectsMixin",
     "AttackSpeed_MobEffectUtilMixin",
+    "Bee_BeeMixin",
     "Cure_ZombieVillagerMixin",
     "Difficulty_DamageSourceMixin",
     "Difficulty_DifficultyInstanceMixin",

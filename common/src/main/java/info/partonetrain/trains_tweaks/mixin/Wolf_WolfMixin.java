@@ -47,8 +47,10 @@ public abstract class Wolf_WolfMixin extends Animal {
     );
 
     @Unique
-    public boolean canAttack(LivingEntity livingEntity){
+    public boolean trains_tweaks$checkTag(LivingEntity livingEntity){
+        Constants.LOG.info("Wolf evaluating " + livingEntity.getName().getString() + ": " + livingEntity.getType().is(Constants.WOLF_AVOIDS_TAG));
         return livingEntity.getType().is(Constants.WOLF_AVOIDS_TAG);
+
     }
 
     @ModifyArg(method = "applyTamingSideEffects()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/attributes/AttributeInstance;setBaseValue(D)V"), index = 0)
@@ -114,7 +116,7 @@ public abstract class Wolf_WolfMixin extends Animal {
     @WrapOperation(method = "wantsToAttack", constant = {@Constant(classValue = Creeper.class), @Constant(classValue =  Ghast.class), @Constant(classValue =  ArmorStand.class)})
     private boolean trains_tweaks$wantsToAttack(Object obj, Operation<Boolean> original){
         if(WolfFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.WOLF_FEATURE.isIncompatibleLoaded() && WolfFeatureConfig.AVOIDS_ATTACKING_TAG.getAsBoolean()) {
-            return canAttack((LivingEntity) obj);
+            return trains_tweaks$checkTag((LivingEntity) obj);
         }
         return original.call(obj);
     }
