@@ -12,6 +12,8 @@ public class WolfFeatureConfig {
     public static ModConfigSpec.BooleanValue NERF_ARMOR;
     public static ModConfigSpec.BooleanValue AVOIDS_ATTACKING_TAG;
     public static ModConfigSpec.BooleanValue SNOWY_WOLF_WALKS_ON_POWDER_SNOW;
+    public static ModConfigSpec.BooleanValue DONT_SCARE_SKELETONS;
+    public static ModConfigSpec.BooleanValue DONT_CHASE_SKELETONS;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -40,5 +42,11 @@ public class WolfFeatureConfig {
         SNOWY_WOLF_WALKS_ON_POWDER_SNOW = builder.comment("If enabled, the snowy wolf variant (the one that only spawns in Groves) can walk on powder snow")
                 .define("Snowy Wolf Walks on Powder Snow", true);
 
+        DONT_SCARE_SKELETONS = builder.comment("If enabled, wolves will not scare away skeletons")
+                .comment("If Don't Chase Skeletons is disabled, this will usually result in wild wolves dying from skeleton retaliation")
+                .define("Don't Scare Skeletons", true);
+
+        DONT_CHASE_SKELETONS = builder.comment("If enabled, wolves will not attack skeletons unprovoked")
+                .define("Don't Chase Skeletons", true);
     }
 }

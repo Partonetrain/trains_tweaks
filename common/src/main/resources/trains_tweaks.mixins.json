@@ -44,6 +44,7 @@
     "Vehicle_BoatMixin",
     "Vehicle_VehicleEntityMixin",
     "Vehicle_WaterLilyBlockMixin",
+    "Wolf_AbstractSkeletonMixin",
     "Wolf_PowderSnowMixin",
     "Wolf_WolfMixin",
     "Yeet_AbstractArrowMixin",

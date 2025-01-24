@@ -4,28 +4,19 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
-import info.partonetrain.trains_tweaks.feature.ocelot.OcelotFeature;
-import info.partonetrain.trains_tweaks.feature.ocelot.OcelotFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.wolf.WolfFeatureConfig;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.entity.animal.horse.AbstractHorse;
-import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Ghast;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.WaterlilyBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -48,9 +39,8 @@ public abstract class Wolf_WolfMixin extends Animal {
 
     @Unique
     public boolean trains_tweaks$checkTag(LivingEntity livingEntity){
-        Constants.LOG.info("Wolf evaluating " + livingEntity.getName().getString() + ": " + livingEntity.getType().is(Constants.WOLF_AVOIDS_TAG));
+        //Constants.LOG.info("Wolf evaluating " + livingEntity.getName().getString() + ": " + livingEntity.getType().is(Constants.WOLF_AVOIDS_TAG));
         return livingEntity.getType().is(Constants.WOLF_AVOIDS_TAG);
-
     }
 
     @ModifyArg(method = "applyTamingSideEffects()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/attributes/AttributeInstance;setBaseValue(D)V"), index = 0)
@@ -119,6 +109,13 @@ public abstract class Wolf_WolfMixin extends Animal {
             return trains_tweaks$checkTag((LivingEntity) obj);
         }
         return original.call(obj);
+    }
+
+    @WrapOperation(method = "registerGoals", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/ai/goal/GoalSelector;addGoal(ILnet/minecraft/world/entity/ai/goal/Goal;)V", ordinal = 18))
+    private void trains_tweaks$registerGoals(GoalSelector instance, int priority, Goal goal, Operation<Void> original){
+        if(WolfFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.WOLF_FEATURE.isIncompatibleLoaded() && WolfFeatureConfig.DONT_CHASE_SKELETONS.getAsBoolean()){
+            return;
+        }
     }
 
 }

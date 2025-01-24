@@ -21,10 +21,11 @@
   "tag.item.trains_tweaks.rare": "Tweaked Rare",
   "tag.item.trains_tweaks.epic": "Tweaked Epic",
 
-
+  "emi_loot.entities.trains_tweaks:entities/generic": "Generic Living Entity",
   "emi_loot.gameplay.trains_tweaks:gameplay/armadillo_shed": "Armadillo Shedding",
   "emi_loot.gameplay.trains_tweaks:gameplay/brush_armadillo": "Armadillo Brushing",
   "emi_loot.gameplay.trains_tweaks:gameplay/brush_turtle": "Turtle Brushing",
   "emi_loot.gameplay.trains_tweaks:gameplay/chicken_lay": "Chicken Laying",
   "emi_loot.gameplay.trains_tweaks:gameplay/turtle_grow": "Turtle Growing"
+
 }
