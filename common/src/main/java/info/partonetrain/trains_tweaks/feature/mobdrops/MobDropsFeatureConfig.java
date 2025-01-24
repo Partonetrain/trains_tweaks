@@ -9,6 +9,7 @@ public class MobDropsFeatureConfig {
 
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.DoubleValue MOB_EQUIPMENT_DROP_CHANCE;
+    public static ModConfigSpec.BooleanValue GENERIC_DROP_ENABLED;
     public static ModConfigSpec.BooleanValue APPLY_TO_WITHER_DEATH;
     public static ModConfigSpec.BooleanValue APPLY_TO_WITHER_ROSE;
     public static ModConfigSpec.BooleanValue APPLY_TO_CHICKEN_EGG; //TODO remove in 1.21.4
@@ -34,6 +35,10 @@ public class MobDropsFeatureConfig {
                 .comment("This should only affect mobs that did NOT spawn with a SpawnsWith table. See that feature's config for more details")
                 .comment("Leaving it at the default value of 0.085 will not write the value again; if a modded mob specifies its equipment drop chances in its code, you'll probably want to leave this alone")
                 .defineInRange("Mob Equipment Drop Chance", 0.085D, 0D, 1D);
+
+        GENERIC_DROP_ENABLED = builder.comment("When enabled, ALL living entities will roll " + Constants.GENERIC_DROP_TABLE.location() + " on death")
+                .comment("This can be useful for things like loot bags, but make sure the loot table checks for things like armor stands")
+                .define("Generic Drop Table", false);
 
         APPLY_TO_WITHER_DEATH = builder.comment("Whether or not to convert the hardcoded Nether Star (that takes longer to despawn) drop to the loot table " + Constants.STAR_LOOT_TABLE.location())
                 .define("Convert Nether Star Drop", true);

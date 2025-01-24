@@ -6,6 +6,7 @@ import info.partonetrain.trains_tweaks.feature.mobdrops.MobDropsFeatureConfig;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -58,6 +59,23 @@ public class MobDrops_LivingEntityMixin {
         if(!AllFeatures.MOB_DROPS_FEATURE.isIncompatibleLoaded() && MobDropsFeatureConfig.ENABLED.getAsBoolean()
                 && MobDropsFeatureConfig.BABIES_DROP_EXPERIENCE.getAsBoolean() && self.isBaby()){
             cir.setReturnValue(true);
+        }
+    }
+
+    @Inject(method = "dropFromLootTable", at=@At("TAIL"))
+    public void trains_tweaks$dropFromLootTable(DamageSource damageSource, boolean hitByPlayer, CallbackInfo ci){
+        if(!AllFeatures.MOB_DROPS_FEATURE.isIncompatibleLoaded() && MobDropsFeatureConfig.ENABLED.getAsBoolean() && MobDropsFeatureConfig.GENERIC_DROP_ENABLED.getAsBoolean()) {
+            LivingEntity self = (LivingEntity) (Object) this;
+            ServerLevel serverlevel = (ServerLevel) self.level();
+            LootTable lootTable = serverlevel.getServer().reloadableRegistries().getLootTable(Constants.GENERIC_DROP_TABLE);
+
+            LootParams.Builder builder = (new LootParams.Builder((ServerLevel)self.level())).withParameter(LootContextParams.THIS_ENTITY, self).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.DAMAGE_SOURCE, damageSource).withOptionalParameter(LootContextParams.ATTACKING_ENTITY, damageSource.getEntity()).withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, damageSource.getDirectEntity());
+            if (hitByPlayer && self.lastHurtByPlayer != null) {
+                builder = builder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, self.lastHurtByPlayer).withLuck(self.lastHurtByPlayer.getLuck());
+            }
+
+            LootParams lootParams = builder.create(LootContextParamSets.ENTITY);
+            lootTable.getRandomItems(lootParams, self.getLootTableSeed(), self::spawnAtLocation);
         }
     }
 }

@@ -1,15 +1,15 @@
 {
-    "type": "minecraft:entity",
-    "pools": [
-      {
-        "rolls": 1,
-        "entries": [
-          {
-            "type": "minecraft:item",
-            "name": "minecraft:nether_star"
-          }
-        ]
-      }
-    ],
-    "random_sequence": "minecraft:entities/wither"
-  }
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:nether_star"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "trains_tweaks:entities/extended_wither_drop"
+}

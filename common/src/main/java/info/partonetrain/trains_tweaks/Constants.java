@@ -34,6 +34,7 @@ public final class Constants {
 	public static final ResourceLocation ENCHANT_MAX = getResourceLocation( "enchant_max");
 	public static final ResourceLocation ENCHANT_ALL = getResourceLocation( "enchant_all");
 	//MobDrops
+	public static ResourceKey<LootTable> GENERIC_DROP_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/generic"));
 	public static ResourceKey<LootTable> STAR_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/extended_wither_drop"));
 	public static ResourceKey<LootTable> ROSE_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/wither_rose_drop"));
 	public static ResourceKey<LootTable> EGG_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/chicken_lay"));
@@ -76,7 +77,6 @@ public final class Constants {
 	public static TagKey<EntityType<?>> WOLF_AVOIDS_TAG = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation( "tamed_wolves_avoid_attacking"));
 	//Zzz
 	public static final TagKey<DamageType> SLEEP_THROUGH_DAMAGE_TAG = TagKey.create(Registries.DAMAGE_TYPE, getResourceLocation( "does_not_wake"));
-
 
 	private static @NotNull ResourceLocation getResourceLocation(String path) {
 		return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID ,path);
