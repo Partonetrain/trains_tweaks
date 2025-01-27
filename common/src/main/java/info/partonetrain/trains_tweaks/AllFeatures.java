@@ -7,6 +7,7 @@ import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeature;
 import info.partonetrain.trains_tweaks.feature.experience.ExperienceFeature;
 import info.partonetrain.trains_tweaks.feature.fireresistant.FireResistantFeature;
 import info.partonetrain.trains_tweaks.feature.mobdrops.MobDropsFeature;
+import info.partonetrain.trains_tweaks.feature.npc.NpcFeature;
 import info.partonetrain.trains_tweaks.feature.powderwalking.PowderWalkingFeature;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeature;
 import info.partonetrain.trains_tweaks.feature.ocelot.OcelotFeature;
@@ -31,6 +32,7 @@ public class AllFeatures {
     public static final ModFeature EXPERIENCE_FEATURE = new ExperienceFeature();
     public static final ModFeature FIRE_RESISTANT_FEATURE = new FireResistantFeature();
     public static final ModFeature MOB_DROPS_FEATURE = new MobDropsFeature();
+    public static final ModFeature NPC_FEATURE = new NpcFeature();
     public static final ModFeature OCELOT_FEATURE = new OcelotFeature();
     public static final ModFeature POWDER_WALKING_FEATURE = new PowderWalkingFeature();
     public static final ModFeature RARITY_FEATURE = new RarityFeature();
@@ -49,6 +51,7 @@ public class AllFeatures {
         features.add(EXPERIENCE_FEATURE);
         features.add(FIRE_RESISTANT_FEATURE);
         features.add(MOB_DROPS_FEATURE);
+        features.add(NPC_FEATURE);
         features.add(OCELOT_FEATURE);
         features.add(POWDER_WALKING_FEATURE);
         features.add(RARITY_FEATURE);

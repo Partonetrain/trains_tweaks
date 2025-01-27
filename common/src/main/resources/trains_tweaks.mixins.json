@@ -23,6 +23,8 @@
     "MobDrops_MobMixin",
     "MobDrops_TurtleMixin",
     "MobDrops_WitherBossMixin",
+    "Npc_AbstractIllagerMixin",
+    "Npc_VillagerMixin",
     "Ocelot_OcelotMixin",
     "PowderWalking_PowderSnowMixin",
     "Rarity_ItemMixin",

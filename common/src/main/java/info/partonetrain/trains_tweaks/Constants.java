@@ -25,6 +25,7 @@ public final class Constants {
 	//Cure
 	public static final TagKey<Item> CURING_TAG = TagKey.create(Registries.ITEM, getResourceLocation("curing_items"));
 	public static final TagKey<Item> INSTANT_CURING_TAG = TagKey.create(Registries.ITEM, getResourceLocation("instant_curing_items"));
+	public static final TagKey<Block> SPEEDS_UP_CURE_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("speeds_up_cure"));
 	//FireResistant
 	public static final TagKey<Item> FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation("fire_resistant"));
 	public static final TagKey<Item> NOT_FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "not_fire_resistant"));
@@ -43,6 +44,8 @@ public final class Constants {
 	public static ResourceKey<LootTable> TURTLE_GROW_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/turtle_grow"));
 	public static ResourceKey<LootTable> TURTLE_BRUSH_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "gameplay/brush_turtle"));
 	public static TagKey<EntityType<?>> ROSE_KILLER_TAG = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation( "causes_wither_rose_drop"));
+	//Npc
+	public static final TagKey<Item> VILLAGER_WANTS_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "villager_wants"));
 	//Ocelot
 	public static final TagKey<EntityType<?>> OCELOT_HUNT_TARGETS = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation( "ocelot_hunt_targets"));
 	public static final ResourceLocation OCELOT_SIZE_MODIFIER = getResourceLocation("scale");

@@ -1,5 +1,7 @@
 package info.partonetrain.trains_tweaks.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.feature.cure.CureFeature;
@@ -17,8 +19,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BedBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -65,5 +71,23 @@ public class Cure_ZombieVillagerMixin extends Mob {
             }
             cir.setReturnValue(super.mobInteract(player, hand));
         }
+    }
+
+    @WrapOperation(method = "getConversionProgress", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;is(Lnet/minecraft/world/level/block/Block;)Z"))
+    public boolean trains_tweaks$getConversionProgress(BlockState instance, Block block, Operation<Boolean> original){
+        if(!AllFeatures.CURE_FEATURE.isIncompatibleLoaded() && CureFeatureConfig.ENABLED.getAsBoolean() && CureFeatureConfig.USE_SPEEDUP_TAG.getAsBoolean()){
+            return instance.is(Constants.SPEEDS_UP_CURE_TAG);
+        }
+        return original.call(instance, block);
+    }
+
+    @WrapOperation(method = "getConversionProgress", constant = @Constant(classValue = BedBlock.class) )
+    public boolean trains_tweaks$getConversionProgress2(Object obj, Operation<Boolean> original){
+        Block instance = (Block) obj;
+        if(!AllFeatures.CURE_FEATURE.isIncompatibleLoaded() && CureFeatureConfig.ENABLED.getAsBoolean() && CureFeatureConfig.USE_SPEEDUP_TAG.getAsBoolean()){
+            return instance.defaultBlockState().is(Constants.SPEEDS_UP_CURE_TAG);
+            //defaultBlockState may cause some weirdness in specific circumstances
+        }
+        return original.call(obj);
     }
 }

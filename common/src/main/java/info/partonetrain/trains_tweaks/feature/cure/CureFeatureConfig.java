@@ -12,6 +12,7 @@ public class CureFeatureConfig {
     public static ModConfigSpec.BooleanValue CURING_ITEMS_TAG_ENABLED;
     public static ModConfigSpec.BooleanValue INSTANT_CURE_TAG_ENABLED;
     public static ModConfigSpec.BooleanValue INSTANT_CURE_GRANTS_ADVANCEMENT;
+    public static ModConfigSpec.BooleanValue USE_SPEEDUP_TAG;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -36,5 +37,10 @@ public class CureFeatureConfig {
         INSTANT_CURE_GRANTS_ADVANCEMENT = builder.comment("If enabled, Instant Cures will grant the vanilla Zombie Doctor advancement")
                 .comment("Note that this makes the advancement have a slightly inaccurate description")
                 .define("Instant Cure Advancement", true);
+
+        USE_SPEEDUP_TAG = builder.comment("If enabled, the hardcoded checks for Iron Bars and Bed blocks around a Zombie Villager being cured")
+                .comment("will be replaced with a check for the block tag " + Constants.SPEEDS_UP_CURE_TAG.location())
+                .comment("Iron Bars and Beds are in this tag by default")
+                .define("Use Speeds Up Cure Block Tag", true);
     }
 }
