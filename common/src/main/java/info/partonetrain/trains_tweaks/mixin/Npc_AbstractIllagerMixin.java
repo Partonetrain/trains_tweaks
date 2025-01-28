@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class Npc_AbstractIllagerMixin {
     @WrapOperation(method = "canAttack", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isBaby()Z"))
     public boolean trains_tweaks$wantsToPickUp(LivingEntity instance, Operation<Boolean> original){
-        if(!AllFeatures.NPC_FEATURE.isIncompatibleLoaded() && NpcFeatureConfig.ENABLED.getAsBoolean()&& NpcFeatureConfig.ILLAGERS_ATTACK_BABIES.getAsBoolean()) {
+        if(!AllFeatures.NPC_FEATURE.isIncompatibleLoaded() && NpcFeatureConfig.ENABLED.getAsBoolean() && NpcFeatureConfig.ILLAGERS_ATTACK_BABIES.getAsBoolean()) {
             return false;
             //this is an elvis operator, so returning false will fall through to super.canAttack()
         }

@@ -24,6 +24,8 @@
     "MobDrops_TurtleMixin",
     "MobDrops_WitherBossMixin",
     "Npc_AbstractIllagerMixin",
+    "Npc_GossipTypeMixin",
+    "Npc_RaidMixin",
     "Npc_VillagerMixin",
     "Ocelot_OcelotMixin",
     "PowderWalking_PowderSnowMixin",
