@@ -4,3 +4,4 @@ accessible method net/minecraft/world/entity/monster/ZombieVillager finishConver
 accessible method net/minecraft/world/entity/monster/ZombieVillager startConverting (Ljava/util/UUID;I)V
 accessible field net/minecraft/world/entity/monster/ZombieVillager conversionStarter Ljava/util/UUID;
 accessible field net/minecraft/world/entity/LivingEntity lastHurtByPlayer Lnet/minecraft/world/entity/player/Player;
+accessible class net/minecraft/world/entity/npc/VillagerTrades$EnchantBookForEmeralds

@@ -12,6 +12,7 @@ public class NpcFeatureConfig {
     public static ModConfigSpec.BooleanValue WANTED_ITEMS_TAG;
     public static ModConfigSpec.BooleanValue ILLAGERS_ATTACK_BABIES;
     public static ModConfigSpec.BooleanValue DISABLE_HERO_EFFECT;
+    public static ModConfigSpec.IntValue ENCHANTED_BOOK_MAX;
     public static ModConfigSpec.ConfigValue<String>  MAJOR_NEGATIVE;
     public static ModConfigSpec.ConfigValue<String> MINOR_NEGATIVE;
     public static ModConfigSpec.ConfigValue<String> MINOR_POSITIVE;
@@ -44,6 +45,10 @@ public class NpcFeatureConfig {
         DISABLE_HERO_EFFECT = builder.comment("If enabled, Hero of the Village will not be granted to players that killed a raider in a raid")
                 .comment("Note that this makes the effect unobtainable and the How Did We Get Here advancement unachievable (unless you have a mod that gives it)")
                 .define("Disable Hero of the Village", false);
+
+        ENCHANTED_BOOK_MAX = builder.comment("If this is not 0, Enchanted Books sold by villagers will be limited to this level")
+                .comment("This cannot be used to increase the levels at which enchanted books are sold")
+                .defineInRange("Enchanted Book Level Limit", 0, 0, 255);
 
         builder.comment("The following options can be used to configure the reputation mechanic with villagers")
                 .comment("These options use this format: value (amount gained), weight (multiplier in price calculation), maximum, decay per in-game day, decay per transfer (share penalty)")

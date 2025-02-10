@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks.feature.attackspeed;
 
 import info.partonetrain.trains_tweaks.Constants;
+import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.ModFeature;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AttackSpeedFeature extends ModFeature {
+public class AttackSpeedFeature extends ModFeature implements IEarlyConfigReader {
 
     public static boolean configRead = false;
 
@@ -35,14 +36,9 @@ public class AttackSpeedFeature extends ModFeature {
     //since we're dealing with VERY early loaded classes
     //we need to read from the config file directly
     //there is probably a better way to do this
-    public static void readConfigsEarly(){
-        //multiple mixins call this method
-        //so don't bother trying to read the file more than once
-        if(configRead) {
-            return;
-        }
+    public void readConfigsEarly(){
 
-        final String configFileLoc = System.getProperty("user.dir") + "\\config\\trains_tweaks\\AttackSpeed.toml";
+        final String configFileLoc = System.getProperty("user.dir") + "\\config\\trains_tweaks\\" + this.getFeatureName() + ".toml";
         Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
         try {
             List<String> allLines = Files.readAllLines(configFilePath);
@@ -73,7 +69,7 @@ public class AttackSpeedFeature extends ModFeature {
                 Matcher matcher = pattern.matcher(line);
                 if (matcher.matches()) {
                     double value = Double.parseDouble(matcher.group(1));
-                    Constants.LOG.info("Found!: Fixed Effects Modifier = " + value);
+                    //Constants.LOG.info("Found!: Fixed Effects Modifier = " + value);
                     Constants.LOG.info("Haste will add " + value + " to " + Attributes.BLOCK_BREAK_SPEED.getRegisteredName());
                     fixedEffectModifier = value;
                 }

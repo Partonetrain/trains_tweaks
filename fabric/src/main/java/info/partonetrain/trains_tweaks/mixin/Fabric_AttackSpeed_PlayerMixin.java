@@ -16,7 +16,6 @@ public class Fabric_AttackSpeed_PlayerMixin {
     //NeoForge deprecates this method
     @WrapOperation(method = "getDestroySpeed", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;hasEffect(Lnet/minecraft/core/Holder;)Z"))
     public boolean trains_tweaks$getDestroySpeed(Player instance, Holder holder, Operation<Boolean> original){
-        AttackSpeedFeature.readConfigsEarly();
         if(!AllFeatures.ATTACK_SPEED_FEATURE.isIncompatibleLoaded() && AttackSpeedFeatureConfig.ENABLED.getAsBoolean()
                 && AttackSpeedFeatureConfig.FIX_EFFECTS.getAsBoolean()) {
             return false;

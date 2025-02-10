@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Fabric_AttackSpeed_MobEffectsMixin {
     @Inject(method = "<clinit>", at=@At("TAIL"))
     private static void trains_tweaks$clinit(CallbackInfo ci){
-        AttackSpeedFeature.readConfigsEarly();
         if(AttackSpeedFeature.enabled && AttackSpeedFeature.addEffects) {
             AttackSpeedEffects.fabricInit();
         }

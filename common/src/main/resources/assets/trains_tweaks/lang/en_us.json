@@ -1,4 +1,6 @@
 {
+  "commands.trains_tweaks.kill_non_players.success": "Killed every non-player entity",
+
   "effect.trains_tweaks.dexterity": "Dexterity",
   "effect.trains_tweaks.dexterity.desc": "Increases attack speed by 10% each level",
   "effect.trains_tweaks.dexterity.description": "Increases attack speed by 10% each level",
