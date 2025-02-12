@@ -1,25 +1,19 @@
 package info.partonetrain.trains_tweaks.feature.utilitycommands;
 
-import com.mojang.brigadier.Command;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.ModFeature;
-import info.partonetrain.trains_tweaks.feature.trigger.DayTrigger;
-import info.partonetrain.trains_tweaks.feature.trigger.GameTimeTrigger;
-import net.minecraft.commands.Commands;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigReader {
 
     public static boolean enabled = false;
+    public static boolean vanillaDebugCommands = false;
     public static boolean addKillNonPlayer = false;
 
     public UtilityCommandsFeature() {
@@ -44,6 +38,12 @@ public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigRe
             }
             else {
                 addKillNonPlayer = false;
+            }
+            if (allLines.contains("\"Vanilla Debug Commands\" = true")) {
+                vanillaDebugCommands = true;
+            }
+            else {
+                vanillaDebugCommands = false;
             }
 
         } catch (IOException e) {

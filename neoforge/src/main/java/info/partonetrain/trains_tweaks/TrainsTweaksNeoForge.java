@@ -36,6 +36,7 @@ public class TrainsTweaksNeoForge {
             if(mf.getFeatureName().equals("UtilityCommands") && UtilityCommandsFeature.enabled){
                 NeoForge.EVENT_BUS.addListener(this::registerCommands);
             }
+
         }
         CommonClass.init();
     }

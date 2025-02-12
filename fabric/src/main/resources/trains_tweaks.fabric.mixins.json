@@ -6,7 +6,9 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "Fabric_AttackSpeed_MobEffectsMixin",
-    "Fabric_AttackSpeed_PlayerMixin"
+    "Fabric_AttackSpeed_PlayerMixin",
+    "Fabric_UtilityCommands_CommandsMixin",
+    "Fabric_Xplat_ResourceConditionsImpl"
   ],
   "client": [
   ],

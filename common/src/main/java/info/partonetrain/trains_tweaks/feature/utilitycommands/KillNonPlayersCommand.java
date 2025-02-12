@@ -6,6 +6,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 
 public class KillNonPlayersCommand {
@@ -30,7 +31,7 @@ public class KillNonPlayersCommand {
                 {
                     //Constants.LOG.info("killing " + e.getType().getDescription().getString() + " (" + e.getStringUUID() + ")");
                     //Constants.LOG.info(count + " ");
-                    e.kill();
+                    e.remove(Entity.RemovalReason.DISCARDED);
                     count++;
                 }
             }

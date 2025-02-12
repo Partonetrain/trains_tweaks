@@ -34,8 +34,8 @@ public class NpcFeatureConfig {
                 .comment("This tag includes all the usual items by default EXCEPT for torchflowers and pitcher pods (because there is no reason for villagers to farm these)")
                 .comment("Farmer villagers are hardcoded to want Wheat Seeds, Wheat, Beetroot Seeds, and Bone Meal in addition to these items")
                 .comment("This functionality disables itself if Smarter Farmers is installed")
-                .define("Use Wanted Items Tag", !Services.PLATFORM.isModLoaded("smarterfarmers"));
-        //defaults to off is smarterfarmers is installed, but can still be manually set to true
+                .define("Use Wanted Items Tag", false);
+        //should be off is smarterfarmers is installed, but can still be manually set to true
         //if this is the case, the mixin still checks for the mod, and has no effect if it is present
 
         ILLAGERS_ATTACK_BABIES = builder.comment("If enabled, illagers will be allowed to attack baby villagers")
