@@ -52,6 +52,8 @@
     "Wolf_AbstractSkeletonMixin",
     "Wolf_PowderSnowMixin",
     "Wolf_WolfMixin",
+    "Xplosiv_PrimedTntMixin",
+    "Xplosiv_TntBlockMixin",
     "Yeet_AbstractArrowMixin",
     "Yeet_BreezeWindChargeMixin",
     "Yeet_ExperienceBottleMixin",

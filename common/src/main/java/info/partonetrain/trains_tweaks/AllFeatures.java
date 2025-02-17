@@ -16,6 +16,7 @@ import info.partonetrain.trains_tweaks.feature.trigger.TriggerFeature;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeature;
 import info.partonetrain.trains_tweaks.feature.vehicle.VehicleFeature;
 import info.partonetrain.trains_tweaks.feature.wolf.WolfFeature;
+import info.partonetrain.trains_tweaks.feature.xplosiv.XplosivFeature;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeature;
 import info.partonetrain.trains_tweaks.feature.zzz.ZzzFeature;
 
@@ -42,6 +43,7 @@ public class AllFeatures {
     public static final ModFeature UTILITY_COMMANDS_FEATURE = new UtilityCommandsFeature();
     public static final ModFeature VEHICLE_FEATURE = new VehicleFeature();
     public static final ModFeature WOLF_FEATURE = new WolfFeature();
+    public static final ModFeature XPLOSIV_FEATURE = new XplosivFeature();
     public static final ModFeature YEET_FEATURE = new YeetFeature();
     public static final ModFeature ZZZ_FEATURE = new ZzzFeature();
 
@@ -62,6 +64,7 @@ public class AllFeatures {
         features.add(UTILITY_COMMANDS_FEATURE);
         features.add(VEHICLE_FEATURE);
         features.add(WOLF_FEATURE);
+        features.add(XPLOSIV_FEATURE);
         features.add(YEET_FEATURE);
         features.add(ZZZ_FEATURE);
     }

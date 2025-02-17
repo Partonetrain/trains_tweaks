@@ -62,7 +62,7 @@ public class YeetFeatureConfig {
                 .define("Reflect Any Projectile", false);
 
         FIX_REDIRECTED_ARROWS = builder.comment("Fixes MC-270834: https://bugs.mojang.com/browse/MC-270834")
-                .comment("If disabled and Reflect Any Projectile is enabled (or arrows/tridents are added to " + EntityTypeTags.REDIRECTABLE_PROJECTILE.location() + " via datapack), you will be able to pick up reflected arrows/tridents. Not recommended")
+                .comment("If disabled and Reflect Any Projectile is enabled (or arrows/tridents are added to " + EntityTypeTags.REDIRECTABLE_PROJECTILE.location() + " via datapack), you will be able to pick up reflected arrows/tridents. Recommended you keep enabled")
                 .define("Fix Redirected Arrows", true);
     }
 }
