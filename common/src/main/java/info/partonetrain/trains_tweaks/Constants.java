@@ -80,6 +80,7 @@ public final class Constants {
 	public static TagKey<EntityType<?>> WOLF_AVOIDS_TAG = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation( "tamed_wolves_avoid_attacking"));
 	//Zzz
 	public static final TagKey<DamageType> SLEEP_THROUGH_DAMAGE_TAG = TagKey.create(Registries.DAMAGE_TYPE, getResourceLocation( "does_not_wake"));
+	public static final TagKey<Item> RESPAWN_FUEL_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "respawn_anchor_fuel"));
 
 	private static @NotNull ResourceLocation getResourceLocation(String path) {
 		return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID ,path);

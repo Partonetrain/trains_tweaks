@@ -52,7 +52,10 @@
     "Wolf_AbstractSkeletonMixin",
     "Wolf_PowderSnowMixin",
     "Wolf_WolfMixin",
+    "Xplosiv_BedBlockMixin",
+    "Xplosiv_EndCrystalMixin",
     "Xplosiv_PrimedTntMixin",
+    "Xplosiv_RespawnAnchorBlockMixin",
     "Xplosiv_TntBlockMixin",
     "Yeet_AbstractArrowMixin",
     "Yeet_BreezeWindChargeMixin",
@@ -66,6 +69,7 @@
     "Yeet_WindChargeMixin",
     "Zzz_LivingEntityMixin",
     "Zzz_PlayerMixin",
+    "Zzz_RespawnAnchorBlockMixin",
     "Zzz_ServerLevelMixin"
   ],
   "client": [

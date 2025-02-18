@@ -8,6 +8,7 @@ public class ZzzFeatureConfig {
     public final static ModConfigSpec SPEC;
 
     public static ModConfigSpec.BooleanValue ENABLED;
+    public static ModConfigSpec.BooleanValue RESPAWN_ANCHOR_FUEL;
     public static ModConfigSpec.BooleanValue SLEEP_THROUGH_DAMAGE;
     public static ModConfigSpec.BooleanValue SLEEP_HEALS;
     public static ModConfigSpec.BooleanValue SLEEP_REMOVES_EFFECTS;
@@ -25,6 +26,10 @@ public class ZzzFeatureConfig {
 
         ENABLED = builder.comment("Enable tweaks relating to sleeping")
                 .define("Sleeping Tweaks",true);
+
+        RESPAWN_ANCHOR_FUEL = builder.comment("If true, the Respawn Anchor will accept any item in the tag " + Constants.RESPAWN_FUEL_TAG.location() + " as fuel")
+                .comment("This option isn't technically related to sleeping, but it didn't fit in any other category")
+                .define("Respawn Anchor Fuel Tag", true);
 
         SLEEP_HEALS = builder.comment("If set to true, sleeping fully heals players")
                 .define("Sleeping Heals", true);

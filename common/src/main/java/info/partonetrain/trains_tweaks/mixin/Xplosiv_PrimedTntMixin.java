@@ -12,7 +12,7 @@ public class Xplosiv_PrimedTntMixin {
 
     @ModifyArg(method = "explode", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;explode(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;Lnet/minecraft/world/level/ExplosionDamageCalculator;DDDFZLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;"), index = 6)
     public float trains_tweaks$onPlace(float original) {
-        if (!AllFeatures.XPLOSIV_FEATURE.isIncompatibleLoaded() && XplosivFeatureConfig.ENABLED.getAsBoolean() && XplosivFeatureConfig.TNT_POWER.getAsInt() != 4) {
+        if (!AllFeatures.XPLOSIV_FEATURE.isIncompatibleLoaded() && XplosivFeatureConfig.ENABLED.getAsBoolean() && XplosivFeatureConfig.TNT_POWER.getAsInt() != XplosivFeatureConfig.TNT_POWER.getDefault()) {
             return XplosivFeatureConfig.TNT_POWER.getAsInt();
         }
         return original;
