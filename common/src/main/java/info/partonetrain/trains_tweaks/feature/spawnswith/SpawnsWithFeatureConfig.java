@@ -65,7 +65,7 @@ public class SpawnsWithFeatureConfig {
         APPLY_TO_PIGLIN_SPAWN = builder.comment("Whether or not to convert the hardcoded piglin spawn armor to the loot table " + Constants.PIGLIN_SPAWN_LOOT_TABLE.location())
                 .define("Convert Piglin Spawn", trueIfDev);
 
-        APPLY_TO_PIGLIN_SPAWN = builder.comment("Whether or not to convert the hardcoded piglin spawn held items to the loot table " + Constants.PIGLIN_BRUTE_SPAWN_LOOT_TABLE.location())
+        APPLY_TO_PIGLIN_BRUTE_SPAWN = builder.comment("Whether or not to convert the hardcoded piglin brute spawn held items to the loot table " + Constants.PIGLIN_BRUTE_SPAWN_LOOT_TABLE.location())
                 .define("Convert Piglin Brute Spawn", trueIfDev);
 
         APPLY_TO_PILLAGER_SPAWN = builder.comment("Whether or not to convert the hardcoded pillager spawn held items to the loot table " + Constants.PILLAGER_SPAWN_LOOT_TABLE.location())

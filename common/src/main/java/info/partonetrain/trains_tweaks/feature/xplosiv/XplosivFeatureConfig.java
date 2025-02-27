@@ -1,6 +1,5 @@
 package info.partonetrain.trains_tweaks.feature.xplosiv;
 
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class XplosivFeatureConfig {
@@ -61,5 +60,11 @@ public class XplosivFeatureConfig {
 
         GHAST_FIREBALL_POWER = builder.comment("The explosion power that Ghast Fireballs explode with")
                 .defineInRange("Ghast Fireball Power", 1, 0, 32);
+
+        WITHER_SPAWN_POWER = builder.comment("The explosion power of a spawned Wither")
+                .defineInRange("Wither Spawn Power", 7, 0, 32);
+
+        WITHER_SKULL_POWER = builder.comment("The explosion power of Wither Skull projectiles")
+                .defineInRange("Wither Skull Power", 1, 0, 32);
     }
 }
