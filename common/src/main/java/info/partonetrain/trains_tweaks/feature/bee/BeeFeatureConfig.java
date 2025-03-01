@@ -19,7 +19,7 @@ public class BeeFeatureConfig {
 
         ENABLED = builder
                 .comment("Whether or not to enable any tweaks relating to bees")
-                .define("Custom Experience", false);
+                .define("Bee Tweaks", false);
 
         BEES_KEEP_STINGER = builder.comment("If enabled, bees will not lose their stinger when they attack")
                 .define("Bees Keep Stinger", true);
