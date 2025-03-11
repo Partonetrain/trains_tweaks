@@ -17,6 +17,8 @@
     "FireResistant_ItemEntityMixin",
     "FireResistant_ItemMixin",
     "Goat_GoatMixin",
+    "Horse_AbstractHorseMixin",
+    "Horse_LlamaMixin",
     "Loot_LootItemFunctionsMixin",
     "MobDrops_ArmadilloMixin",
     "MobDrops_ChickenMixin",

@@ -1,6 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.utilitycommands;
 
-import info.partonetrain.trains_tweaks.Constants;
+import info.partonetrain.trains_tweaks.CommonClass;
 import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.ModFeature;
 
@@ -47,8 +47,7 @@ public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigRe
             }
 
         } catch (IOException e) {
-            Constants.LOG.error("UtilityCommands config error:" + e);
-            Constants.LOG.info("Don't fret! Above error is most likely one-time occurrence from UtilityCommands config file not existing yet");
+            CommonClass.printEarlyConfigError(this.featureName, e);
         }
     }
 }

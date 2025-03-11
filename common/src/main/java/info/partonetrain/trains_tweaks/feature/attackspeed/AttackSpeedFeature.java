@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.attackspeed;
 
+import info.partonetrain.trains_tweaks.CommonClass;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.ModFeature;
@@ -17,7 +18,7 @@ import java.util.regex.Pattern;
 
 public class AttackSpeedFeature extends ModFeature implements IEarlyConfigReader {
 
-    public static boolean configRead = false;
+    public static boolean configRead = false; //unused currently
 
     public static boolean enabled = false;
     public static boolean fixEffects = true;
@@ -77,8 +78,7 @@ public class AttackSpeedFeature extends ModFeature implements IEarlyConfigReader
             configRead = true;
 
         } catch (IOException e) {
-            Constants.LOG.error("AttackSpeed config error:" + e);
-            Constants.LOG.info("Don't fret! Above error is most likely one-time occurrence from AttackSpeed config file not existing yet");
+            CommonClass.printEarlyConfigError(this.featureName, e);
             configRead = true;
         }
     }

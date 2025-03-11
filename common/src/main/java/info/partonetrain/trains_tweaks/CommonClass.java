@@ -26,4 +26,10 @@ public final class CommonClass {
             }
         }
     }
+
+    public static void printEarlyConfigError(String featureName, Exception e){
+        Constants.LOG.error(featureName + " config error:" + e.toString());
+        Constants.LOG.info("Don't fret! Above error is most likely one-time occurrence from " + featureName + " config file not existing yet");
+
+    }
 }
