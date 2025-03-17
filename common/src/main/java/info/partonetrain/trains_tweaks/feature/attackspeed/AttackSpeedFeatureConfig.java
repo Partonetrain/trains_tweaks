@@ -38,6 +38,7 @@ public class AttackSpeedFeatureConfig {
                 .defineInRange("Fixed Effects Modifier", 0.2D, 0.01D, 1D);
 
         ADD_EFFECTS = builder.comment("If enabled, the effects " + Constants.DEXTERITY_EFFECT_ID + " and " + Constants.CLUMSY_EFFECT_ID + " will be registered")
+                .comment("They increase/decrease the " + Attributes.ATTACK_SPEED.getRegisteredName() + " attribute by 0.1")
                 .comment("There is no potion defined for these, and they are simply substitutes for the attack speed part of Haste/Fatigue that is disabled by Fix Effects")
                 .comment("However, this option does not explicitly require Fix Effects to be enabled")
                 .define("Add Effects", true);

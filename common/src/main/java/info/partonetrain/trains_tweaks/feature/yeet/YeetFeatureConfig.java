@@ -1,6 +1,5 @@
 package info.partonetrain.trains_tweaks.feature.yeet;
 
-import info.partonetrain.trains_tweaks.Constants;
 import net.minecraft.tags.EntityTypeTags;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -14,6 +13,7 @@ public class YeetFeatureConfig {
     public static ModConfigSpec.IntValue SNOWBALL_FREEZE_TICKS;
     public static ModConfigSpec.IntValue SNOWBALL_FREEZE_MAX;
     public static ModConfigSpec.IntValue EXPERIENCE_BOTTLE_AMOUNT;
+    public static ModConfigSpec.BooleanValue NORMALIZE_RANGED_CRITS;
     public static ModConfigSpec.BooleanValue PREVENT_WIND_INTERACTIONS;
     public static ModConfigSpec.BooleanValue ANY_IMPACT_BREAKS_DRIPSTONE;
     public static ModConfigSpec.BooleanValue REFLECT_ANYTHING;
@@ -27,7 +27,7 @@ public class YeetFeatureConfig {
 
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
-        ENABLED = builder.comment("Whether or not to enable tweaks related to throwing things")
+        ENABLED = builder.comment("Whether or not to enable tweaks related to throwing things and projectiles")
                 .define("Yeet Tweaks",true);
 
         THROW_FIRE_CHARGES = builder.comment("If enabled, you will be able to right-click the air with a fire charge to throw it")
@@ -47,6 +47,12 @@ public class YeetFeatureConfig {
         EXPERIENCE_BOTTLE_AMOUNT = builder.comment("The amount of experience points granted from thrown Bottles o' Enchanting")
                 .comment("Set to -1 to use the vanilla value (random amount between 3 and 13)")
                 .defineInRange("Experience Bottle Amount", 10, -1, 2477);
+
+        NORMALIZE_RANGED_CRITS = builder.comment("If set to true, critical arrows will deal 1.5x their damage rather than a random amount of damage between (0 and (damage/2)+2)")
+                .comment("This config respects the Crit Multiplier option if the Kritz feature is enabled")
+                .comment("Leave as default (false) for vanilla behavior")
+                .comment("If you have Zenith/Apothic Attributes this should be set to false")
+                .define("Normalize Ranged Crits", true);
 
         PREVENT_WIND_INTERACTIONS = builder.comment("If true, Wind Charge explosions will not interact with blocks such as trapdoors and levers")
                 .comment("It will still cause damage and knockback")

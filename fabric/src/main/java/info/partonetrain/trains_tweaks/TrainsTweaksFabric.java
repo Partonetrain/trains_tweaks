@@ -26,7 +26,6 @@ public class TrainsTweaksFabric implements ModInitializer {
                     CommandRegistrationCallback.EVENT.register((dispatcher, context, selection) ->
                             KillNonPlayersCommand.register(dispatcher));
                 }
-
             }
         }
         CommonClass.init();

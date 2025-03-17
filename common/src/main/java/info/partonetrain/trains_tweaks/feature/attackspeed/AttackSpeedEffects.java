@@ -26,10 +26,6 @@ public class AttackSpeedEffects {
         AttackSpeedFeature.CLUMSY = Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Constants.CLUMSY_EFFECT_ID, c);
     }
 
-    private static Holder<MobEffect> register(String name, MobEffect effect) {
-        return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, ResourceLocation.withDefaultNamespace(name), effect);
-    }
-
     public static class AttackSpeedEffect extends MobEffect {
 
         protected AttackSpeedEffect(MobEffectCategory category, int color) {

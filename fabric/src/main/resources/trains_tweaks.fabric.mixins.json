@@ -7,6 +7,9 @@
   "mixins": [
     "Fabric_AttackSpeed_MobEffectsMixin",
     "Fabric_AttackSpeed_PlayerMixin",
+    "Fabric_Kritz_AttributesMixin",
+    "Fabric_Kritz_MobEffectsMixin",
+    "Fabric_Kritz_PlayerMixin",
     "Fabric_UtilityCommands_CommandsMixin"
   ],
   "client": [

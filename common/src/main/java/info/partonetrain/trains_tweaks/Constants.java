@@ -29,6 +29,11 @@ public final class Constants {
 	//FireResistant
 	public static final TagKey<Item> FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation("fire_resistant"));
 	public static final TagKey<Item> NOT_FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "not_fire_resistant"));
+	//kritz
+	public static final ResourceLocation MELEE_CRIT_ATTRIBUTE_ID = getResourceLocation("melee_crit_chance");
+	public static final ResourceLocation RANGED_CRIT_ATTRIBUTE_ID = getResourceLocation("ranged_crit_chance");
+	public static final ResourceLocation MELEE_CRIT_EFFECT_ID = getResourceLocation("melee_fury");
+	public static final ResourceLocation RANGED_CRIT_EFFECT_ID = getResourceLocation("ranged_fury");
 	//Loot
 	public static final ResourceLocation ENCHANT_TREASURE = getResourceLocation( "enchant_treasure");
 	public static final ResourceLocation ENCHANT_CURSE = getResourceLocation( "enchant_curse");

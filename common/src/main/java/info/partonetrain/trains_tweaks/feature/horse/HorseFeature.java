@@ -60,24 +60,30 @@ public class HorseFeature extends ModFeature implements IEarlyConfigReader {
                     Matcher matcher = healthPattern.matcher(line);
                     if(matcher.matches()){
                         double value = Double.parseDouble(matcher.group(1));
-                        Constants.LOG.info("Horse health will be at least " + value);
-                        healthBuff = value;
+                        if(value != 15.0F){
+                            Constants.LOG.info("Horse health will be at least " + value);
+                            healthBuff = value;
+                        }
                     }
                 }
                 if (speedBuff == -1.0F) {
                     Matcher matcher = speedPattern.matcher(line);
                     if(matcher.matches()){
                         double value = Double.parseDouble(matcher.group(1));
-                        Constants.LOG.info("Horse speed will be at least " + value);
-                        speedBuff = value;
+                        if(value != 0.1125){
+                            Constants.LOG.info("Horse speed will be at least " + value);
+                            speedBuff = value;
+                        }
                     }
                 }
                 if (jumpBuff == -1.0F) {
                     Matcher matcher = jumpPattern.matcher(line);
                     if(matcher.matches()){
                         double value = Double.parseDouble(matcher.group(1));
-                        Constants.LOG.info("Horse jump will be at least " + value);
-                        jumpBuff = value;
+                        if(value != 0.4){
+                            Constants.LOG.info("Horse jump will be at least " + value);
+                            jumpBuff = value;
+                        }
                     }
                 }
             }

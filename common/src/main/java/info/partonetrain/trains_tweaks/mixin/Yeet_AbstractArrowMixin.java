@@ -3,6 +3,7 @@ package info.partonetrain.trains_tweaks.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import info.partonetrain.trains_tweaks.AllFeatures;
+import info.partonetrain.trains_tweaks.feature.kritz.KritzFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeatureConfig;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
@@ -15,6 +16,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractArrow.class)
@@ -57,5 +59,31 @@ public class Yeet_AbstractArrowMixin {
             return true;
         }
         return original.call(instance, tag);
+    }
+
+    //perform crit damage modification later - this is specifically the isCritArrow() call during damage calculation
+    @WrapOperation(method = "onHitEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;isCritArrow()Z"))
+    public boolean trains_tweaks$onHitEntity(AbstractArrow instance, Operation<Boolean> original) {
+        if (!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.NORMALIZE_RANGED_CRITS.getAsBoolean()) {
+            return false;
+        }
+        return original.call(instance);
+    }
+
+    @ModifyArg(method = "onHitEntity", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"), index = 1)
+    public float trains_tweaks$onHitEntity2(float amount){
+        if (!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.NORMALIZE_RANGED_CRITS.getAsBoolean()) {
+            AbstractArrow thisArrow = (AbstractArrow)(Object)this;
+            if(thisArrow.isCritArrow()){
+                if(!AllFeatures.KRITZ_FEATURE.isIncompatibleLoaded() && KritzFeatureConfig.ENABLED.getAsBoolean()){
+                    amount = (float) (amount * KritzFeatureConfig.KRIT_MULTIPLIER.getAsDouble());
+                }
+                else
+                {
+                    amount = amount * 1.5F;
+                }
+            }
+        }
+        return amount;
     }
 }
