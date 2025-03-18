@@ -19,6 +19,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.PercentageAttribute;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 @Mod(Constants.MOD_ID)
@@ -26,6 +27,10 @@ public class TrainsTweaksNeoForge {
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Constants.MOD_ID);
     private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(Registries.ATTRIBUTE, Constants.MOD_ID);
+
+    //Kritz
+    DeferredHolder<Attribute, Attribute> meleeAttributeHolder;
+    DeferredHolder<Attribute, Attribute> rangedAttributeHolder;
 
     public TrainsTweaksNeoForge(ModContainer container, IEventBus eventBus) {
         for(ModFeature mf : AllFeatures.features){
@@ -43,8 +48,10 @@ public class TrainsTweaksNeoForge {
             }
             if(mf.getFeatureName().equals("Kritz")){
                 if(KritzFeature.enabled && KritzFeature.addAttributes){
-                    KritzFeature.MELEE_CRIT_CHANCE = ATTRIBUTES.register("melee_crit_chance", () -> new PercentageAttribute("attribute.name.trains_tweaks.melee_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true)).getDelegate();
-                    KritzFeature.RANGED_CRIT_CHANCE = ATTRIBUTES.register("ranged_crit_chance", () -> new PercentageAttribute("attribute.name.trains_tweaks.ranged_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true)).getDelegate();
+                    meleeAttributeHolder = ATTRIBUTES.register("melee_crit_chance", () -> new PercentageAttribute("attribute.name.trains_tweaks.melee_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true));
+                    KritzFeature.MELEE_CRIT_CHANCE = meleeAttributeHolder.getDelegate();
+                    rangedAttributeHolder = ATTRIBUTES.register("ranged_crit_chance", () -> new PercentageAttribute("attribute.name.trains_tweaks.ranged_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true));
+                    KritzFeature.RANGED_CRIT_CHANCE = rangedAttributeHolder.getDelegate();
                     //add to player
                     eventBus.addListener(this::registerAttributesToPlayer);
                 }
