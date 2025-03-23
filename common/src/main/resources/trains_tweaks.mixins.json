@@ -19,6 +19,8 @@
     "Goat_GoatMixin",
     "Horse_AbstractHorseMixin",
     "Horse_LlamaMixin",
+    "Kritz_PlayerMixin",
+    "Kritz_ProjectileWeaponItemMixin",
     "Loot_LootItemFunctionsMixin",
     "MobDrops_ArmadilloMixin",
     "MobDrops_ChickenMixin",

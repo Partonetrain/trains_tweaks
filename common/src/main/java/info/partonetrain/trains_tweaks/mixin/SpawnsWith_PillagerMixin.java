@@ -23,7 +23,7 @@ public class SpawnsWith_PillagerMixin {
         if (!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean() && SpawnsWithFeatureConfig.APPLY_TO_PILLAGER_SPAWN.getAsBoolean()) {
             Pillager self = (Pillager)(Object)this;
 
-            List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.PIGLIN_SPAWN_LOOT_TABLE);
+            List<ItemStack> loot = SpawnsWithFeature.getEquipmentFromLootTableForSpecificMob(self, Constants.PILLAGER_SPAWN_LOOT_TABLE);
             SpawnsWithFeature.equipMobWithRolledStacks(loot, self, EquipType.BOTH_HANDS);
 
             ci.cancel();

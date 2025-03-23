@@ -5,17 +5,14 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.player.Player;
-import org.jetbrains.annotations.NotNull;
 
 public class KritzEffects {
 
     //unregistered effects
     //registered effect holders are in KritzFeature
-    public static final MobEffect me = (new KritzEffect(MobEffectCategory.BENEFICIAL, 14270531)).addAttributeModifier(KritzFeature.MELEE_CRIT_CHANCE, Constants.MELEE_CRIT_EFFECT_ID, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-    public static final MobEffect re = (new KritzEffect(MobEffectCategory.HARMFUL, 4866583)).addAttributeModifier(KritzFeature.RANGED_CRIT_CHANCE, Constants.RANGED_CRIT_EFFECT_ID, -0.1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+    public static final MobEffect me = (new KritzEffect(MobEffectCategory.BENEFICIAL, 16715776)).addAttributeModifier(KritzFeature.MELEE_CRIT_CHANCE, Constants.MELEE_CRIT_EFFECT_ID, 0.1, AttributeModifier.Operation.ADD_VALUE);
+    public static final MobEffect re = (new KritzEffect(MobEffectCategory.HARMFUL, 16715776)).addAttributeModifier(KritzFeature.RANGED_CRIT_CHANCE, Constants.RANGED_CRIT_EFFECT_ID, 0.1, AttributeModifier.Operation.ADD_VALUE);
 
     //this is called from Fabric_Kritz_MobEffectsMixin
     public static void fabricInit(){

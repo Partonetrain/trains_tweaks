@@ -26,7 +26,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class TrainsTweaksNeoForge {
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Constants.MOD_ID);
-    private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(Registries.ATTRIBUTE, Constants.MOD_ID);
+    private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, Constants.MOD_ID);
 
     //Kritz
     DeferredHolder<Attribute, Attribute> meleeAttributeHolder;
@@ -65,6 +65,8 @@ public class TrainsTweaksNeoForge {
             }
 
         }
+        MOB_EFFECTS.register(eventBus);
+        ATTRIBUTES.register(eventBus);
         CommonClass.init();
     }
 

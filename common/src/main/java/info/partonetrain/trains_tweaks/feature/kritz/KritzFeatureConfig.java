@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks.feature.kritz;
 
 import info.partonetrain.trains_tweaks.Constants;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class KritzFeatureConfig {
@@ -12,6 +13,7 @@ public class KritzFeatureConfig {
     public static ModConfigSpec.BooleanValue ADD_EFFECTS;
     public static ModConfigSpec.DoubleValue KRIT_MULTIPLIER;
     public static ModConfigSpec.DoubleValue KRIT_CHANCE;
+    public static ModConfigSpec.BooleanValue DISABLE_MOB_CRITS;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -30,7 +32,7 @@ public class KritzFeatureConfig {
                 .define("Add Attributes", true);
 
         ADD_EFFECTS = builder.comment("If enabled, the effects " + Constants.MELEE_CRIT_EFFECT_ID + " and " + Constants.RANGED_CRIT_EFFECT_ID + " will be registered")
-                .comment("This requires Add Attributes to be enabled")
+                .comment("They both increase the relevant attribute by 0.1, and thus require Add Attributes to be enabled")
                 .define("Add Effects", true);
 
         KRIT_MULTIPLIER = builder.comment("The multiplier applied to the damage of melee critical hits")
@@ -38,7 +40,7 @@ public class KritzFeatureConfig {
                 .defineInRange("Crit Multiplier", 1.5D, 1.0D, 5.0D);
 
         KRIT_CHANCE = builder.comment("The base value of both the " + Constants.MELEE_CRIT_ATTRIBUTE_ID + " and " + Constants.RANGED_CRIT_ATTRIBUTE_ID + " attributes")
+                .comment("Default value is 1/16")
                 .defineInRange("Crit Chance", 0.0625, 0, 1);
-
     }
 }

@@ -6,8 +6,19 @@
   "effect.trains_tweaks.dexterity.description": "Increases attack speed by 10% each level",
 
   "effect.trains_tweaks.clumsy": "Clumsy",
-  "effect.trains_tweaks.Clumsy.desc": "Decreases attack speed by 10% each level",
-  "effect.trains_tweaks.Clumsy.description": "Decreases attack speed by 10% each level",
+  "effect.trains_tweaks.clumsy.desc": "Decreases attack speed by 10% of its total each level",
+  "effect.trains_tweaks.clumsy.description": "Decreases attack speed by 10% of its total each level",
+
+  "effect.trains_tweaks.melee_fury": "Melee Fury",
+  "effect.trains_tweaks.melee_fury.desc": "Increases chance of dealing a critical hit with melee by 10 percent each level",
+  "effect.trains_tweaks.melee_fury.description": "Increases chance of dealing a critical hit with melee by 10 percent each level",
+
+  "effect.trains_tweaks.ranged_fury": "Ranged Fury",
+  "effect.trains_tweaks.ranged_fury.desc": "Increases chance of dealing a critical hit with a projectile by 10 percent each level",
+  "effect.trains_tweaks.ranged_fury.description": "Increases chance of dealing a critical hit with a projectile by 10 percent each level",
+
+  "attribute.name.trains_tweaks.melee_crit_chance" : "Melee Crit Chance",
+  "attribute.name.trains_tweaks.ranged_crit_chance" : "Ranged Crit Chance",
 
   "tag.item.trains_tweaks.curing_items": "Curing items",
   "tag.item.trains_tweaks.instant_curing_items": "Instant cure items",
@@ -28,6 +39,6 @@
   "emi_loot.gameplay.trains_tweaks:gameplay/brush_armadillo": "Armadillo Brushing",
   "emi_loot.gameplay.trains_tweaks:gameplay/brush_turtle": "Turtle Brushing",
   "emi_loot.gameplay.trains_tweaks:gameplay/chicken_lay": "Chicken Laying",
-  "emi_loot.gameplay.trains_tweaks:gameplay/turtle_grow": "Turtle Growing"
+  "emi_loot.gameplay.trains_tweaks:gameplay/turtle_grow": "Turtle Growing",
 
 }
