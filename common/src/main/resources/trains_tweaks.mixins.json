@@ -35,6 +35,7 @@
     "Npc_VillagerTradesMixin",
     "Ocelot_OcelotMixin",
     "PowderWalking_PowderSnowMixin",
+    "Rarity_ItemEntityMixin",
     "Rarity_ItemMixin",
     "Rarity_ItemStackMixin",
     "SpawnsWith_AbstractSkeletonMixin",

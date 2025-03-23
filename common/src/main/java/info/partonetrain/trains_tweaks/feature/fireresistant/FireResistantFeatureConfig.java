@@ -18,6 +18,7 @@ public class FireResistantFeatureConfig {
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
         ENABLED = builder.comment("Whether or not to enable the functionality of the "+ Constants.FIRE_RESISTANT_TAG.location() + " and " + Constants.NOT_FIRE_RESISTANT_TAG.location() + " item tags")
+                .comment("These tags potentially have a performance impact, so they should be used sparingly")
                 .define("Fire Resistant tweak",true);
     }
 }

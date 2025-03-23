@@ -26,8 +26,9 @@ public class RarityFeatureConfig {
         PREVENT_ENCHANTMENT_ALTERING = builder.comment("If true, enchantments cannot alter an ItemStack's rarity")
                 .define("Prevent Enchantment Altering", true);
 
-        DATA_TAG_ENABLED = builder.comment("If true, any item in one of the following item tags will automatically have its rarity set to that rarity")
+        DATA_TAG_ENABLED = builder.comment("If true, any item in one of the following item tags will automatically have its rarity set to that rarity (on item/item entity tick)")
                 .comment(Constants.COMMON_TAG.location() + ", " + Constants.UNCOMMON_TAG.location() + ", " + Constants.RARE_TAG.location() + ", " + Constants.EPIC_TAG.location())
+                .comment("These tags potentially have a performance impact, so they should be used sparingly")
                 .define("Rarity Tagging", true);
 
         RESTORE_DEFAULT = builder.comment("If enabled, any item that isn't in one of the rarity tags that has had its rarity component modified (or removed) will automatically have its rarity be reset")
