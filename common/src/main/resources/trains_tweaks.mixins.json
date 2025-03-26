@@ -19,6 +19,8 @@
     "Goat_GoatMixin",
     "Horse_AbstractHorseMixin",
     "Horse_LlamaMixin",
+    "Interdimensional_BaseFireBlockMixin",
+    "Interdimensional_PortalShapeMixin",
     "Kritz_PlayerMixin",
     "Kritz_ProjectileWeaponItemMixin",
     "Loot_LootItemFunctionsMixin",

@@ -48,7 +48,7 @@ public abstract class Ocelot_OcelotMixin extends Animal {
                         cat.getAttribute(Attributes.SCALE).addPermanentModifier(new AttributeModifier(Constants.OCELOT_SIZE_MODIFIER, 0.2, AttributeModifier.Operation.ADD_VALUE));
                     }
 
-                    if(!OcelotFeatureConfig.FORCE_TYPE.get().equals("none")){
+                    if(!OcelotFeatureConfig.FORCE_TYPE.get().equals(OcelotFeatureConfig.FORCE_TYPE.getDefault())){
                         if(!OcelotFeature.variantParsed){
                             OcelotFeature.parseCatVariant();
                         }

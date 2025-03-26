@@ -1,6 +1,5 @@
 package info.partonetrain.trains_tweaks;
 
-import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -9,6 +8,7 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -29,7 +29,12 @@ public final class Constants {
 	//FireResistant
 	public static final TagKey<Item> FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation("fire_resistant"));
 	public static final TagKey<Item> NOT_FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "not_fire_resistant"));
-	//kritz
+	//Interdimensional
+	public static final TagKey<Block> NETHER_PORTAL_FRAME_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("nether_portal_frame"));
+	public static final TagKey<DimensionType> SUPPORTS_NETHER_PORTALS_TAG = TagKey.create(Registries.DIMENSION_TYPE, getResourceLocation("supports_nether_portals"));
+	public static final TagKey<Block> NOT_NETHER_PORTAL_FRAME_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("not_nether_portal_frame"));
+	public static final TagKey<DimensionType> SUPPORTS_END_PORTALS_TAG = TagKey.create(Registries.DIMENSION_TYPE, getResourceLocation("supports_end_portals"));
+	//Kritz
 	public static final ResourceLocation MELEE_CRIT_ATTRIBUTE_ID = getResourceLocation("melee_crit_chance");
 	public static final ResourceLocation RANGED_CRIT_ATTRIBUTE_ID = getResourceLocation("ranged_crit_chance");
 	public static final ResourceLocation MELEE_CRIT_EFFECT_ID = getResourceLocation("melee_fury");

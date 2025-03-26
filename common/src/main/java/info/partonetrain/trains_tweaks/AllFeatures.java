@@ -8,6 +8,7 @@ import info.partonetrain.trains_tweaks.feature.experience.ExperienceFeature;
 import info.partonetrain.trains_tweaks.feature.fireresistant.FireResistantFeature;
 import info.partonetrain.trains_tweaks.feature.goat.GoatFeature;
 import info.partonetrain.trains_tweaks.feature.horse.HorseFeature;
+import info.partonetrain.trains_tweaks.feature.interdimensional.InterdimensionalFeature;
 import info.partonetrain.trains_tweaks.feature.kritz.KritzFeature;
 import info.partonetrain.trains_tweaks.feature.mobdrops.MobDropsFeature;
 import info.partonetrain.trains_tweaks.feature.npc.NpcFeature;
@@ -38,6 +39,7 @@ public class AllFeatures {
     public static final ModFeature FIRE_RESISTANT_FEATURE = new FireResistantFeature();
     public static final ModFeature GOAT_FEATURE = new GoatFeature();
     public static final ModFeature HORSE_FEATURE = new HorseFeature();
+    public static final ModFeature INTERDIMENSIONAL_FEATURE = new InterdimensionalFeature();
     public static final ModFeature KRITZ_FEATURE = new KritzFeature();
     public static final ModFeature MOB_DROPS_FEATURE = new MobDropsFeature();
     public static final ModFeature NPC_FEATURE = new NpcFeature();
@@ -62,6 +64,7 @@ public class AllFeatures {
         features.add(FIRE_RESISTANT_FEATURE);
         features.add(GOAT_FEATURE);
         features.add(HORSE_FEATURE);
+        features.add(INTERDIMENSIONAL_FEATURE);
         features.add(KRITZ_FEATURE);
         features.add(MOB_DROPS_FEATURE);
         features.add(NPC_FEATURE);
