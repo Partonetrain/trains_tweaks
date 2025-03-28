@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Rarity_ItemMixin {
     @Inject(at = @At("HEAD"), method = "inventoryTick")
     private void trains_tweaks$inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected, CallbackInfo ci) {
-        if(!AllFeatures.RARITY_FEATURE.isIncompatibleLoaded() && RarityFeatureConfig.ENABLED.getAsBoolean()) {
+        if(!AllFeatures.RARITY_FEATURE.isIncompatibleLoaded() && RarityFeatureConfig.ENABLED.getAsBoolean() && RarityFeatureConfig.DATA_TAG_ENABLED.getAsBoolean()) {
             RarityFeature.setTaggedRarity(stack);
         }
     }
