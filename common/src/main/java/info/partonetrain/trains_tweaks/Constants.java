@@ -32,8 +32,6 @@ public final class Constants {
 	//Interdimensional
 	public static final TagKey<Block> NETHER_PORTAL_FRAME_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("nether_portal_frame"));
 	public static final TagKey<DimensionType> SUPPORTS_NETHER_PORTALS_TAG = TagKey.create(Registries.DIMENSION_TYPE, getResourceLocation("supports_nether_portals"));
-	public static final TagKey<Block> NOT_NETHER_PORTAL_FRAME_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("not_nether_portal_frame"));
-	public static final TagKey<DimensionType> SUPPORTS_END_PORTALS_TAG = TagKey.create(Registries.DIMENSION_TYPE, getResourceLocation("supports_end_portals"));
 	//Kritz
 	public static final ResourceLocation MELEE_CRIT_ATTRIBUTE_ID = getResourceLocation("melee_crit_chance");
 	public static final ResourceLocation RANGED_CRIT_ATTRIBUTE_ID = getResourceLocation("ranged_crit_chance");
