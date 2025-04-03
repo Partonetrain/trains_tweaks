@@ -1,23 +1,28 @@
 package info.partonetrain.trains_tweaks.feature.spawnswith;
 
 import com.google.common.collect.Maps;
+import info.partonetrain.trains_tweaks.CommonClass;
+import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.ModFeature;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentTable;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SpawnsWithFeature extends ModFeature {
     /*
@@ -38,25 +43,85 @@ public class SpawnsWithFeature extends ModFeature {
     * but it provides far more customization than the vanilla game allows.
     */
 
+    /*
+     * update - well they probably didn't because turns out rolling loot tables during worldgen isn't safe
+     * who woulda thought?
+     */
+
     public static List<EquipmentSlot> armorSlots = Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
     public static List<EquipmentSlot> allSlots = Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET, EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND);
+
+    public static final String TABLE_PREFIX = "trains_tweaks:equipment/";
+    public static final String MAINHAND_SUFFIX = "_main_hand";
+    public static final String OFFHAND_SUFFIX = "_off_hand";
+    public static final String ARMOR_SUFFIX = "_armor";
 
     public SpawnsWithFeature() {
         super("SpawnsWith", SpawnsWithFeatureConfig.SPEC);
     }
 
-    //creates a drop chance map that contains either armor slots or all slots depending on config and the configured drop chance
+    public static void rollGenericTable(LivingEntity livingEntity){
+        if(livingEntity instanceof Mob mob){
+            if(mob.level() instanceof ServerLevel serverLevel) {
+                clearVanillaGear(mob, EquipmentTableType.ARMOR);
+                LootParams.Builder builder = new LootParams.Builder(serverLevel);
+                builder.withLuck(serverLevel.getCurrentDifficultyAt(mob.getOnPos()).getEffectiveDifficulty())
+                        .withParameter(LootContextParams.ORIGIN, mob.position())
+                        .withParameter(LootContextParams.THIS_ENTITY, mob);
+                LootParams paramsWithLuck = builder.create(LootContextParamSets.EQUIPMENT);
+                mob.equip(Constants.GENERIC_EQUIPMENT_LOOT_TABLE, paramsWithLuck, createDropChanceMap());
+            }
+        }
+        else{
+            Constants.LOG.info(livingEntity.getType().toString() + " was not a LivingEntity");
+        }
+        //TODO non mob livingentities
+    }
+
+    public static ResourceLocation getEntityResourceLocation(LivingEntity livingEntity){
+        return BuiltInRegistries.ENTITY_TYPE.getKey(livingEntity.getType());
+    }
+
+    public static Map<EquipmentTableType, LootTable> findLootTables(ServerLevel serverLevel, ResourceLocation entityKey){
+        Map<EquipmentTableType, LootTable> map = new HashMap<>();
+        Map<EquipmentTableType, ResourceLocation> rlsToFind = makeLootTableIds(entityKey);
+        for(EquipmentTableType ett : EquipmentTableType.values()){
+            LootTable table = serverLevel.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, rlsToFind.get(ett)));
+            if(table != LootTable.EMPTY){ //table was found
+                map.put(ett, table);
+                CommonClass.printInDev("found " + rlsToFind.get(ett).toString());
+            }
+        }
+
+        return map;
+    }
+
+    public static Map<EquipmentTableType, ResourceLocation> makeLootTableIds(ResourceLocation entityKey){
+        Map<EquipmentTableType, ResourceLocation> map = new HashMap<>();
+        String namespace = entityKey.getNamespace();
+        String path = entityKey.getPath();
+        ResourceLocation mainhand = ResourceLocation.parse(TABLE_PREFIX + namespace + "/" + path + MAINHAND_SUFFIX);
+        ResourceLocation offhand = ResourceLocation.parse(TABLE_PREFIX + namespace + "/" + path + OFFHAND_SUFFIX);
+        ResourceLocation armor = ResourceLocation.parse(TABLE_PREFIX + namespace + "/" + path + ARMOR_SUFFIX);
+        map.put(EquipmentTableType.MAIN_HAND, mainhand);
+        map.put(EquipmentTableType.OFF_HAND, offhand);
+        map.put(EquipmentTableType.ARMOR, armor);
+
+        return map;
+    }
+
+    //creates a drop chance map for armor slots
     public static Map<EquipmentSlot, Float> createDropChanceMap() {
-        List<EquipmentSlot> equipmentSlots = SpawnsWithFeatureConfig.GENERIC_TABLE_ONLY_ARMOR.getAsBoolean() ? armorSlots : allSlots;
         float dropChance = (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble();
 
         Map<EquipmentSlot, Float> map = Maps.newHashMap();
-        for(EquipmentSlot e : equipmentSlots){
+        for(EquipmentSlot e : armorSlots){
             map.put(e, dropChance);
         }
         return map;
     }
 
+    @Deprecated
     public static List<ItemStack> getEquipmentFromLootTableForSpecificMob(Mob mob, ResourceKey<LootTable> tableKey){
         ServerLevel serverLevel = (ServerLevel) mob.level();
         float luck = serverLevel.getCurrentDifficultyAt(mob.blockPosition()).getEffectiveDifficulty();
@@ -71,8 +136,10 @@ public class SpawnsWithFeature extends ModFeature {
         return loot.stream().toList();
     }
 
+    @Deprecated
     public static void equipMobWithRolledStacks(List<ItemStack> rolledStacks, Mob mob, EquipType equipType){
         List<ItemStack> populatedStacks = new ArrayList<>();
+        //clearVanillaGear(mob, equipType);
         if(!rolledStacks.isEmpty()) {
             if(equipType == EquipType.MAIN_HAND_ONLY || equipType == EquipType.BOTH_HANDS) {
                 ItemStack first = rolledStacks.get(0);
@@ -110,6 +177,21 @@ public class SpawnsWithFeature extends ModFeature {
             if (!populatedStacks.contains(itemStack)) {
                 mob.spawnAtLocation(itemStack);
             }
+        }
+    }
+
+    public static void clearVanillaGear(Mob mob, EquipmentTableType equipmentTableType){
+        if(equipmentTableType == EquipmentTableType.MAIN_HAND){
+            mob.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+        }
+        else if(equipmentTableType == EquipmentTableType.OFF_HAND){
+            mob.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
+        }
+        else if(equipmentTableType == EquipmentTableType.ARMOR){
+            mob.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
+            mob.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
+            mob.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY);
+            mob.setItemSlot(EquipmentSlot.FEET, ItemStack.EMPTY);
         }
     }
 }

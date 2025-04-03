@@ -43,6 +43,7 @@
     "SpawnsWith_AbstractSkeletonMixin",
     "SpawnsWith_DrownedMixin",
     "SpawnsWith_FoxMixin",
+    "SpawnsWith_LivingEntityMixin",
     "SpawnsWith_MobMixin",
     "SpawnsWith_PiglinBruteMixin",
     "SpawnsWith_PiglinMixin",

@@ -11,6 +11,7 @@ import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -38,21 +39,23 @@ public abstract class SpawnsWith_MobMixin {
         }
     }
 
-    //implement local difficulty -> luck
+    //implement local difficulty -> luck for generic table
+    //adds luck param to existing LootParams
     @ModifyReturnValue(method = "createEquipmentParams", at=@At("RETURN"))
     private LootParams trains_tweaks$createEquipmentParams(LootParams original){
         if(!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean() && SpawnsWithFeatureConfig.GENERIC_MOB_TABLES.getAsBoolean()) {
-            //prevent worldgen hang (?)
             if(original.getLevel() instanceof ServerLevel){
+                Mob self = (Mob) (Object) this;
+                LootParams.Builder builder = new LootParams.Builder(original.getLevel());
+                builder.withLuck(original.getLevel().getCurrentDifficultyAt(self.getOnPos()).getEffectiveDifficulty())
+                        .withParameter(LootContextParams.ORIGIN, original.getParameter(LootContextParams.ORIGIN))
+                        .withParameter(LootContextParams.THIS_ENTITY, original.getParameter(LootContextParams.THIS_ENTITY));
+                return builder.create(LootContextParamSets.EQUIPMENT);
+            }
+            else{
+                Constants.LOG.info("createEquipmentParams returned early");
                 return original;
             }
-
-            Mob self = (Mob) (Object) this;
-            LootParams.Builder builder = new LootParams.Builder(original.getLevel());
-            builder.withLuck(original.getLevel().getCurrentDifficultyAt(self.getOnPos()).getEffectiveDifficulty())
-                    .withParameter(LootContextParams.ORIGIN, original.getParameter(LootContextParams.ORIGIN))
-                    .withParameter(LootContextParams.THIS_ENTITY, original.getParameter(LootContextParams.THIS_ENTITY));
-            return builder.create(LootContextParamSets.EQUIPMENT);
         }
         return original;
     }

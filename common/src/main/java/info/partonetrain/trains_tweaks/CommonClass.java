@@ -32,4 +32,10 @@ public final class CommonClass {
         Constants.LOG.info("Don't fret! Above error is most likely one-time occurrence from " + featureName + " config file not existing yet");
 
     }
+
+    public static void printInDev(String s){
+        if(Services.PLATFORM.isDevelopmentEnvironment()){
+            System.out.println(s);
+        }
+    }
 }

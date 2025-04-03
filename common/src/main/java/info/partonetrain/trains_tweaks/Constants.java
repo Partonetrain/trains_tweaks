@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -66,6 +67,7 @@ public final class Constants {
 	public static final TagKey<Item> RARE_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "rare"));
 	public static final TagKey<Item> EPIC_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "epic"));
 	//SpawnsWith
+	public static final TagKey<EntityType<?>> ROLLS_GENERIC_EQUIPMENT = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation("rolls_generic_equipment"));
 	public static final ResourceKey<LootTable> GENERIC_EQUIPMENT_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation("equipment/generic"));
 	public static final ResourceKey<LootTable> ABSTRACT_SKELETON_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/abstract_skeleton"));
 	public static final ResourceKey<LootTable> DROWNED_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/drowned"));
