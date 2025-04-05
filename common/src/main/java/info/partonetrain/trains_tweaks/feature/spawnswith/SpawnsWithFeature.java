@@ -56,8 +56,25 @@ public class SpawnsWithFeature extends ModFeature {
     public static final String OFFHAND_SUFFIX = "_off_hand";
     public static final String ARMOR_SUFFIX = "_armor";
 
+    public static final String CHECKED_TAG = "trains_tweaks:spawnswith_checked";
+
     public SpawnsWithFeature() {
         super("SpawnsWith", SpawnsWithFeatureConfig.SPEC);
+    }
+
+    public static void clearVanillaGear(Mob mob, EquipmentTableType equipmentTableType){
+        if(equipmentTableType == EquipmentTableType.MAIN_HAND){
+            mob.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+        }
+        else if(equipmentTableType == EquipmentTableType.OFF_HAND){
+            mob.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
+        }
+        else if(equipmentTableType == EquipmentTableType.ARMOR){
+            mob.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
+            mob.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
+            mob.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY);
+            mob.setItemSlot(EquipmentSlot.FEET, ItemStack.EMPTY);
+        }
     }
 
     public static void rollGenericTable(LivingEntity livingEntity){
@@ -78,21 +95,98 @@ public class SpawnsWithFeature extends ModFeature {
         //TODO non mob livingentities
     }
 
+    public static void rollSpecificTable(LivingEntity livingEntity, Map<EquipmentTableType, ResourceKey<LootTable>> map){
+        List<ItemStack> extraItems = new ArrayList<>();
+
+        if(livingEntity instanceof Mob mob){
+
+            if(mob.level() instanceof ServerLevel serverLevel) {
+
+                LootParams.Builder builder = new LootParams.Builder(serverLevel);
+                builder.withLuck(serverLevel.getCurrentDifficultyAt(mob.getOnPos()).getEffectiveDifficulty())
+                        .withParameter(LootContextParams.ORIGIN, mob.position())
+                        .withParameter(LootContextParams.THIS_ENTITY, mob);
+                LootParams paramsWithLuck = builder.create(LootContextParamSets.EQUIPMENT);
+
+                //mainhand
+                if(map.get(EquipmentTableType.MAIN_HAND) != null){ //if null, no mainhand table was found
+                    clearVanillaGear(mob, EquipmentTableType.MAIN_HAND);
+                    LootTable mainhandTable = serverLevel.getServer().reloadableRegistries().getLootTable(map.get(EquipmentTableType.MAIN_HAND));
+                    List<ItemStack> rolledStacks = mainhandTable.getRandomItems(paramsWithLuck);
+                    ItemStack first = rolledStacks.getFirst();
+                    rolledStacks.remove(first);
+                    mob.setItemSlot(EquipmentSlot.MAINHAND, first);
+                    mob.setDropChance(EquipmentSlot.MAINHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
+                    if(!rolledStacks.isEmpty()){
+                        extraItems.addAll(rolledStacks);
+                    }
+                }
+
+                if(map.get(EquipmentTableType.OFF_HAND) != null){
+                    clearVanillaGear(mob, EquipmentTableType.OFF_HAND);
+                    LootTable offhandTable = serverLevel.getServer().reloadableRegistries().getLootTable(map.get(EquipmentTableType.OFF_HAND));
+                    List<ItemStack> rolledStacks = offhandTable.getRandomItems(paramsWithLuck);
+                    ItemStack first = rolledStacks.getFirst();
+                    rolledStacks.remove(first);
+                    mob.setItemSlot(EquipmentSlot.OFFHAND, first);
+                    mob.setDropChance(EquipmentSlot.OFFHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
+                    if(!rolledStacks.isEmpty()){
+                        extraItems.addAll(rolledStacks);
+                    }
+                }
+                if(map.get(EquipmentTableType.ARMOR) != null){
+                    clearVanillaGear(mob, EquipmentTableType.ARMOR);
+                    EquipmentTable equipmentTable = new EquipmentTable(map.get(EquipmentTableType.ARMOR), createDropChanceMap());
+                    mob.equip(equipmentTable);
+                }
+
+            }
+
+            if(!extraItems.isEmpty()){
+                for(ItemStack itemStack : extraItems){
+                    mob.spawnAtLocation(itemStack);
+                }
+            }
+        }
+        //TODO non mob livingentities
+    }
+
     public static ResourceLocation getEntityResourceLocation(LivingEntity livingEntity){
         return BuiltInRegistries.ENTITY_TYPE.getKey(livingEntity.getType());
     }
 
-    public static Map<EquipmentTableType, LootTable> findLootTables(ServerLevel serverLevel, ResourceLocation entityKey){
-        Map<EquipmentTableType, LootTable> map = new HashMap<>();
+    public static boolean isEntityChecked(LivingEntity livingEntity){
+        return livingEntity.getTags().contains(CHECKED_TAG);
+    }
+
+    public static boolean markEntityChecked(LivingEntity livingEntity){
+        return livingEntity.addTag(CHECKED_TAG);
+        //NOTE: there is a 1024 limit on per-entity tags
+        //technically this means there is a finite amount of mods+datapacks that can add tags like this,
+        //but a user is unlikely to run into this
+    }
+
+    public static Map<EquipmentTableType, ResourceKey<LootTable>> findLootTables(ServerLevel serverLevel, LivingEntity livingEntity){
+        return findLootTables(serverLevel, getEntityResourceLocation(livingEntity));
+    }
+
+    public static Map<EquipmentTableType, ResourceKey<LootTable>> findLootTables(ServerLevel serverLevel, ResourceLocation entityKey){
+        Map<EquipmentTableType, ResourceKey<LootTable>> map = new HashMap<>();
         Map<EquipmentTableType, ResourceLocation> rlsToFind = makeLootTableIds(entityKey);
         for(EquipmentTableType ett : EquipmentTableType.values()){
-            LootTable table = serverLevel.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, rlsToFind.get(ett)));
-            if(table != LootTable.EMPTY){ //table was found
-                map.put(ett, table);
+            ResourceKey<LootTable> tableKey = ResourceKey.create(Registries.LOOT_TABLE, rlsToFind.get(ett));
+            if(serverLevel.getServer().reloadableRegistries().getLootTable(tableKey) == LootTable.EMPTY){
+                //table was not found
+                map.put(ett, null);
+            }
+            else{
+                map.put(ett, tableKey);
                 CommonClass.printInDev("found " + rlsToFind.get(ett).toString());
             }
         }
-
+        if(map.isEmpty()){
+            return null;
+        }
         return map;
     }
 
@@ -177,21 +271,6 @@ public class SpawnsWithFeature extends ModFeature {
             if (!populatedStacks.contains(itemStack)) {
                 mob.spawnAtLocation(itemStack);
             }
-        }
-    }
-
-    public static void clearVanillaGear(Mob mob, EquipmentTableType equipmentTableType){
-        if(equipmentTableType == EquipmentTableType.MAIN_HAND){
-            mob.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-        }
-        else if(equipmentTableType == EquipmentTableType.OFF_HAND){
-            mob.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
-        }
-        else if(equipmentTableType == EquipmentTableType.ARMOR){
-            mob.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
-            mob.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
-            mob.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY);
-            mob.setItemSlot(EquipmentSlot.FEET, ItemStack.EMPTY);
         }
     }
 }

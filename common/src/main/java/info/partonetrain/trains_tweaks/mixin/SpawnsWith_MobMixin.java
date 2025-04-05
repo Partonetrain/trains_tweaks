@@ -26,19 +26,6 @@ import java.util.Map;
 @Mixin(Mob.class)
 public abstract class SpawnsWith_MobMixin {
 
-    @Inject(method="populateDefaultEquipmentSlots", at=@At("HEAD"), cancellable = true)
-    private void trains_tweaks$populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty, CallbackInfo ci){
-        if(!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean()){
-            if(SpawnsWithFeatureConfig.GENERIC_MOB_TABLES.getAsBoolean()){
-                Mob self = (Mob)(Object)this;
-                Map<EquipmentSlot, Float> dropChanceMap = SpawnsWithFeature.createDropChanceMap();
-                EquipmentTable equipmentTable = new EquipmentTable(Constants.GENERIC_EQUIPMENT_LOOT_TABLE, dropChanceMap);
-                self.equip(equipmentTable);
-                ci.cancel();
-            }
-        }
-    }
-
     //implement local difficulty -> luck for generic table
     //adds luck param to existing LootParams
     @ModifyReturnValue(method = "createEquipmentParams", at=@At("RETURN"))

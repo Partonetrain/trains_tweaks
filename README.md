@@ -44,6 +44,7 @@ If the SpawnsWith feature and "Generic Mob Tables" option are enabled, mobs that
 From here, equipment that is rolled will be equipped on the mob. The loot table is rolled with the local difficulty where the mob is spawning as the luck value, making it possible for different rates on different difficulties (using "bonus_rolls" and "quality" fields).
 
 Additionally, you can define equipment tables for a specific mob by placing an equipment loot table at `trains_tweaks:equipment/namespace/entityid_*`, where `*` is either `main_hand`, `off_hand`, or `armor`.
+Mainhand and offhand tables should only ever roll up to one item each, while armor tables should only ever roll up to 4.
 Some examples can be found [here](https://github.com/Partonetrain/trains_tweaks/tree/1.21.1/common/src/main/resources/data/trains_tweaks/loot_table/equipment). These too are rolled with local difficulty passed as luck.
 I tried to make the default ones 1:1 with vanilla, but with loot tables inherently not being as flexible as code, they may end up giving different results a fraction of a percent of the time.
 

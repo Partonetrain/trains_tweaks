@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.spawnswith;
 
+@Deprecated
 public enum EquipType {
     ALL_SLOTS,
     MAIN_HAND_ONLY,
