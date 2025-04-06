@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:bow"
+          "name": "minecraft:stone_sword"
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:equipment/abstract_skeleton"
+  "random_sequence": "trains_tweaks:equipment/minecraft/wither_skeleton_main_hand"
 }

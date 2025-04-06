@@ -36,9 +36,11 @@ public class SpawnsWith_LivingEntityMixin {
                     SpawnsWithFeature.rollGenericTable(self);
                 }
 
-                Map<EquipmentTableType, ResourceKey<LootTable>> map = SpawnsWithFeature.findLootTables(serverLevel, self);
-                if(map != null){
-                    SpawnsWithFeature.rollSpecificTable(self, map);
+                if(SpawnsWithFeatureConfig.SPECFIC_MOB_TABLES.getAsBoolean()) {
+                    Map<EquipmentTableType, ResourceKey<LootTable>> map = SpawnsWithFeature.findLootTables(serverLevel, self);
+                    if (map != null) {
+                        SpawnsWithFeature.rollSpecificTable(self, map);
+                    }
                 }
 
                 if(!SpawnsWithFeature.markEntityChecked(self)){

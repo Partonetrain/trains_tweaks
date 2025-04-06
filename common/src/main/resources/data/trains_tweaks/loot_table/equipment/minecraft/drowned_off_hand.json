@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:equipment",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:nautilus_shell",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 97
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "trains_tweaks:equipment/minecraft/drowned_off_hand"
+}

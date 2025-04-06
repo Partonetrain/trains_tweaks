@@ -27,11 +27,10 @@
                 }
               ]
             }
-          ],
-          "conditions": []
+          ]
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:equipment/zombie"
+  "random_sequence": "trains_tweaks:equipment/minecraft/zombie_main_hand"
 }

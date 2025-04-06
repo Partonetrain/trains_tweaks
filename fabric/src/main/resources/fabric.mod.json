@@ -9,7 +9,8 @@
     ],
     "contact": {
         "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/Partonetrain/trains_tweaks"
+        "sources": "https://github.com/Partonetrain/trains_tweaks",
+        "issues": "https://github.com/Partonetrain/trains_tweaks/issues"
     },
     "license": "${license}",
     "icon": "assets/trains_tweaks/icon.png",

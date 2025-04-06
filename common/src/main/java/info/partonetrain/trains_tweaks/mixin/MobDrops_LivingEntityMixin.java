@@ -9,6 +9,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -69,7 +70,8 @@ public class MobDrops_LivingEntityMixin {
             ServerLevel serverlevel = (ServerLevel) self.level();
             LootTable lootTable = serverlevel.getServer().reloadableRegistries().getLootTable(Constants.GENERIC_DROP_TABLE);
 
-            LootParams.Builder builder = (new LootParams.Builder((ServerLevel)self.level())).withParameter(LootContextParams.THIS_ENTITY, self).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.DAMAGE_SOURCE, damageSource).withOptionalParameter(LootContextParams.ATTACKING_ENTITY, damageSource.getEntity()).withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, damageSource.getDirectEntity());
+            float luck = damageSource.getEntity() instanceof Player ? ((Player) damageSource.getEntity()).getLuck() : 0;
+            LootParams.Builder builder = (new LootParams.Builder((ServerLevel)self.level())).withLuck(luck).withParameter(LootContextParams.THIS_ENTITY, self).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.DAMAGE_SOURCE, damageSource).withOptionalParameter(LootContextParams.ATTACKING_ENTITY, damageSource.getEntity()).withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, damageSource.getDirectEntity());
             if (hitByPlayer && self.lastHurtByPlayer != null) {
                 builder = builder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, self.lastHurtByPlayer).withLuck(self.lastHurtByPlayer.getLuck());
             }

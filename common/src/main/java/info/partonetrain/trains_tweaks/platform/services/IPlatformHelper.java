@@ -1,5 +1,8 @@
 package info.partonetrain.trains_tweaks.platform.services;
 
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+
 public interface IPlatformHelper {
 
     /**
@@ -30,7 +33,14 @@ public interface IPlatformHelper {
      * @return The name of the environment type.
      */
     default String getEnvironmentName() {
-
         return isDevelopmentEnvironment() ? "development" : "production";
+    }
+
+    /**
+     * Whether a mob can roll a SpawnsWith table.
+     * Depends on spawn reason, which is checked different
+     */
+    default boolean canRollSpawnsWithTables(Mob mob) {
+        return true;
     }
 }

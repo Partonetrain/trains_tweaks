@@ -9,6 +9,7 @@ repositories {
         name = "Fuzs Mod Resources"
         url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
     }
+    maven { url = "https://mvn.devos.one/releases/" }
 }
 
 
@@ -23,6 +24,7 @@ dependencies {
 
     modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcap_version}"
     modApi "com.terraformersmc:modmenu:${modmenu_version}"
+    modApi "fuzs.puzzleslib:puzzleslib-fabric:${puzzleslib_version}"
 }
 
 loom {

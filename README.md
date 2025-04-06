@@ -38,43 +38,20 @@ For a config menu, use the Configured mod. I recommended restarting the game aft
 
 ### About the SpawnsWith feature
 
-**As of Train's Tweaks 0.9.10, the SpawnsWith feature has been reworked to be more flexible and work with worldgen. Datapacks will break.**
+**As of Train's Tweaks 0.9.10, the SpawnsWith feature has been reworked to be more flexible to work with worldgen. Datapacks will break.**
 
 If the SpawnsWith feature and "Generic Mob Tables" option are enabled, mobs that are capable of spawning with armor (for example, zombies and skeletons) will instead roll the `trains_tweaks:equipment/generic` loot table.
 From here, equipment that is rolled will be equipped on the mob. The loot table is rolled with the local difficulty where the mob is spawning as the luck value, making it possible for different rates on different difficulties (using "bonus_rolls" and "quality" fields).
 
 Additionally, you can define equipment tables for a specific mob by placing an equipment loot table at `trains_tweaks:equipment/namespace/entityid_*`, where `*` is either `main_hand`, `off_hand`, or `armor`.
 Mainhand and offhand tables should only ever roll up to one item each, while armor tables should only ever roll up to 4.
-Some examples can be found [here](https://github.com/Partonetrain/trains_tweaks/tree/1.21.1/common/src/main/resources/data/trains_tweaks/loot_table/equipment). These too are rolled with local difficulty passed as luck.
-I tried to make the default ones 1:1 with vanilla, but with loot tables inherently not being as flexible as code, they may end up giving different results a fraction of a percent of the time.
+Some examples can be found [here](https://github.com/Partonetrain/trains_tweaks/tree/1.21.1/common/src/main/resources/data/trains_tweaks/loot_table/equipment/minecraft). These too are rolled with local difficulty passed as luck.
+I tried to make the default ones 1:1 with vanilla, but with loot tables inherently not being as flexible as code, they may end up giving different results.
 
 The drop chance of **all** items generated when any SpawnsWith equipment table is not defined in the table, but rather the config file.
-The Carved Pumpkin/Jack-o-Lantern helmet spawns on Halloween cannot overwrite helmets equipped by equipment tables.
+The Carved Pumpkin/Jack-o-Lantern helmet spawns on Halloween happen before equipment tables are rolled, and as such could be overwritten.
 Enchantments can be defined in generic or specific loot tables, but the vanilla logic that uses the `minecraft:on_mob_spawn_equipment` enchantment tag still runs. This can be disabled by overriding and emptying said tag.
 Mobs that pick up items will still drop picked up items 100% of the time.
-
-### **Implemented Mobs**
-
-| Mob                               | Generated loot goes to | Spawns with generic table if enabled? | Notes                                                                                                                                                         |
-|-----------------------------------|------------------------|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Skeleton, Stray, and Bogged       | Both hands             | Yes                                   | All skeletons besides Wither Skeleton use the same loot table (`trains_tweaks:abstract_skeleton`) because they all use the same code for spawning with a bow. |
-| Fox                               | Main hand (mouth)      | No                                    |                                                                                                                                                               |
-| Drowned                           | Main hand              | No                                    | 3% offhand nautilus shell remains hardcoded                                                                                                                   |
-| Piglin                            | Armor only             | No                                    | 50% golden sword 50% crossbow remains hardcoded                                                                                                               |
-| Piglin Brute                      | Both hands             | No                                    |                                                                                                                                                               |
-| Pillager                          | Both hands             | No                                    | Does not effect pillagers spawned as part of a raid.                                                                                                          |
-| Vex                               | Both hands             | No                                    |                                                                                                                                                               |
-| Vindicator                        | Both hands             | No                                    | Does not effect vindicators spawned as part of a raid                                                                                                         |
-| Wither Skeleton                   | Both hands             | No                                    | The game does not enchant Wither Skeleton equipment like other mobs                                                                                           |
-| Zombie, Zombie Villager, and Husk | Both hands             | Yes                                   | Zombie Villager/Husk uses same loot table because it uses the same code for spawning with equipment as the zombie                                             |
-| Zombified Piglin                  | Both hands             | No                                    |                                                                                                                                                               |
-
-#### Technical details
-Mobs that roll `trains_tweaks:equipment/generic` are all mobs that call `super.populateDefaultEquipmentSlots` (or initEquipment in Yarn). This may or may not apply to modded mobs.
-Halloween pumpkin helmet spawns are unaffected because the date and no-helmet-equipped checks happen in finalizeSpawn *after* populateDefaultEquipmentSlots. Drowned nautilus shell and (standard) piglin weapon work the same way.
-The reason different mobs' equipment loot tables generate to different equipment slots is because Train's Tweaks only mixins to populateDefaultEquipmentSlots. As you can see in the Implemented Mobs table, it is wildly inconsistent what parts of equipment generate where in the vanilla game.
-
-I personally hope that Mojang makes mob equipment fully data-driven in the future. 
 
 # Note to pack developers
 This mod is powered almost entirely by mixins! Due to the precarious nature of mixins and the large amount of vanilla code modified by Train's Tweaks, I recommend you disable this mod *first* if you come across an issue with your pack.

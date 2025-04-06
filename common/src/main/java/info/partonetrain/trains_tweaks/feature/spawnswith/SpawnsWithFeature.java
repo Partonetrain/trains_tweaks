@@ -4,18 +4,18 @@ import com.google.common.collect.Maps;
 import info.partonetrain.trains_tweaks.CommonClass;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.ModFeature;
+import info.partonetrain.trains_tweaks.platform.Services;
+import info.partonetrain.trains_tweaks.platform.services.IPlatformHelper;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentTable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -79,7 +79,9 @@ public class SpawnsWithFeature extends ModFeature {
 
     public static void rollGenericTable(LivingEntity livingEntity){
         if(livingEntity instanceof Mob mob){
-            if(mob.level() instanceof ServerLevel serverLevel) {
+            boolean wasSilent = mob.isSilent();
+            mob.setSilent(true);
+            if(mob.level() instanceof ServerLevel serverLevel && Services.PLATFORM.canRollSpawnsWithTables(mob)) {
                 clearVanillaGear(mob, EquipmentTableType.ARMOR);
                 LootParams.Builder builder = new LootParams.Builder(serverLevel);
                 builder.withLuck(serverLevel.getCurrentDifficultyAt(mob.getOnPos()).getEffectiveDifficulty())
@@ -88,20 +90,18 @@ public class SpawnsWithFeature extends ModFeature {
                 LootParams paramsWithLuck = builder.create(LootContextParamSets.EQUIPMENT);
                 mob.equip(Constants.GENERIC_EQUIPMENT_LOOT_TABLE, paramsWithLuck, createDropChanceMap());
             }
+            mob.setSilent(wasSilent);
         }
         else{
-            Constants.LOG.info(livingEntity.getType().toString() + " was not a LivingEntity");
+            Constants.LOG.error("rollGenericTable: " + livingEntity.getType().toString() + " was not a Mob");
         }
-        //TODO non mob livingentities
     }
 
     public static void rollSpecificTable(LivingEntity livingEntity, Map<EquipmentTableType, ResourceKey<LootTable>> map){
-        List<ItemStack> extraItems = new ArrayList<>();
-
         if(livingEntity instanceof Mob mob){
-
-            if(mob.level() instanceof ServerLevel serverLevel) {
-
+            boolean wasSilent = mob.isSilent();
+            mob.setSilent(true);
+            if(mob.level() instanceof ServerLevel serverLevel && Services.PLATFORM.canRollSpawnsWithTables(mob)) {
                 LootParams.Builder builder = new LootParams.Builder(serverLevel);
                 builder.withLuck(serverLevel.getCurrentDifficultyAt(mob.getOnPos()).getEffectiveDifficulty())
                         .withParameter(LootContextParams.ORIGIN, mob.position())
@@ -113,12 +113,10 @@ public class SpawnsWithFeature extends ModFeature {
                     clearVanillaGear(mob, EquipmentTableType.MAIN_HAND);
                     LootTable mainhandTable = serverLevel.getServer().reloadableRegistries().getLootTable(map.get(EquipmentTableType.MAIN_HAND));
                     List<ItemStack> rolledStacks = mainhandTable.getRandomItems(paramsWithLuck);
-                    ItemStack first = rolledStacks.getFirst();
-                    rolledStacks.remove(first);
-                    mob.setItemSlot(EquipmentSlot.MAINHAND, first);
-                    mob.setDropChance(EquipmentSlot.MAINHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
                     if(!rolledStacks.isEmpty()){
-                        extraItems.addAll(rolledStacks);
+                        ItemStack first = rolledStacks.getFirst();
+                        mob.setItemSlot(EquipmentSlot.MAINHAND, first);
+                        mob.setDropChance(EquipmentSlot.MAINHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
                     }
                 }
 
@@ -126,29 +124,24 @@ public class SpawnsWithFeature extends ModFeature {
                     clearVanillaGear(mob, EquipmentTableType.OFF_HAND);
                     LootTable offhandTable = serverLevel.getServer().reloadableRegistries().getLootTable(map.get(EquipmentTableType.OFF_HAND));
                     List<ItemStack> rolledStacks = offhandTable.getRandomItems(paramsWithLuck);
-                    ItemStack first = rolledStacks.getFirst();
-                    rolledStacks.remove(first);
-                    mob.setItemSlot(EquipmentSlot.OFFHAND, first);
-                    mob.setDropChance(EquipmentSlot.OFFHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
-                    if(!rolledStacks.isEmpty()){
-                        extraItems.addAll(rolledStacks);
+                    if(!rolledStacks.isEmpty()) {
+                        ItemStack first = rolledStacks.getFirst();
+                        mob.setItemSlot(EquipmentSlot.OFFHAND, first);
+                        mob.setDropChance(EquipmentSlot.OFFHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
                     }
                 }
+
                 if(map.get(EquipmentTableType.ARMOR) != null){
                     clearVanillaGear(mob, EquipmentTableType.ARMOR);
-                    EquipmentTable equipmentTable = new EquipmentTable(map.get(EquipmentTableType.ARMOR), createDropChanceMap());
-                    mob.equip(equipmentTable);
+                    mob.equip(map.get(EquipmentTableType.ARMOR), paramsWithLuck, createDropChanceMap());
                 }
 
-            }
-
-            if(!extraItems.isEmpty()){
-                for(ItemStack itemStack : extraItems){
-                    mob.spawnAtLocation(itemStack);
-                }
+                mob.setSilent(wasSilent);
             }
         }
-        //TODO non mob livingentities
+        else{
+            Constants.LOG.error("rollSpecificTable: " + livingEntity.getType().toString() + " was not a Mob");
+        }
     }
 
     public static ResourceLocation getEntityResourceLocation(LivingEntity livingEntity){

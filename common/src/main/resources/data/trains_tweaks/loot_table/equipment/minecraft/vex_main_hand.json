@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:crossbow"
+          "name": "minecraft:iron_sword"
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:equipment/pillager"
+  "random_sequence": "trains_tweaks:equipment/minecraft/vex_main_hand"
 }

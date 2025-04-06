@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_axe"
+          "name": "minecraft:crossbow"
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:equipment/vindicator"
+  "random_sequence": "trains_tweaks:equipment/minecraft/pillager_main_hand"
 }

@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:golden_axe"
+          "name": "minecraft:golden_sword"
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:equipment/piglin_brute"
+  "random_sequence": "trains_tweaks:equipment/minecraft/zombified_piglin"
 }

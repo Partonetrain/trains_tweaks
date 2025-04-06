@@ -6,10 +6,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:stone_sword"
+          "name": "minecraft:golden_axe"
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:equipment/wither_skeleton"
+  "random_sequence": "trains_tweaks:equipment/minecraft/piglin_brute_main_hand"
 }

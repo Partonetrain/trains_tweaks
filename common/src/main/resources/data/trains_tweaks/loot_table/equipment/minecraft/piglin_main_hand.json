@@ -7,9 +7,13 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:golden_sword"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:crossbow"
         }
       ]
     }
   ],
-  "random_sequence": "trains_tweaks:equipment/zombified_piglin"
+  "random_sequence": "trains_tweaks:equipment/minecraft/piglin_main_hand"
 }
