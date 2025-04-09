@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#c:creepers",
+      "required": false
+    },
+    {
+      "id": "cobblemon:pokemon",
+      "required": false
+    }
+  ]
+}

@@ -31,7 +31,7 @@ public class SpawnsWith_LivingEntityMixin {
     public void trains_tweaks$tick(CallbackInfo ci){
         if(!AllFeatures.SPAWNS_WITH_FEATURE.isIncompatibleLoaded() && SpawnsWithFeatureConfig.ENABLED.getAsBoolean()){
             LivingEntity self = (LivingEntity)(Object)(this);
-            if(!SpawnsWithFeature.isEntityChecked(self) && self.level() instanceof ServerLevel serverLevel){
+            if(!self.getType().is(Constants.SPAWNSWITH_IGNORES) && !SpawnsWithFeature.isEntityChecked(self) && self.level() instanceof ServerLevel serverLevel){
                 if(SpawnsWithFeatureConfig.GENERIC_MOB_TABLES.getAsBoolean() && (self.getType().is(Constants.ROLLS_GENERIC_EQUIPMENT))){
                     SpawnsWithFeature.rollGenericTable(self);
                 }

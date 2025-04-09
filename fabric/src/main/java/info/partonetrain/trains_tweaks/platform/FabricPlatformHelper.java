@@ -33,9 +33,17 @@ public class FabricPlatformHelper implements IPlatformHelper {
     public boolean canRollSpawnsWithTables(Mob mob) {
         //It's called EntitySpawnReason in the future
         if(isModLoaded("puzzleslib")){
-            String mstString = CommonAbstractions.INSTANCE.getMobSpawnType(mob).name();
-            return SpawnsWithFeatureConfig.APPLIES_TO_SPAWN_TYPES.get().contains(mstString);
+            MobSpawnType mst = CommonAbstractions.INSTANCE.getMobSpawnType(mob);
+            if(mst != null){
+                String mstString = mst.name();
+                //no idea why this list contains strings at this point, but it does!
+                return SpawnsWithFeatureConfig.APPLIES_TO_SPAWN_TYPES.get().contains(mstString);
+            }
+            else{
+                return false;
+            }
+
         }
-        return true;
+        return true; //don't bother checking of no mod capable of checking is installed
     }
 }

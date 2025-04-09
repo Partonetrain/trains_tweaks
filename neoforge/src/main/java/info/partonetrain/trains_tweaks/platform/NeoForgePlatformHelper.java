@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.platform;
 
+import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfig;
 import info.partonetrain.trains_tweaks.platform.services.IPlatformHelper;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,7 +30,15 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     public boolean canRollSpawnsWithTables(Mob mob) {
         //It's called EntitySpawnReason in the future
         //.get() here returns a list of strings for some reason
-        String mstString = mob.getSpawnType().name();
-        return SpawnsWithFeatureConfig.APPLIES_TO_SPAWN_TYPES.get().contains(mstString);
+        MobSpawnType mst = mob.getSpawnType();
+        if(mst != null){
+            String mstString = mst.name();
+            //no idea why this list contains strings at this point, but it does!
+            return SpawnsWithFeatureConfig.APPLIES_TO_SPAWN_TYPES.get().contains(mstString);
+        }
+        else{
+            Constants.LOG.error(mob.getName().getString() + " was not in the ignore list and had no MobSpawnType");
+            return false;
+        }
     }
 }

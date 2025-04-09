@@ -68,18 +68,8 @@ public final class Constants {
 	public static final TagKey<Item> EPIC_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "epic"));
 	//SpawnsWith
 	public static final TagKey<EntityType<?>> ROLLS_GENERIC_EQUIPMENT = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation("rolls_generic_equipment"));
+	public static final TagKey<EntityType<?>> SPAWNSWITH_IGNORES = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation("spanswith_ignores"));
 	public static final ResourceKey<LootTable> GENERIC_EQUIPMENT_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation("equipment/generic"));
-	public static final ResourceKey<LootTable> ABSTRACT_SKELETON_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/abstract_skeleton"));
-	public static final ResourceKey<LootTable> DROWNED_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/drowned"));
-	public static final ResourceKey<LootTable> FOX_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/fox"));
-	public static final ResourceKey<LootTable> PIGLIN_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/piglin"));
-	public static final ResourceKey<LootTable> PIGLIN_BRUTE_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/piglin_brute"));
-	public static final ResourceKey<LootTable> PILLAGER_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/pillager"));
-	public static final ResourceKey<LootTable> VEX_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/vex"));
-	public static final ResourceKey<LootTable> VINDICATOR_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/vindicator"));
-	public static final ResourceKey<LootTable> WITHER_SKELETON_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/wither_skeleton"));
-	public static final ResourceKey<LootTable> ZOMBIE_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/zombie"));
-	public static final ResourceKey<LootTable> ZOMBIFIED_PIGLIN_SPAWN_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "equipment/zombified_piglin"));
 	//Trigger
 	public static final String GAME_TIME_TRIGGER = "trains_tweaks:gametime";
 	public static final String DAY_TRIGGER = "trains_tweaks:day";
