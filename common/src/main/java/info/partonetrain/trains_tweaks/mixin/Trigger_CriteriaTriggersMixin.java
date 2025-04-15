@@ -17,7 +17,14 @@ public class Trigger_CriteriaTriggersMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void trains_tweaks$clinit(CallbackInfo ci){
         //NeoForge doesn't complain about this, but it might in the future!
-        TriggerFeature.GAME_TIME_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.GAME_TIME_TRIGGER, new GameTimeTrigger());
-        TriggerFeature.DAY_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.DAY_TRIGGER, new DayTrigger());
+        if(TriggerFeature.enabled){
+            if(TriggerFeature.gameTimeEnabled){
+                TriggerFeature.GAME_TIME_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.GAME_TIME_TRIGGER, new GameTimeTrigger());
+            }
+            if(TriggerFeature.dayEnabled){
+                TriggerFeature.DAY_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.DAY_TRIGGER, new DayTrigger());
+
+            }
+        }
     }
 }

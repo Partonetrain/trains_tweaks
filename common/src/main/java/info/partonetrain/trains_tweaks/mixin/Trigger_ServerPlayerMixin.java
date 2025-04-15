@@ -11,7 +11,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Trigger_ServerPlayerMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/PlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;)V"))
     private void trains_tweaks$tick(CallbackInfo ci){
-        TriggerFeature.DAY_TRIGGER.trigger((ServerPlayer)(Object)this);
-        TriggerFeature.GAME_TIME_TRIGGER.trigger((ServerPlayer)(Object)this);
+        if(TriggerFeature.enabled){
+            if(TriggerFeature.gameTimeEnabled){
+                TriggerFeature.GAME_TIME_TRIGGER.trigger((ServerPlayer)(Object)this);
+            }
+            if(TriggerFeature.dayEnabled){
+                TriggerFeature.DAY_TRIGGER.trigger((ServerPlayer)(Object)this);
+            }
+        }
     }
 }

@@ -206,7 +206,7 @@ public class SpawnsWithFeature extends ModFeature {
         return map;
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     public static List<ItemStack> getEquipmentFromLootTableForSpecificMob(Mob mob, ResourceKey<LootTable> tableKey){
         ServerLevel serverLevel = (ServerLevel) mob.level();
         float luck = serverLevel.getCurrentDifficultyAt(mob.blockPosition()).getEffectiveDifficulty();
@@ -221,7 +221,7 @@ public class SpawnsWithFeature extends ModFeature {
         return loot.stream().toList();
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     public static void equipMobWithRolledStacks(List<ItemStack> rolledStacks, Mob mob, EquipType equipType){
         List<ItemStack> populatedStacks = new ArrayList<>();
         //clearVanillaGear(mob, equipType);
