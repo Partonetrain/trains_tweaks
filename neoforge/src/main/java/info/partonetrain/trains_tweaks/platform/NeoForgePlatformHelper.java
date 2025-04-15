@@ -28,8 +28,11 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean canRollSpawnsWithTables(Mob mob) {
+        if(mob.getType().is(Constants.SPAWNSWITH_IGNORES)){
+            Constants.LOG.error(mob.getName().getString() + " WAS in the spawnswith_ignores tag, but still called canRollSpawnsWithTables somehow");
+            return false;
+        }
         //It's called EntitySpawnReason in the future
-        //.get() here returns a list of strings for some reason
         MobSpawnType mst = mob.getSpawnType();
         if(mst != null){
             String mstString = mst.name();
@@ -37,7 +40,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
             return SpawnsWithFeatureConfig.APPLIES_TO_SPAWN_TYPES.get().contains(mstString);
         }
         else{
-            Constants.LOG.error(mob.getName().getString() + " was not in the ignore list and had no MobSpawnType");
+            Constants.LOG.error(mob.getName().getString() + " was not in the spawnswith_ignores tag and had no MobSpawnType");
             return false;
         }
     }

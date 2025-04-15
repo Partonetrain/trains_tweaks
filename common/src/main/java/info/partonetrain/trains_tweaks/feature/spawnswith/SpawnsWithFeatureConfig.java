@@ -31,6 +31,7 @@ public class SpawnsWithFeatureConfig {
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
         ENABLED = builder.comment("Whether or not to enable any of the tweaks relating to mob spawn equipment")
+                .comment("If this is enabled and you notice any performance issues or log errors, you can add mobs to the entity type tag " + Constants.SPAWNSWITH_IGNORES.location() + " to skip over them completely")
                 .define("Enable equipment spawn tweaks", trueIfDev);
 
         GENERIC_MOB_TABLES = builder.comment("If set to true, any mob in the entity type tag " + Constants.ROLLS_GENERIC_EQUIPMENT.location() + " will roll " + Constants.GENERIC_EQUIPMENT_LOOT_TABLE.location() + " after being spawned")

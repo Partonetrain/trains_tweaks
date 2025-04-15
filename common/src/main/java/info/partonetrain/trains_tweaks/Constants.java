@@ -68,7 +68,7 @@ public final class Constants {
 	public static final TagKey<Item> EPIC_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "epic"));
 	//SpawnsWith
 	public static final TagKey<EntityType<?>> ROLLS_GENERIC_EQUIPMENT = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation("rolls_generic_equipment"));
-	public static final TagKey<EntityType<?>> SPAWNSWITH_IGNORES = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation("spanswith_ignores"));
+	public static final TagKey<EntityType<?>> SPAWNSWITH_IGNORES = TagKey.create(Registries.ENTITY_TYPE, getResourceLocation("spawnswith_ignores"));
 	public static final ResourceKey<LootTable> GENERIC_EQUIPMENT_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation("equipment/generic"));
 	//Trigger
 	public static final String GAME_TIME_TRIGGER = "trains_tweaks:gametime";

@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MobDrops_MobMixin {
     //Arrays.fill(this.armorDropChances, 0.085F);
     @ModifyArg(method = "<init>", at= @At(value = "INVOKE", target = "Ljava/util/Arrays;fill([FF)V", ordinal = 0), index = 1)
-    public float trains_tweaks$mobConstructor(float original){
+    public float trains_tweaks$init(float original){
         if(!AllFeatures.MOB_DROPS_FEATURE.isIncompatibleLoaded() && MobDropsFeatureConfig.ENABLED.getAsBoolean() &&
                 MobDropsFeatureConfig.MOB_EQUIPMENT_DROP_CHANCE.getAsDouble() != MobDropsFeatureConfig.MOB_EQUIPMENT_DROP_CHANCE.getDefault()) {
             Mob self = (Mob)(Object)this;
@@ -26,7 +26,7 @@ public class MobDrops_MobMixin {
 
     //Arrays.fill(this.handDropChances, 0.085F);
     @ModifyArg(method = "<init>", at= @At(value = "INVOKE", target = "Ljava/util/Arrays;fill([FF)V", ordinal = 1), index = 1)
-    public float trains_tweaks$mobConstructor2(float original){
+    public float trains_tweaks$init2(float original){
         if(!AllFeatures.MOB_DROPS_FEATURE.isIncompatibleLoaded() && MobDropsFeatureConfig.ENABLED.getAsBoolean() &&
                 MobDropsFeatureConfig.MOB_EQUIPMENT_DROP_CHANCE.getAsDouble() != MobDropsFeatureConfig.MOB_EQUIPMENT_DROP_CHANCE.getDefault()) {
             Mob self = (Mob)(Object)this;
@@ -38,7 +38,7 @@ public class MobDrops_MobMixin {
 
     //this.bodyArmorDropChance = 0.085F;
     @Inject(method = "<init>", at= @At(value = "TAIL"))
-    public void trains_tweaks$mobConstructor3(EntityType entityType, Level level, CallbackInfo ci){
+    public void trains_tweaks$init3(EntityType entityType, Level level, CallbackInfo ci){
         Mob self = (Mob)(Object)this;
         self.setDropChance(EquipmentSlot.BODY, (float) MobDropsFeatureConfig.MOB_EQUIPMENT_DROP_CHANCE.getAsDouble());
     }
