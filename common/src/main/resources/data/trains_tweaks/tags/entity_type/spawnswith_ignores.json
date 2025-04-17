@@ -1,5 +1,7 @@
 {
   "values": [
+    "minecraft:player",
+
     "minecraft:armadillo",
     "minecraft:armor_stand",
     "minecraft:axolotl",

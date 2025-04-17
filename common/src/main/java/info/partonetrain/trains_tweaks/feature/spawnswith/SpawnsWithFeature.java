@@ -5,7 +5,6 @@ import info.partonetrain.trains_tweaks.CommonClass;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.ModFeature;
 import info.partonetrain.trains_tweaks.platform.Services;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -204,64 +203,5 @@ public class SpawnsWithFeature extends ModFeature {
             map.put(e, dropChance);
         }
         return map;
-    }
-
-    @Deprecated(forRemoval = true)
-    public static List<ItemStack> getEquipmentFromLootTableForSpecificMob(Mob mob, ResourceKey<LootTable> tableKey){
-        ServerLevel serverLevel = (ServerLevel) mob.level();
-        float luck = serverLevel.getCurrentDifficultyAt(mob.blockPosition()).getEffectiveDifficulty();
-        LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(tableKey);
-        LootParams params = new LootParams.Builder(serverLevel)
-                .withParameter(LootContextParams.ORIGIN, mob.position())
-                .withParameter(LootContextParams.THIS_ENTITY, mob)
-                .withLuck(luck)
-                .create(LootContextParamSets.EQUIPMENT);
-
-        ObjectArrayList<ItemStack> loot = lootTable.getRandomItems(params);
-        return loot.stream().toList();
-    }
-
-    @Deprecated(forRemoval = true)
-    public static void equipMobWithRolledStacks(List<ItemStack> rolledStacks, Mob mob, EquipType equipType){
-        List<ItemStack> populatedStacks = new ArrayList<>();
-        //clearVanillaGear(mob, equipType);
-        if(!rolledStacks.isEmpty()) {
-            if(equipType == EquipType.MAIN_HAND_ONLY || equipType == EquipType.BOTH_HANDS) {
-                ItemStack first = rolledStacks.get(0);
-                mob.setItemSlot(EquipmentSlot.MAINHAND, first);
-                mob.setDropChance(EquipmentSlot.MAINHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
-                populatedStacks.add(first);
-
-                if (rolledStacks.size() != 1 && equipType == EquipType.BOTH_HANDS) {
-                    ItemStack second = rolledStacks.get(1);
-                    mob.setItemSlot(EquipmentSlot.OFFHAND, second);
-                    mob.setDropChance(EquipmentSlot.OFFHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
-                    populatedStacks.add(second);
-                }
-            }
-            else if(equipType == EquipType.OFF_HAND_ONLY){
-                ItemStack first = rolledStacks.get(0);
-                mob.setItemSlot(EquipmentSlot.OFFHAND, first);
-                mob.setDropChance(EquipmentSlot.OFFHAND, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
-                populatedStacks.add(first);
-            }
-            else if(equipType == EquipType.ARMOR_ONLY){
-                for(int i = 0; i <= rolledStacks.size() - 1; i++){
-                    ItemStack itemStack = rolledStacks.get(i);
-                    EquipmentSlot slot = mob.getEquipmentSlotForItem(itemStack);
-                    mob.setItemSlot(slot, itemStack);
-                    mob.setDropChance(slot, (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble());
-                    populatedStacks.add(itemStack);
-                }
-            }
-        }
-        //drop any extra items on the ground
-        //this is not tested. It's best if the loot table
-        //can only ever generate the amount of stacks it expects.
-        for (ItemStack itemStack : rolledStacks) {
-            if (!populatedStacks.contains(itemStack)) {
-                mob.spawnAtLocation(itemStack);
-            }
-        }
     }
 }

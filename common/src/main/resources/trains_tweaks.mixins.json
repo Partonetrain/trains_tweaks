@@ -75,6 +75,7 @@
     "Zzz_ServerLevelMixin"
   ],
   "client": [
+    "_SplashManagerMixin",
     "Zzz_GuiMixin"
   ],
   "server": [],
