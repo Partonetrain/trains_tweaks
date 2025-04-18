@@ -41,6 +41,7 @@
     "Rarity_ItemMixin",
     "Rarity_ItemStackMixin",
     "SpawnsWith_LivingEntityMixin",
+    "SpawnsWith_MobInvoker",
     "Trigger_CriteriaTriggersMixin",
     "Trigger_ServerPlayerMixin",
     "Vehicle_BoatMixin",

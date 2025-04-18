@@ -37,7 +37,13 @@ public class SpawnsWith_LivingEntityMixin {
                     }
                 }
 
-                if(!SpawnsWithFeature.markEntityChecked(self)){
+                if(SpawnsWithFeatureConfig.POPULATE_ENCHANTMENTS.getAsBoolean()){
+                    SpawnsWithFeature.populateEnchantments(self);
+                }
+
+                //attempt to mark entity as checked so this code won't run anymore on this entity
+                if(!SpawnsWithFeature.markEntityChecked(self))
+                {
                     Constants.LOG.error(self.getName().getString() + " had too many tags and could not be marked as " + SpawnsWithFeature.CHECKED_TAG);
                 }
             }

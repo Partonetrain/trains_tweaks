@@ -2,6 +2,7 @@ package info.partonetrain.trains_tweaks.feature.spawnswith;
 
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.platform.Services;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.entity.MobSpawnType;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -15,6 +16,7 @@ public class SpawnsWithFeatureConfig {
 
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.BooleanValue GENERIC_MOB_TABLES;
+    public static ModConfigSpec.BooleanValue POPULATE_ENCHANTMENTS;
     public static ModConfigSpec.BooleanValue SPECFIC_MOB_TABLES;
     public static ModConfigSpec.DoubleValue EQUIPMENT_TABLE_DROP_CHANCE;
     public static ModConfigSpec.ConfigValue<List<MobSpawnType>> APPLIES_TO_SPAWN_TYPES;
@@ -38,13 +40,17 @@ public class SpawnsWithFeatureConfig {
                 .comment("In this case, regional difficulty is passed to the table as a luck value, changing the weight of entries with a quality set")
                 .comment("Note that unlike the provided mob-specific tables, this loot table does NOT match vanilla behavior by default, so only enable if you intend to overwrite the table in a datapack")
                 .comment("This table is designed to replace mob armor, so it should only roll up to 4 armor pieces")
-                .define("Generic Mob Tables", trueIfDev);
+                .define("Generic Mob Tables", true);
 
         SPECFIC_MOB_TABLES = builder.comment("If set to true, the game will attempt to find loot tables to equip a mob with")
                 .comment("The loot tables should be in this location: trains_tweaks/loot_table/equipment/<modid>/<mob-id><type> (where <type> is either _main_hand, off_hand, or _armor)")
                 .comment("Each mob checks for these tables once. They will be rolled with difficulty as luck just like the generic tables")
                 .comment("Train's Tweaks includes these for vanilla mobs that spawn with equipment")
-                .define("Specific Mob Tables", trueIfDev);
+                .define("Specific Mob Tables", true);
+
+        POPULATE_ENCHANTMENTS = builder.comment("If set to true, after generic and/or specific tables have been rolled, the vanilla populate enchantments code will run")
+                .comment("This is the code that uses the " + EnchantmentTags.ON_MOB_SPAWN_EQUIPMENT + " enchantment tag to find usable enchantments")
+                .define("Populate Enchantments", true);
 
         EQUIPMENT_TABLE_DROP_CHANCE = builder.comment("The drop chance for every equipment item generated from equipment loot tables")
                 .comment("For reference, 8.5% is the default chance for a mob to drop a piece of equipment it spawned with (with the exception of trial chamber spawns, which is 0%)")

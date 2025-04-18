@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import info.partonetrain.trains_tweaks.CommonClass;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.ModFeature;
+import info.partonetrain.trains_tweaks.mixin.SpawnsWith_MobInvoker;
 import info.partonetrain.trains_tweaks.platform.Services;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -39,14 +40,10 @@ public class SpawnsWithFeature extends ModFeature {
     * This tweak is sort of my solution to this conundrum. It's not super elegant,
     * but it provides far more customization than the vanilla game allows.
     */
-
     /*
      * update - well they probably didn't because turns out rolling loot tables during worldgen isn't safe
      * who woulda thought?
      */
-
-    public static List<EquipmentSlot> armorSlots = Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
-    public static List<EquipmentSlot> allSlots = Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET, EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND);
 
     public static final String TABLE_PREFIX = "trains_tweaks:equipment/";
     public static final String MAINHAND_SUFFIX = "_main_hand";
@@ -134,10 +131,17 @@ public class SpawnsWithFeature extends ModFeature {
                 }
 
                 mob.setSilent(wasSilent);
+
             }
         }
         else{
             Constants.LOG.error("rollSpecificTable: " + livingEntity.getType().toString() + " was not a Mob");
+        }
+    }
+
+    public static void populateEnchantments(LivingEntity livingEntity){
+        if(livingEntity instanceof Mob mob && mob.level() instanceof ServerLevel serverLevel){
+            ((SpawnsWith_MobInvoker)mob).invokePopulateDefaultEquipmentEnchantments(serverLevel, mob.getRandom(), mob.level().getCurrentDifficultyAt(mob.getOnPos()));
         }
     }
 
@@ -199,8 +203,10 @@ public class SpawnsWithFeature extends ModFeature {
         float dropChance = (float) SpawnsWithFeatureConfig.EQUIPMENT_TABLE_DROP_CHANCE.getAsDouble();
 
         Map<EquipmentSlot, Float> map = Maps.newHashMap();
-        for(EquipmentSlot e : armorSlots){
-            map.put(e, dropChance);
+        for(EquipmentSlot e : EquipmentSlot.values()){
+            if(e.getType() == EquipmentSlot.Type.HUMANOID_ARMOR){
+                map.put(e, dropChance);
+            }
         }
         return map;
     }
