@@ -38,9 +38,9 @@ For a config menu, use the Configured mod. I recommended restarting the game aft
 
 ### About the SpawnsWith feature
 
-**As of Train's Tweaks 0.9.10, the SpawnsWith feature has been reworked to be more flexible to work with worldgen. Datapacks will break.**
+**As of Train's Tweaks 0.9.10, the SpawnsWith feature has been reworked to be more flexible to work with worldgen. Datapacks made pre-0.9.10 will break.**
 
-If the SpawnsWith feature and "Generic Mob Tables" option are enabled, mobs that are capable of spawning with armor (for example, zombies and skeletons) will instead roll the `trains_tweaks:equipment/generic` loot table.
+If the SpawnsWith feature and "Generic Mob Tables" option are enabled, mobs in the `trains_tweaks:rolls_generic_table` tag will roll the `trains_tweaks:equipment/generic` loot table after spawning.
 From here, equipment that is rolled will be equipped on the mob. The loot table is rolled with the local difficulty where the mob is spawning as the luck value, making it possible for different rates on different difficulties (using "bonus_rolls" and "quality" fields).
 
 Additionally, you can define equipment tables for a specific mob by placing an equipment loot table at `trains_tweaks:equipment/namespace/entityid_*`, where `*` is either `main_hand`, `off_hand`, or `armor`.
@@ -50,7 +50,7 @@ I tried to make the default ones 1:1 with vanilla, but with loot tables inherent
 
 The drop chance of **all** items generated when any SpawnsWith equipment table is not defined in the table, but rather the config file.
 The Carved Pumpkin/Jack-o-Lantern helmet spawns on Halloween happen before equipment tables are rolled, and as such could be overwritten.
-Enchantments can be defined in generic or specific loot tables, but the vanilla logic that uses the `minecraft:on_mob_spawn_equipment` enchantment tag still runs. This can be disabled by overriding and emptying said tag.
+Enchantments can be defined in generic or specific loot tables, but by default the vanilla code that uses the `minecraft:on_mob_spawn_equipment` enchantment tag runs. This can be disabled though.
 Mobs that pick up items will still drop picked up items 100% of the time.
 
 # Note to pack developers

@@ -42,7 +42,7 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
             else {
                 gameTimeEnabled = false;
             }
-            if (allLines.contains("\"Game Time trigger\" = true")) {
+            if (allLines.contains("\"Day trigger\" = true")) {
                 dayEnabled = true;
             }
             else {

@@ -25,7 +25,7 @@ public class SpawnsWith_LivingEntityMixin {
             if(self.getType().is(Constants.SPAWNSWITH_IGNORES)){
                 return;
             }
-            else if(!SpawnsWithFeature.isEntityChecked(self) && self.level() instanceof ServerLevel serverLevel){
+            else if(self.level() instanceof ServerLevel serverLevel && !SpawnsWithFeature.isEntityChecked(self)){
                 if(SpawnsWithFeatureConfig.GENERIC_MOB_TABLES.getAsBoolean() && (self.getType().is(Constants.ROLLS_GENERIC_EQUIPMENT))){
                     SpawnsWithFeature.rollGenericTable(self);
                 }

@@ -23,7 +23,6 @@ public class Trigger_CriteriaTriggersMixin {
             }
             if(TriggerFeature.dayEnabled){
                 TriggerFeature.DAY_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.DAY_TRIGGER, new DayTrigger());
-
             }
         }
     }

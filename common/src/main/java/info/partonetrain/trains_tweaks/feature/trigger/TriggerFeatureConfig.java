@@ -29,6 +29,6 @@ public class TriggerFeatureConfig {
 
         DAY_TRIGGER = builder.comment("Whether or not to register the " + Constants.DAY_TRIGGER + " trigger")
                 .comment("This allows advancements to check for amount of days since world creation")
-                .define("Game Time trigger", true);
+                .define("Day trigger", true);
     }
 }
