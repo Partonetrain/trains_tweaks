@@ -53,4 +53,10 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
             CommonClass.printEarlyConfigError(this.featureName, e);
         }
     }
+
+    @Override
+    public boolean isExtraEarly(){
+        //readConfigsEarly is called in Trigger_CriteriaTriggersMixin
+        return true;
+    }
 }

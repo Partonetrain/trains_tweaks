@@ -1,15 +1,11 @@
 package info.partonetrain.trains_tweaks.feature.kritz;
 
 import info.partonetrain.trains_tweaks.CommonClass;
-import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.ModFeature;
-import info.partonetrain.trains_tweaks.feature.experience.ExperienceFeatureConfig;
-import info.partonetrain.trains_tweaks.platform.Services;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -82,4 +82,10 @@ public class AttackSpeedFeature extends ModFeature implements IEarlyConfigReader
             configRead = true;
         }
     }
+
+    @Override
+    public boolean isExtraEarly(){
+        //readConfigsEarly is called in AttackSpeed_MobEffectsMixin
+        return true;
+    }
 }

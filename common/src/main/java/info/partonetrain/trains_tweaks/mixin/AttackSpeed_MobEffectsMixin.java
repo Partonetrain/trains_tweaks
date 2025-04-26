@@ -1,5 +1,7 @@
 package info.partonetrain.trains_tweaks.mixin;
 
+import info.partonetrain.trains_tweaks.AllFeatures;
+import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffects;
@@ -15,6 +17,8 @@ public class AttackSpeed_MobEffectsMixin {
     //haste / DIG_SPEED
     @ModifyArg(method = "<clinit>", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/effect/MobEffect;addAttributeModifier(Lnet/minecraft/core/Holder;Lnet/minecraft/resources/ResourceLocation;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)Lnet/minecraft/world/effect/MobEffect;", ordinal = 2), index = 0)
     private static Holder<Attribute> trains_tweaks$addAttributeModifier(Holder<Attribute> attribute){
+        IEarlyConfigReader ecr = (IEarlyConfigReader) (AllFeatures.ATTACK_SPEED_FEATURE);
+        ecr.readConfigsEarly();
         if (AttackSpeedFeature.enabled && AttackSpeedFeature.fixEffects) {
             return Attributes.BLOCK_BREAK_SPEED;
         }

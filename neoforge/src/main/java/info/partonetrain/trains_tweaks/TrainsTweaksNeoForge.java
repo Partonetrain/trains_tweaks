@@ -34,7 +34,7 @@ public class TrainsTweaksNeoForge {
 
     public TrainsTweaksNeoForge(ModContainer container, IEventBus eventBus) {
         for(ModFeature mf : AllFeatures.features){
-            if(mf instanceof IEarlyConfigReader earlyConfigReader){
+            if(mf instanceof IEarlyConfigReader earlyConfigReader && !earlyConfigReader.isExtraEarly()){
                 earlyConfigReader.readConfigsEarly();
             }
             if(mf.configSpec != null) {

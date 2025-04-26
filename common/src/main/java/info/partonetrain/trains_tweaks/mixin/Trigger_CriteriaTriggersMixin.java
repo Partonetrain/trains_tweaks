@@ -1,6 +1,8 @@
 package info.partonetrain.trains_tweaks.mixin;
 
+import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
+import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.feature.trigger.DayTrigger;
 import info.partonetrain.trains_tweaks.feature.trigger.GameTimeTrigger;
 import info.partonetrain.trains_tweaks.feature.trigger.TriggerFeature;
@@ -17,6 +19,8 @@ public class Trigger_CriteriaTriggersMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void trains_tweaks$clinit(CallbackInfo ci){
         //NeoForge doesn't complain about this, but it might in the future!
+        IEarlyConfigReader ecr = (IEarlyConfigReader) (AllFeatures.TRIGGER_FEATURE);
+        ecr.readConfigsEarly();
         if(TriggerFeature.enabled){
             if(TriggerFeature.gameTimeEnabled){
                 TriggerFeature.GAME_TIME_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.GAME_TIME_TRIGGER, new GameTimeTrigger());
