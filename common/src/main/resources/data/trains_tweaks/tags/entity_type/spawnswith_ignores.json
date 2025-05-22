@@ -1,5 +1,18 @@
 {
   "values": [
+    {
+      "id": "#c:equipment_not_supported",
+      "required": false
+    },
+    {
+      "id": "#c:creepers",
+      "required": false
+    },
+    {
+      "id": "cobblemon:pokemon",
+      "required": false
+    },
+
     "minecraft:player",
 
     "minecraft:armadillo",
@@ -59,14 +72,6 @@
     "minecraft:turtle",
     "minecraft:warden",
     "minecraft:wither",
-    "minecraft:zoglin",
-    {
-      "id": "#c:creepers",
-      "required": false
-    },
-    {
-      "id": "cobblemon:pokemon",
-      "required": false
-    }
+    "minecraft:zoglin"
   ]
 }

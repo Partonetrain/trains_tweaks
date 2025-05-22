@@ -73,9 +73,10 @@ public class SpawnsWithFeature extends ModFeature {
 
     public static void rollGenericTable(LivingEntity livingEntity){
         if(livingEntity instanceof Mob mob){
-            boolean wasSilent = mob.isSilent();
-            mob.setSilent(true);
             if(mob.level() instanceof ServerLevel serverLevel && Services.PLATFORM.canRollSpawnsWithTables(mob)) {
+                boolean wasSilent = mob.isSilent();
+                CommonClass.printInDev("rollGenericTable wasSilent: " + wasSilent);
+                mob.setSilent(true);
                 clearVanillaGear(mob, EquipmentTableType.ARMOR);
                 LootParams.Builder builder = new LootParams.Builder(serverLevel);
                 builder.withLuck(serverLevel.getCurrentDifficultyAt(mob.getOnPos()).getEffectiveDifficulty())
@@ -83,8 +84,9 @@ public class SpawnsWithFeature extends ModFeature {
                         .withParameter(LootContextParams.THIS_ENTITY, mob);
                 LootParams paramsWithLuck = builder.create(LootContextParamSets.EQUIPMENT);
                 mob.equip(Constants.GENERIC_EQUIPMENT_LOOT_TABLE, paramsWithLuck, createDropChanceMap());
+                mob.setSilent(wasSilent);
+                CommonClass.printInDev("rollGenericTable isSilent(): " + mob.isSilent());
             }
-            mob.setSilent(wasSilent);
         }
         else{
             Constants.LOG.error("rollGenericTable: " + livingEntity.getType().toString() + " was not a Mob");
@@ -93,9 +95,10 @@ public class SpawnsWithFeature extends ModFeature {
 
     public static void rollSpecificTable(LivingEntity livingEntity, Map<EquipmentTableType, ResourceKey<LootTable>> map){
         if(livingEntity instanceof Mob mob){
-            boolean wasSilent = mob.isSilent();
-            mob.setSilent(true);
             if(mob.level() instanceof ServerLevel serverLevel && Services.PLATFORM.canRollSpawnsWithTables(mob)) {
+                boolean wasSilent = mob.isSilent();
+                CommonClass.printInDev("rollSpecificTable wasSilent: " + wasSilent);
+                mob.setSilent(true);
                 LootParams.Builder builder = new LootParams.Builder(serverLevel);
                 builder.withLuck(serverLevel.getCurrentDifficultyAt(mob.getOnPos()).getEffectiveDifficulty())
                         .withParameter(LootContextParams.ORIGIN, mob.position())
@@ -131,7 +134,7 @@ public class SpawnsWithFeature extends ModFeature {
                 }
 
                 mob.setSilent(wasSilent);
-
+                CommonClass.printInDev("rollSpecificTable isSilent(): " + mob.isSilent());
             }
         }
         else{
