@@ -6,8 +6,6 @@ import info.partonetrain.trains_tweaks.ModFeature;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -19,8 +17,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.advancements.AdvancementType;
 
 import java.util.*;
 
@@ -66,13 +64,15 @@ public class InterdimensionalFeature extends ModFeature {
         }
 
         ServerLevel level = (ServerLevel) serverPlayer.level();
-        Optional<Registry<DimensionType>> dimRegistry = level.registryAccess().registry(Registries.DIMENSION_TYPE);
+        Optional<Registry<DimensionType>> dimTypeRegistry = level.registryAccess().registry(Registries.DIMENSION_TYPE);
         Optional<Registry<MobEffect>> effectRegistry = level.registryAccess().registry(Registries.MOB_EFFECT);
 
         for(EffectRestriction er : restrictions){
-            ResourceKey<DimensionType> currentDim = ResourceKey.create(Registries.DIMENSION_TYPE, Objects.requireNonNull(dimRegistry.get().getKey(serverPlayer.level().dimensionType())));
+            ResourceKey<DimensionType> currentDimType = ResourceKey.create(Registries.DIMENSION_TYPE, Objects.requireNonNull(dimTypeRegistry.get().getKey(serverPlayer.level().dimensionType())));
+            ResourceKey<Level> currentDim = serverPlayer.level().dimension();
             //is the player in the right dimension?
-            if(er.dimension == currentDim){
+            //dimension type might not have the same resourcelocation as dimension/level, so check them both
+            if(er.dimensionType == currentDimType || er.dimensionType.location().equals(currentDim.location())){
                 CommonClass.printInDev("Player IS in dimension " + currentDim.location());
                 Collection<MobEffectInstance> effects = serverPlayer.getActiveEffects();
                 for(MobEffectInstance mei : effects){
@@ -87,7 +87,7 @@ public class InterdimensionalFeature extends ModFeature {
                             CommonClass.printInDev("Player already has advancement " + holder.value().name().toString());
                         }
                         else{
-                            serverPlayer.sendSystemMessage(makeComponent(mei.getEffect().value(), currentDim, holder, serverPlayer));
+                            serverPlayer.sendSystemMessage(makeComponent(mei.getEffect().value(), currentDimType, holder, serverPlayer));
                             serverPlayer.removeEffect(mei.getEffect());
                         }
                     }
@@ -103,6 +103,12 @@ public class InterdimensionalFeature extends ModFeature {
         }
 
         MutableComponent ret = Component.empty();
+
+        //twilightforest (and possibly others) dimension type has _type suffix
+        if(dimensionTypeResourceKey.location().toString().contains("_type")){
+            String s = dimensionTypeResourceKey.location().toString();
+            dimensionTypeResourceKey = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.parse(s.replace("_type", "")));
+        }
 
         Optional<Component> meName = Optional.of(me.getDisplayName());
         Optional<Component> dtName = Optional.of(Component.translatable("dimension." + dimensionTypeResourceKey.location().toString().replace(":", ".")));

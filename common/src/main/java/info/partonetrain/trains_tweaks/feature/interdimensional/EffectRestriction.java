@@ -7,12 +7,12 @@ import net.minecraft.world.level.dimension.DimensionType;
 
 public class EffectRestriction {
     public ResourceKey<MobEffect> effect;
-    public ResourceKey<DimensionType> dimension;
+    public ResourceKey<DimensionType> dimensionType;
     public ResourceKey<Advancement> unlockingAdvancement;
 
-    public EffectRestriction(ResourceKey<MobEffect> effect, ResourceKey<DimensionType> dimension, ResourceKey<Advancement> unlockingAdvancement){
+    public EffectRestriction(ResourceKey<MobEffect> effect, ResourceKey<DimensionType> dimensionType, ResourceKey<Advancement> unlockingAdvancement){
         this.effect = effect;
-        this.dimension = dimension;
+        this.dimensionType = dimensionType;
         this.unlockingAdvancement = unlockingAdvancement;
     }
 }

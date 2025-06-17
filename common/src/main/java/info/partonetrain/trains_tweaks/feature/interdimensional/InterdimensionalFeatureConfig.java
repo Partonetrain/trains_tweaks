@@ -44,7 +44,7 @@ public class InterdimensionalFeatureConfig {
                 .comment("If you want to ban an effect in a dimension entirely, create an impossible advancement")
                 .define("Enable Effect Restrictions", false);
 
-        EFFECT_RESTRICTIONS = builder.comment("Format is effectid,dimensionid,unlockingAdvancementId;effectid,dimensionid,unlockingAdvancementId;")
+        EFFECT_RESTRICTIONS = builder.comment("Format is effectId,dimensionTypeId,unlockingAdvancementId;effectId,dimensionTypeId,unlockingAdvancementId;")
                 .define("Effect Restrictions", "minecraft:fire_resistance,minecraft:the_nether,minecraft:nether/get_wither_skull;");
 
         EFFECT_RESTRICTION_MESSAGE = builder.comment("The message sent to players when an effect is removed due to a restriction")
