@@ -40,6 +40,7 @@ public class XplosivFeatureConfig {
         FIRE_EXPLOSIONS_IN_ULTRAWARM = builder.comment("If set to true, all explosions in ultrawarm dimensions (like the Nether) will place fire")
                 .comment("and explosions in non-ultrawarm dimensions will never place fire")
                 .define("Ultrawarm Fire Explosions", false);
+        //TODO check if this works with Amendments2.0
 
         builder.comment("\nAll of the following options default to the vanilla value");
 

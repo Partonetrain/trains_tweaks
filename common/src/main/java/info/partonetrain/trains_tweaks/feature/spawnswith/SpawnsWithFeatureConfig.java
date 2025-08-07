@@ -17,7 +17,7 @@ public class SpawnsWithFeatureConfig {
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.BooleanValue GENERIC_MOB_TABLES;
     public static ModConfigSpec.BooleanValue POPULATE_ENCHANTMENTS;
-    public static ModConfigSpec.BooleanValue SPECFIC_MOB_TABLES;
+    public static ModConfigSpec.BooleanValue SPECIFIC_MOB_TABLES;
     public static ModConfigSpec.DoubleValue EQUIPMENT_TABLE_DROP_CHANCE;
     public static ModConfigSpec.ConfigValue<List<MobSpawnType>> APPLIES_TO_SPAWN_TYPES;
 
@@ -42,7 +42,7 @@ public class SpawnsWithFeatureConfig {
                 .comment("This table is designed to replace mob armor, so it should only roll up to 4 armor pieces")
                 .define("Generic Mob Tables", true);
 
-        SPECFIC_MOB_TABLES = builder.comment("If set to true, the game will attempt to find loot tables to equip a mob with")
+        SPECIFIC_MOB_TABLES = builder.comment("If set to true, the game will attempt to find loot tables to equip a mob with")
                 .comment("The loot tables should be in this location: trains_tweaks/loot_table/equipment/<modid>/<mob-id><type> (where <type> is either _main_hand, off_hand, or _armor)")
                 .comment("Each mob checks for these tables once. They will be rolled with difficulty as luck just like the generic tables")
                 .comment("Train's Tweaks includes these for vanilla mobs that spawn with equipment")

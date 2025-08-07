@@ -40,7 +40,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
             return SpawnsWithFeatureConfig.APPLIES_TO_SPAWN_TYPES.get().contains(mstString);
         }
         else{
-            Constants.LOG.error(mob.getName().getString() + " was not in the spawnswith_ignores tag and had no MobSpawnType");
+            Constants.LOG.warn(mob.getName().getString() + " was not in the spawnswith_ignores tag and had no MobSpawnType");
             return false;
         }
     }

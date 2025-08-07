@@ -89,5 +89,6 @@ public class Cure_ZombieVillagerMixin extends Mob {
             //defaultBlockState may cause some weirdness in specific circumstances
         }
         return original.call(obj);
+        //this ends up checking the tag twice if the first mixin returns false but this is probably fine
     }
 }

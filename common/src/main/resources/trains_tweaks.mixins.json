@@ -9,6 +9,8 @@
     "AttackSpeed_ElderGuardianMixin",
     "AttackSpeed_MobEffectsMixin",
     "AttackSpeed_MobEffectUtilMixin",
+    "Bee_BeehiveBlockEntityMixin",
+    "Bee_BeehiveBlockMixin",
     "Bee_BeeMixin",
     "Cure_ZombieVillagerMixin",
     "Difficulty_DamageSourceMixin",

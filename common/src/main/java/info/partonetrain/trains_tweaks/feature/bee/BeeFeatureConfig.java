@@ -8,6 +8,7 @@ public class BeeFeatureConfig {
 
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.BooleanValue BEES_KEEP_STINGER;
+    public static ModConfigSpec.BooleanValue ALWAYS_SEDATED;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -23,5 +24,8 @@ public class BeeFeatureConfig {
 
         BEES_KEEP_STINGER = builder.comment("If enabled, bees will not lose their stinger when they attack")
                 .define("Bees Keep Stinger", true);
+
+        ALWAYS_SEDATED = builder.comment("If enabled, campfires below beehives/bee nests are not necessary to prevent bees from becoming angry")
+                .define("Always Sedated", false);
     }
 }
