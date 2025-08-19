@@ -38,7 +38,7 @@ public interface IPlatformHelper {
 
     /**
      * Whether a mob can roll a SpawnsWith table.
-     * Depends on spawn reason, which is checked different
+     * Depends on spawn reason, which is checked elsewhere
      */
     default boolean canRollSpawnsWithTables(Mob mob) {
         return true;

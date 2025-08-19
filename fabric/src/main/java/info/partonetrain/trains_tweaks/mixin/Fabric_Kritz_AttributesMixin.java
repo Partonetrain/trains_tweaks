@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks.mixin;
 
+import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.feature.kritz.KritzFeature;
 import net.minecraft.core.Registry;
@@ -16,11 +17,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Fabric_Kritz_AttributesMixin {
     @Inject(method = "<clinit>", at=@At("TAIL"))
     private static void trains_tweaks$clinit(CallbackInfo ci){
+        if(!KritzFeature.configRead){
+            KritzFeature thisFeature = (KritzFeature) AllFeatures.KRITZ_FEATURE;
+            thisFeature.readConfigsEarly();
+        }
         if(KritzFeature.enabled && KritzFeature.addEffects) {
-            Attribute ma = new RangedAttribute(Constants.MELEE_CRIT_ATTRIBUTE_ID.toString(), KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true);
-            Attribute ra = new RangedAttribute(Constants.MELEE_CRIT_ATTRIBUTE_ID.toString(), KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true);
-            KritzFeature.MELEE_CRIT_CHANCE = Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, Constants.DEXTERITY_EFFECT_ID, ma);
-            KritzFeature.RANGED_CRIT_CHANCE = Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, Constants.CLUMSY_EFFECT_ID, ra);
+            Attribute ma = new RangedAttribute("attribute.name.trains_tweaks.melee_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true);
+            Attribute ra = new RangedAttribute("attribute.name.trains_tweaks.ranged_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true);
+            KritzFeature.MELEE_CRIT_CHANCE = Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, Constants.MELEE_CRIT_ATTRIBUTE_ID, ma);
+            KritzFeature.RANGED_CRIT_CHANCE = Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, Constants.RANGED_CRIT_ATTRIBUTE_ID, ra);
         }
     }
 }

@@ -38,6 +38,9 @@ public class KritzFeature extends ModFeature implements IEarlyConfigReader {
     }
 
     public void readConfigsEarly(){
+        if(configRead){
+            return;
+        }
         if(this.isIncompatibleLoaded())
         {
             enabled = false;
