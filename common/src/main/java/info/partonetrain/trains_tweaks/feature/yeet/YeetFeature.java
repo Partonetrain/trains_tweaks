@@ -7,5 +7,6 @@ public class YeetFeature extends ModFeature {
     public YeetFeature() {
         super("Yeet", YeetFeatureConfig.SPEC);
         compatibleMods.add("snowballsfreezemobs");
+        compatibleMods.add("amendments");
     }
 }

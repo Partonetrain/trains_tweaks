@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.AllFeatures;
+import info.partonetrain.trains_tweaks.feature.yeet.YeetAmendmentsCompat;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -19,7 +20,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Yeet_SmallFireballMixin {
     @Inject(method = "onHitBlock", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z"), cancellable = true)
     public void trains_tweaks$onHitBlock(BlockHitResult result, CallbackInfo ci){
-        if(!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.THROW_FIRE_CHARGES.getAsBoolean()) {
+        if(!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && !YeetAmendmentsCompat.isAmendmentsFireballEnabled()
+                && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.THROW_FIRE_CHARGES.getAsBoolean()) {
             SmallFireball self = (SmallFireball)(Object)this;
             if(self.getOwner() instanceof Player p){
                 Level level = p.level();

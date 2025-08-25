@@ -41,6 +41,15 @@ repositories {
         name = "Fuzs Mod Resources"
         url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
     }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+}
+
+dependencies {
+    implementation "maven.modrinth:moonlight:$moonlightlib_version-neoforge"
+    implementation "maven.modrinth:amendments:neoforge_$amendments_version"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }

@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.AllFeatures;
+import info.partonetrain.trains_tweaks.feature.yeet.YeetAmendmentsCompat;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeatureConfig;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,7 +23,8 @@ public class Yeet_FireChargeItemMixin extends Item {
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        if(!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.THROW_FIRE_CHARGES.getAsBoolean()) {
+        if(!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && !YeetAmendmentsCompat.isAmendmentsFireballEnabled()
+                && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.THROW_FIRE_CHARGES.getAsBoolean()) {
             ItemStack itemStack = player.getItemInHand(interactionHand);
             if (itemStack.is(Items.FIRE_CHARGE) && !level.isClientSide())  //mods may extend FireChargeItem so check for vanilla item
             {
@@ -37,7 +39,6 @@ public class Yeet_FireChargeItemMixin extends Item {
             player.awardStat(Stats.ITEM_USED.get(this));
             itemStack.consume(1, player);
             return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
-
         }
         return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
     }

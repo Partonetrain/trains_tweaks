@@ -2,6 +2,7 @@ package info.partonetrain.trains_tweaks.platform.services;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import org.apache.commons.lang3.NotImplementedException;
 
 public interface IPlatformHelper {
 
@@ -42,5 +43,21 @@ public interface IPlatformHelper {
      */
     default boolean canRollSpawnsWithTables(Mob mob) {
         return true;
+    }
+
+    /**
+     * Returns the value of amendments' fire_charges_throwable config
+     * This should only be called if Amendments is definitely installed.
+     */
+    default boolean isAmendmentsFireballEnabled() {
+        throw new NotImplementedException("Amendments fireball");
+    }
+
+    /**
+     * Returns true if amendments' freeze_ticks option is greater than 0
+     * This should only be called if Amendments is definitely installed.
+     */
+    default boolean isAmendmentsSnowballEnabled() {
+        throw new NotImplementedException("Amendments snowball");
     }
 }

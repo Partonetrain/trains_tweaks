@@ -33,19 +33,18 @@ public class YeetFeatureConfig {
         THROW_FIRE_CHARGES = builder.comment("If enabled, you will be able to right-click the air with a fire charge to throw it")
                 .comment("However, the projectile is inaccurate and unable to ignite blocks when spawned this way")
                 .comment("Note: this re-uses the blaze attack sound event, so subtitles will be inaccurate")
+                .comment("If Amendments is installed and its fire_charges_throwable config is enabled, this tweak will be disabled")
                 .define("Throw Fire Charges", true);
-        //TODO make this work with Amendments2.0
 
-        FIRE_CHARGES_COOLDOWN = builder.comment("Cooldown in ticks between throwing fire charges")
+        FIRE_CHARGES_COOLDOWN = builder.comment("Cooldown in ticks between throwing fire charges (assuming Throw Fire Charges is true)")
                 .defineInRange("Fire Charges Cooldown", 10, 0, 1200);
 
         SNOWBALL_FREEZE_TICKS = builder.comment("If > 0, snowballs inflict this many ticks of freeze when hitting an entity")
+                .comment("If Amendments is installed and its freeze_ticks config is > 0, this tweak will be disabled")
                 .defineInRange("Snowball Freeze Ticks", 40, 0, 2000);
-        //TODO make this work with Amendments2.0
 
-        SNOWBALL_FREEZE_MAX = builder.comment("The maximum amount of freeze ticks consecutive snowball projectiles can inflict")
+        SNOWBALL_FREEZE_MAX = builder.comment("The maximum amount of freeze ticks consecutive snowball projectiles can inflict (assuming Snowball Freeze Ticks > 0)")
                 .defineInRange("Snowball Max Freeze", 500, 0, 2000);
-        //TODO make this work with Amendments2.0
 
         EXPERIENCE_BOTTLE_AMOUNT = builder.comment("The amount of experience points granted from thrown Bottles o' Enchanting")
                 .comment("Set to -1 to use the vanilla value (random amount between 3 and 13)")
