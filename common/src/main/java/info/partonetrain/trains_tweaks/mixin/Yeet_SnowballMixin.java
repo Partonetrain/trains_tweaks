@@ -23,7 +23,7 @@ public class Yeet_SnowballMixin {
             if (f <= YeetFeatureConfig.SNOWBALL_FREEZE_MAX.getAsInt() && e.canFreeze()) {
                 result.getEntity().setTicksFrozen(Math.min(f + YeetFeatureConfig.SNOWBALL_FREEZE_TICKS.getAsInt(), YeetFeatureConfig.SNOWBALL_FREEZE_MAX.getAsInt()));
             }
-            Constants.LOG.info(String.valueOf((result.getEntity().getTicksFrozen())));
+            //Constants.LOG.info(String.valueOf((result.getEntity().getTicksFrozen())));
         }
     }
 }

@@ -21,7 +21,7 @@ public class Fabric_Kritz_AttributesMixin {
             KritzFeature thisFeature = (KritzFeature) AllFeatures.KRITZ_FEATURE;
             thisFeature.readConfigsEarly();
         }
-        if(KritzFeature.enabled && KritzFeature.addEffects) {
+        if(KritzFeature.enabled && KritzFeature.addAttributes) {
             Attribute ma = new RangedAttribute("attribute.name.trains_tweaks.melee_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true);
             Attribute ra = new RangedAttribute("attribute.name.trains_tweaks.ranged_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true);
             KritzFeature.MELEE_CRIT_CHANCE = Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, Constants.MELEE_CRIT_ATTRIBUTE_ID, ma);

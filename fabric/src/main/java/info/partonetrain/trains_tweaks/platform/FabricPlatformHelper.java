@@ -1,14 +1,10 @@
 package info.partonetrain.trains_tweaks.platform;
 
 import fuzs.puzzleslib.api.core.v1.CommonAbstractions;
-import fuzs.puzzleslib.fabric.impl.core.FabricAbstractions;
-import fuzs.puzzleslib.impl.attachment.DataAttachmentRegistryImpl;
-import info.partonetrain.trains_tweaks.CommonClass;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfig;
 import info.partonetrain.trains_tweaks.platform.services.IPlatformHelper;
-import net.fabricmc.fabric.impl.attachment.AttachmentTypeImpl;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.world.entity.LivingEntity;
+import net.mehvahdjukaar.amendments.configs.CommonConfigs;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 
@@ -45,5 +41,15 @@ public class FabricPlatformHelper implements IPlatformHelper {
 
         }
         return true; //don't bother checking of no mod capable of checking is installed
+    }
+
+    @Override
+    public boolean isAmendmentsFireballEnabled() {
+        return CommonConfigs.SNOWBALL_FREEZE.get() > 0;
+    }
+
+    @Override
+    public boolean isAmendmentsSnowballEnabled() {
+        return CommonConfigs.THROWABLE_FIRE_CHARGES.get();
     }
 }

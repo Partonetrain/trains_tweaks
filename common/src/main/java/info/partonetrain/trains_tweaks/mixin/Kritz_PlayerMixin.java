@@ -25,7 +25,7 @@ public class Kritz_PlayerMixin {
     @ModifyExpressionValue(method = "attack", at = @At(value = "CONSTANT", args = "floatValue=1.5"))
     public float trains_tweaks$attack2(float original) {
         if (!AllFeatures.KRITZ_FEATURE.isIncompatibleLoaded() && KritzFeatureConfig.ENABLED.getAsBoolean() && KritzFeatureConfig.KRIT_MULTIPLIER.getAsDouble() != KritzFeatureConfig.KRIT_MULTIPLIER.getDefault()) {
-            KritzFeatureConfig.KRIT_MULTIPLIER.getAsDouble();
+            return (float) KritzFeatureConfig.KRIT_MULTIPLIER.getAsDouble();
         }
         return original;
     }
