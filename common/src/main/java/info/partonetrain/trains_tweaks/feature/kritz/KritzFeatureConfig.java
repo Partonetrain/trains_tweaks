@@ -13,8 +13,7 @@ public class KritzFeatureConfig {
     public static ModConfigSpec.BooleanValue ADD_EFFECTS;
     public static ModConfigSpec.DoubleValue KRIT_MULTIPLIER;
     public static ModConfigSpec.DoubleValue KRIT_CHANCE;
-    public static ModConfigSpec.BooleanValue DISABLE_MOB_CRITS;
-
+    
     static {
         builder = new ModConfigSpec.Builder();
         registerConfig(builder);

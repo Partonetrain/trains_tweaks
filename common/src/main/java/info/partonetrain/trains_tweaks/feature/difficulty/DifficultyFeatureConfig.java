@@ -1,6 +1,10 @@
 package info.partonetrain.trains_tweaks.feature.difficulty;
 
+import net.minecraft.core.UUIDUtil;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.List;
+import java.util.UUID;
 
 public class DifficultyFeatureConfig {
     public static ModConfigSpec.Builder builder;
@@ -10,6 +14,10 @@ public class DifficultyFeatureConfig {
     public static ModConfigSpec.BooleanValue DAMAGE_SCALING;
     public static ModConfigSpec.DoubleValue REGIONAL_DIFFICULTY_MOD;
     public static ModConfigSpec.DoubleValue SPECIAL_MULTIPLIER_MOD;
+    public static ModConfigSpec.ConfigValue<List<String>> MODIFIED_DIFFICULTY_PLAYERS;
+    //Dev: 5084e6f3-8f54-43f1-8df5-1dca109e430f
+    public static ModConfigSpec.DoubleValue MODIFIED_DIFFICULTY_DAMAGE_MULTIPLIER;
+    public static ModConfigSpec.DoubleValue MODIFIED_DIFFICULTY_DAMAGE_RECEIVED_MULTIPLIER;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -32,9 +40,21 @@ public class DifficultyFeatureConfig {
                 .defineInRange("Regional Difficulty Mod", 0D, -10D, 10D);
 
         SPECIAL_MULTIPLIER_MOD = builder.comment("This is a constant modifier to Special Multiplier AKA Clamped Regional Difficulty")
-                .comment("This value is added to the vanilla calculation (which is influenced by Regional Difficulty). Higher values are more difficult. End result cannot go below 0")
+                .comment("This value is added to the vanilla calculation (which is influenced by Regional Difficulty). Higher values are more difficult. End result will not go below 0")
                 .comment("See https://minecraft.wiki/w/Difficulty#Clamped_regional_difficulty for more information on calculation and effects")
                 .defineInRange("Special Multiplier Mod", 0D, -5D, 5D);
 
+        MODIFIED_DIFFICULTY_PLAYERS = builder.comment("UUIDs of players who will have damage received and/or damage output modifiers applied")
+                .comment("This can be used to make the game harder or easier for certain players")
+                .comment("Use a tool like mcuuid.net to find UUIDs")
+                .define("Modified Difficulty Players", List.of("5084e6f3-8f54-43f1-8df5-1dca109e430f"));
+
+        MODIFIED_DIFFICULTY_DAMAGE_MULTIPLIER = builder.comment("A multiplier for damage output from players in the Modified Difficulty Players list")
+                .comment("Leave at 1.0 for normal damage")
+                .defineInRange("Modified Difficulty Damage Multiplier", 1.0D, 0.1D, 10.0D);
+
+        MODIFIED_DIFFICULTY_DAMAGE_RECEIVED_MULTIPLIER = builder.comment("A multiplier for damage received for players in the Modified Difficulty Players list")
+                .comment("Leave at 1.0 for normal damage")
+                .defineInRange("Modified Difficulty Damage Received Multiplier", 1.0D, 0.1D, 10.0D);
     }
 }
