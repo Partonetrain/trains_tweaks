@@ -80,7 +80,6 @@ public class KritzFeature extends ModFeature implements IEarlyConfigReader {
                     Matcher matcher = chancePattern.matcher(line);
                     if (matcher.matches()) {
                         kritChance = Double.parseDouble(matcher.group(1));
-
                     }
                 }
                 if (kritMultipler == -1.5) {
