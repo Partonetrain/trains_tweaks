@@ -72,6 +72,84 @@
     "minecraft:turtle",
     "minecraft:warden",
     "minecraft:wither",
-    "minecraft:zoglin"
+    "minecraft:zoglin",
+
+    {
+      "id": "environmental:deer",
+      "required": false
+    },
+    {
+      "id": "environmental:duck",
+      "required": false
+    },
+    {
+      "id": "environmental:duck_egg",
+      "required": false
+    },
+    {
+      "id": "environmental:koi",
+      "required": false
+    },
+    {
+      "id": "environmental:mud_ball",
+      "required": false
+    },
+    {
+      "id": "environmental:pinecone_golem",
+      "required": false
+    },
+    {
+      "id": "environmental:reindeer",
+      "required": false
+    },
+    {
+      "id": "environmental:slabfish",
+      "required": false
+    },
+    {
+      "id": "environmental:tapir",
+      "required": false
+    },
+    {
+      "id": "environmental:yak",
+      "required": false
+    },
+    {
+      "id": "environmental:zebra",
+      "required": false
+    },
+    {
+      "id": "environmental:zonkey",
+      "required": false
+    },
+    {
+      "id": "environmental:zorse",
+      "required": false
+    },
+
+    {
+      "id": "quark:crab",
+      "required": false
+    },
+    {
+      "id": "quark:foxhound",
+      "required": false
+    },
+    {
+      "id": "quark:toretoise",
+      "required": false
+    },
+    {
+      "id": "quark:shiba",
+      "required": false
+    },
+    {
+      "id": "quark:stoneling",
+      "required": false
+    },
+    {
+      "id": "quark:wraith",
+      "required": false
+    }
   ]
 }

@@ -35,6 +35,7 @@ public class KritzFeature extends ModFeature implements IEarlyConfigReader {
         super("Kritz", KritzFeatureConfig.SPEC);
         incompatibleMods.add("zenith_attributes");
         incompatibleMods.add("apothic_attributes");
+        incompatibleMods.add("critical_strike");
     }
 
     public void readConfigsEarly(){

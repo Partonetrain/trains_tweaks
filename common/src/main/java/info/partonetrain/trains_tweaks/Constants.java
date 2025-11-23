@@ -30,6 +30,9 @@ public final class Constants {
 	//FireResistant
 	public static final TagKey<Item> FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation("fire_resistant"));
 	public static final TagKey<Item> NOT_FIRE_RESISTANT_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "not_fire_resistant"));
+	//Goat
+	public static final TagKey<Item> SHEARS_TAG = TagKey.create(Registries.ITEM, ResourceLocation.parse("c:tools/shears"));
+	public static final TagKey<Item> SHEAR_TAG = TagKey.create(Registries.ITEM, ResourceLocation.parse("c:tools/shear"));
 	//Interdimensional
 	public static final TagKey<Block> NETHER_PORTAL_FRAME_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("nether_portal_frame"));
 	public static final TagKey<DimensionType> SUPPORTS_NETHER_PORTALS_TAG = TagKey.create(Registries.DIMENSION_TYPE, getResourceLocation("supports_nether_portals"));

@@ -22,7 +22,7 @@ public class KritzFeatureConfig {
 
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
-        ENABLED = builder.comment("Whether or not to enable critical hit tweaks (this feature disables itself if Apothic/Zenith Attributes is installed)")
+        ENABLED = builder.comment("Whether or not to enable critical hit tweaks (this feature disables itself if Apothic.Zenith Attributes or Critical Strike is installed)")
                 .comment("\"JERMA THE KRITZ!!! JERMA!!!\"")
                 .define("Critical Hit tweaks",false);
 
