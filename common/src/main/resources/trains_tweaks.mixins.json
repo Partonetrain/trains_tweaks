@@ -27,6 +27,9 @@
     "Interdimensional_EyeOfEnderMixin",
     "Interdimensional_PortalShapeMixin",
     "Interdimensional_ServerPlayerMixin",
+    "Jumpy_LivingEntityMixin",
+    "Jumpy_MobAccessor",
+    "Jumpy_MobEffectsMixin",
     "Kritz_PlayerMixin",
     "Kritz_ProjectileWeaponItemMixin",
     "Loot_LootItemFunctionsMixin",
@@ -83,6 +86,7 @@
   ],
   "client": [
     "_SplashManagerMixin",
+    "Jumpy_LocalPlayerMixin",
     "Zzz_GuiMixin"
   ],
   "server": [],
