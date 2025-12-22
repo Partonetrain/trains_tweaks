@@ -20,14 +20,11 @@ public class Jumpy_MobEffectsMixin {
     //jump boost / JUMP
     @WrapOperation(method = "<clinit>", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/effect/MobEffects;register(Ljava/lang/String;Lnet/minecraft/world/effect/MobEffect;)Lnet/minecraft/core/Holder;", ordinal = 7))
     private static Holder<MobEffect> trains_tweaks$addAttributeModifier(String name, MobEffect effect, Operation<Holder<MobEffect>> original){
-        Constants.LOG.info("jumpy effect tweak here");
         IEarlyConfigReader ecr = (IEarlyConfigReader) (AllFeatures.JUMPY_FEATURE);
         ecr.readConfigsEarly();
         if (JumpyFeature.enabled && JumpyFeature.fixEffect) {
-            Constants.LOG.info("jumpy effect tweak on");
             return original.call(name, effect.addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "effect.jump_boost"), JumpyFeature.fixedEffectModifier, AttributeModifier.Operation.ADD_VALUE));
         }
-        Constants.LOG.info("jumpy effect tweak off");
         return original.call(name, effect);
     }
 }
