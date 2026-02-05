@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class HorseFeature extends ModFeature implements IEarlyConfigReader {
 
-    public static boolean configRead = false; //unused currently
+    public static boolean configRead = false; //unread currently
 
     public static boolean enabled = false;
     public static double healthBuff = -1.0F;

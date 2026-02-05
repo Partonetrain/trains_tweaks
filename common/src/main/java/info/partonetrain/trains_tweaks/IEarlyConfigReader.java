@@ -1,5 +1,6 @@
 package info.partonetrain.trains_tweaks;
 
+//why does this exist? because Forge Config API doesn't always register configs by the times we need them
 public interface IEarlyConfigReader {
     public void readConfigsEarly();
 

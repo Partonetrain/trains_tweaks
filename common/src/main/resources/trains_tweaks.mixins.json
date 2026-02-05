@@ -46,6 +46,8 @@
     "Npc_VillagerTradesMixin",
     "Ocelot_OcelotMixin",
     "PowderWalking_PowderSnowMixin",
+    "Quasi_BlockAccessor",
+    "Quasi_DispenserBlockMixin",
     "Rarity_ItemEntityMixin",
     "Rarity_ItemMixin",
     "Rarity_ItemStackMixin",

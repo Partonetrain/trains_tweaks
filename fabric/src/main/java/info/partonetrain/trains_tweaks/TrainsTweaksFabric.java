@@ -16,7 +16,7 @@ public class TrainsTweaksFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         for(ModFeature mf : AllFeatures.features){
-            if(mf instanceof IEarlyConfigReader earlyConfigReader){
+            if(mf instanceof IEarlyConfigReader earlyConfigReader && !earlyConfigReader.isExtraEarly()){
                 earlyConfigReader.readConfigsEarly();
             }
 
@@ -46,7 +46,6 @@ public class TrainsTweaksFabric implements ModInitializer {
                             JumpyFeature.addJumpRandomlyGoal(mob);
                         }
                     }
-
 
                 }));
             }
