@@ -34,6 +34,14 @@ public class QuasiFeature extends ModFeature implements IEarlyConfigReader {
         incompatibleMods.add("carpet");
     }
 
+    public static boolean isDispenserUsable(){
+        return dispenserMode == QuasiMode.SHIFT_RCLICK_OPT_OUT || dispenserMode == QuasiMode.SHIFT_RCLICK_OPT_IN;
+    }
+
+    public static boolean isPistonUsable(){
+        return pistonMode == QuasiMode.SHIFT_RCLICK_OPT_OUT || pistonMode == QuasiMode.SHIFT_RCLICK_OPT_IN;
+    }
+
     public static void sendPlayerMessage(ServerPlayer player, BlockState state, BlockPos pos, boolean removedFromSave){
         boolean quasiEnabled = false;
         boolean isDispenser = state.getBlock() instanceof DispenserBlock;
@@ -46,7 +54,12 @@ public class QuasiFeature extends ModFeature implements IEarlyConfigReader {
             }
         }
         else{
-
+            if(QuasiFeatureConfig.PISTON_MODE.get() == QuasiMode.SHIFT_RCLICK_OPT_IN){
+                quasiEnabled = removedFromSave;
+            }
+            else if(QuasiFeatureConfig.PISTON_MODE.get() == QuasiMode.SHIFT_RCLICK_OPT_OUT){
+                quasiEnabled = !removedFromSave;
+            }
         }
         player.sendSystemMessage(makeComponent(quasiEnabled, state, pos));
     }
@@ -70,7 +83,7 @@ public class QuasiFeature extends ModFeature implements IEarlyConfigReader {
             String[] split = cfgString.split("\\$COORDS");
             ret.append(split[0]);
             cfgString = split[1];
-            ret.append(Component.literal("X " + pos.getX() + "Y " + pos.getY() + "Z " + pos.getZ()) );
+            ret.append(Component.literal("X: " + pos.getX() + " Y: " + pos.getY() + " Z: " + pos.getZ()) );
         }
         if(cfgString.contains("$BLOCKNAME")){
             String[] split = cfgString.split("\\$BLOCKNAME");
@@ -148,11 +161,5 @@ public class QuasiFeature extends ModFeature implements IEarlyConfigReader {
             CommonClass.printEarlyConfigError("Quasi", e);
             configRead = true;
         }
-    }
-
-    @Override
-    public boolean isExtraEarly(){
-        //readConfigsEarly called in Quasi_DispenserBlockMixin/Quasi_PistonBlockMixin, whichever reaches it first
-        return true;
     }
 }

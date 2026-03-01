@@ -2,13 +2,24 @@ package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeatureConfig;
+import info.partonetrain.trains_tweaks.feature.quasi.QuasiFeature;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.KillNonPlayersCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeature;
 import net.fabricmc.api.ModInitializer;
 import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.piston.PistonBaseBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.config.ModConfig;
 
 public class TrainsTweaksFabric implements ModInitializer {
@@ -49,6 +60,35 @@ public class TrainsTweaksFabric implements ModInitializer {
 
                 }));
             }
+
+            if(mf.getFeatureName().equals("Quasi") && QuasiFeature.enabled){
+                UseBlockCallback.EVENT.register((player, world, hand, blockHitResult) -> {
+                    if (world instanceof ServerLevel sl && hand == InteractionHand.MAIN_HAND &&
+                            !player.isSpectator() && player.getItemInHand(hand).isEmpty()) {
+                        BlockPos blockPos = blockHitResult.getBlockPos();
+                        BlockState state = world.getBlockState(blockPos);
+                        Block block = state.getBlock();
+                        if(block instanceof DispenserBlock && QuasiFeature.isDispenserUsable()){
+                            if(player.isShiftKeyDown()) {
+                                boolean removedFromSave = QuasiFeature.updateCoordsInLevelData(sl, blockPos);
+                                QuasiFeature.sendPlayerMessage((ServerPlayer) player, state, blockPos, removedFromSave);
+                                return InteractionResult.CONSUME;
+                            }
+                        }
+                        else if(block instanceof PistonBaseBlock && QuasiFeature.isPistonUsable()){
+                            if(player.isShiftKeyDown()) {
+                                boolean removedFromSave = QuasiFeature.updateCoordsInLevelData(sl, blockPos);
+                                QuasiFeature.sendPlayerMessage((ServerPlayer) player, state, blockPos, removedFromSave);
+                                player.swing(hand, true); //idk why but it does this automatically on dispenser
+                                return InteractionResult.CONSUME;
+                            }
+                        }
+
+                    }
+                    return InteractionResult.PASS;
+                });
+            }
+
         }
         CommonClass.init();
     }

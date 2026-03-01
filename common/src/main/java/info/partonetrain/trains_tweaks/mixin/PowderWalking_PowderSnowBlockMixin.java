@@ -13,11 +13,19 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PowderSnowBlock.class)
-public class PowderWalking_PowderSnowMixin {
+public class PowderWalking_PowderSnowBlockMixin {
     @Inject(method = "canEntityWalkOnPowderSnow(Lnet/minecraft/world/entity/Entity;)Z", at=@At("HEAD"), cancellable = true)
     private static void trains_tweaks$canEntityWalkOnPowderSnow(Entity entity, CallbackInfoReturnable<Boolean> cir){
         if(!AllFeatures.POWDER_WALKING_FEATURE.isIncompatibleLoaded() && PowderWalkingFeatureConfig.ENABLED.getAsBoolean()){
             if(entity instanceof LivingEntity le){
+                if(le.getItemBySlot(EquipmentSlot.FEET).is(Constants.POWDER_WALKER_ARMOR_DENIED_TAG)
+                        || le.getItemBySlot(EquipmentSlot.LEGS).is(Constants.POWDER_WALKER_ARMOR_DENIED_TAG)
+                        || le.getItemBySlot(EquipmentSlot.CHEST).is(Constants.POWDER_WALKER_ARMOR_DENIED_TAG)
+                        || le.getItemBySlot(EquipmentSlot.HEAD).is(Constants.POWDER_WALKER_ARMOR_DENIED_TAG)
+                        || le.getItemBySlot(EquipmentSlot.BODY).is(Constants.POWDER_WALKER_ARMOR_DENIED_TAG)){
+                    cir.setReturnValue(false);
+                }
+
                 if(le.getItemBySlot(EquipmentSlot.FEET).is(Constants.POWDER_WALKER_ARMOR_TAG)
                     || le.getItemBySlot(EquipmentSlot.LEGS).is(Constants.POWDER_WALKER_ARMOR_TAG)
                     || le.getItemBySlot(EquipmentSlot.CHEST).is(Constants.POWDER_WALKER_ARMOR_TAG)

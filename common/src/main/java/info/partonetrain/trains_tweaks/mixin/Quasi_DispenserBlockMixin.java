@@ -26,20 +26,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(DispenserBlock.class)
 public class Quasi_DispenserBlockMixin {
 
-    @Inject(method = "useWithoutItem", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;"), cancellable = true)
-    public void trains_tweaks$useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult, CallbackInfoReturnable<InteractionResult> cir){
-        if(!AllFeatures.QUASI_FEATURE.isIncompatibleLoaded() && QuasiFeatureConfig.ENABLED.getAsBoolean() &&
-                (QuasiFeatureConfig.DISPENSER_MODE.get() == QuasiMode.SHIFT_RCLICK_OPT_IN || QuasiFeatureConfig.DISPENSER_MODE.get() == QuasiMode.SHIFT_RCLICK_OPT_OUT)) {
-
-            if(player.isShiftKeyDown()){
-                boolean removedFromSave = QuasiFeature.updateCoordsInLevelData((ServerLevel) level, pos);
-
-                QuasiFeature.sendPlayerMessage((ServerPlayer)player, state, pos, removedFromSave);
-                cir.setReturnValue(InteractionResult.CONSUME);
-            }
-
-        }
-    }
+    //Moved to mod init events - UseBlockCallback (fabric) / PlayerInteractEvent.RightClickBlock (neo)
+//    @Inject(method = "useWithoutItem", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;"), cancellable = true)
+//    public void trains_tweaks$useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult, CallbackInfoReturnable<InteractionResult> cir){
+//        if(!AllFeatures.QUASI_FEATURE.isIncompatibleLoaded() && QuasiFeatureConfig.ENABLED.getAsBoolean() &&
+//                (QuasiFeatureConfig.DISPENSER_MODE.get() == QuasiMode.SHIFT_RCLICK_OPT_IN || QuasiFeatureConfig.DISPENSER_MODE.get() == QuasiMode.SHIFT_RCLICK_OPT_OUT)) {
+//
+//            if(player.isShiftKeyDown()){
+//                boolean removedFromSave = QuasiFeature.updateCoordsInLevelData((ServerLevel) level, pos);
+//
+//                QuasiFeature.sendPlayerMessage((ServerPlayer)player, state, pos, removedFromSave);
+//                cir.setReturnValue(InteractionResult.CONSUME);
+//            }
+//
+//        }
+//    }
 
     @WrapOperation(method = "neighborChanged", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;hasNeighborSignal(Lnet/minecraft/core/BlockPos;)Z", ordinal = 1))
     public boolean trains_tweaks$neighborChanged(Level instance, BlockPos blockPos, Operation<Boolean> original){

@@ -67,6 +67,7 @@ public final class Constants {
 	//PowderWalking
 	public static final TagKey<Item> POWDER_WALKER_ARMOR_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "powder_walking_armor"));
 	public static final TagKey<Item> POWDER_WALKER_ITEM_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "powder_walking_item"));
+	public static final TagKey<Item> POWDER_WALKER_ARMOR_DENIED_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "powder_walking_armor_denied"));
 	//Rarity
 	public static final TagKey<Item> COMMON_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "common"));
 	public static final TagKey<Item> UNCOMMON_TAG = TagKey.create(Registries.ITEM, getResourceLocation( "uncommon"));

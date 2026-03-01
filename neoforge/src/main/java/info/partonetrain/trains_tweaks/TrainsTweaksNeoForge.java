@@ -8,16 +8,27 @@ import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.kritz.KritzEffects;
 import info.partonetrain.trains_tweaks.feature.kritz.KritzFeature;
+import info.partonetrain.trains_tweaks.feature.quasi.QuasiFeature;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.KillNonPlayersCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeature;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.piston.PistonBaseBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -28,6 +39,8 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -82,6 +95,9 @@ public class TrainsTweaksNeoForge {
                     KritzFeature.RANGED_CRIT_EFFECT = MOB_EFFECTS.register("ranged_fury", () -> KritzEffects.re);
                 }
             }
+            if(mf.getFeatureName().equals("Quasi") && QuasiFeature.enabled){
+                NeoForge.EVENT_BUS.addListener(this::useItemOnBlock);
+            }
             if(mf.getFeatureName().equals("UtilityCommands") && UtilityCommandsFeature.enabled){
                 NeoForge.EVENT_BUS.addListener(this::registerCommands);
             }
@@ -133,6 +149,37 @@ public class TrainsTweaksNeoForge {
                 }
             }
         }
+    }
+
+    public InteractionResult useItemOnBlock(PlayerInteractEvent.RightClickBlock event){
+        Level world = event.getLevel();
+        Player player = event.getEntity();
+        InteractionHand hand = event.getHand();
+
+        if (world instanceof ServerLevel sl && hand == InteractionHand.MAIN_HAND &&
+                !player.isSpectator() && player.getItemInHand(hand).isEmpty()) {
+            BlockPos blockPos = event.getPos();
+            BlockState state = world.getBlockState(blockPos);
+            Block block = state.getBlock();
+            if(block instanceof DispenserBlock && QuasiFeature.isDispenserUsable()){
+                if(player.isShiftKeyDown()) {
+                    boolean removedFromSave = QuasiFeature.updateCoordsInLevelData(sl, blockPos);
+                    QuasiFeature.sendPlayerMessage((ServerPlayer) player, state, blockPos, removedFromSave);
+                    return InteractionResult.CONSUME;
+                }
+            }
+            else if(block instanceof PistonBaseBlock && QuasiFeature.isPistonUsable()){
+                if(player.isShiftKeyDown()) {
+                    boolean removedFromSave = QuasiFeature.updateCoordsInLevelData(sl, blockPos);
+                    QuasiFeature.sendPlayerMessage((ServerPlayer) player, state, blockPos, removedFromSave);
+                    player.swing(hand, true); //idk why but it does this automatically on dispenser
+                    return InteractionResult.CONSUME;
+                }
+            }
+
+        }
+        return InteractionResult.PASS;
+
     }
 
 }
