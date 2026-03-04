@@ -31,7 +31,7 @@ dependencies {
     modApi "fuzs.puzzleslib:puzzleslib-fabric:${puzzleslib_version}"
 
     modImplementation "maven.modrinth:moonlight:$moonlightlib_version-fabric"
-    modImplementation "maven.modrinth:amendments:fabric_$amendments_version"
+    modImplementation "maven.modrinth:amendments:$amendments_version-fabric"
 }
 
 loom {

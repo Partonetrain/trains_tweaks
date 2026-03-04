@@ -49,7 +49,7 @@ repositories {
 
 dependencies {
     implementation "maven.modrinth:moonlight:$moonlightlib_version-neoforge"
-    implementation "maven.modrinth:amendments:neoforge_$amendments_version"
+    implementation "maven.modrinth:amendments:$amendments_version-neoforge"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
