@@ -1,0 +1,82 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wooden_sword",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": "Limited exclude, 50 tries"
+            },
+            {
+              "function": "trains_tweaks:randomize",
+              "exclude": [
+                "#c:hidden_from_recipe_viewers"
+              ],
+              "_comment": "exclude only works with tags",
+              "max_tries": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:barrier",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": "Extensive exclude, 1 try"
+            },
+            {
+              "function": "trains_tweaks:randomize",
+              "exclude": [
+                "#c:hidden_from_recipe_viewers",
+                "#minecraft:stairs",
+                "#minecraft:slabs",
+                "#minecraft:fences",
+                "#minecraft:fence_gates",
+                "#minecraft:leaves",
+                "#minecraft:logs",
+                "#minecraft:boats",
+                "#minecraft:enchantable",
+                "#minecraft:wool",
+                "#minecraft:wool_carpets",
+                "#minecraft:beds",
+                "#minecraft:trim_materials",
+                "#minecraft:decorated_pot_ingredients",
+                "#minecraft:flowers",
+                "#minecraft:doors",
+                "#minecraft:trapdoors",
+                "#minecraft:signs",
+                "#minecraft:hanging_signs",
+                "#c:crops",
+                "#c:animal_foods",
+                "#c:seeds",
+                "#c:dyed",
+                "#c:dyes",
+                "#c:gems",
+                "#c:ingots",
+                "#c:ores",
+                "#c:tools",
+                "#c:armors",
+                "#c:foods",
+                "#c:drinks",
+                "#c:glass_blocks"
+              ],
+              "max_tries": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "trains_tweaks:demo/randomize"
+}

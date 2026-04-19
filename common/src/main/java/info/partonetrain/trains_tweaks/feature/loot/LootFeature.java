@@ -19,6 +19,7 @@ public class LootFeature extends ModFeature {
     public static LootItemFunctionType<EnchantCurseFunction> ENCHANT_CURSE_FUNCTION;
     public static LootItemFunctionType<EnchantMaxFunction> ENCHANT_MAX_FUNCTION;
     public static LootItemFunctionType<EnchantAllFunction> ENCHANT_ALL_FUNCTION;
+    public static LootItemFunctionType<RandomizeFunction> RANDOMIZE_FUNCTION;
 
     public static List<Holder<Enchantment>> sortEnchantmentsByValue(List<Holder<Enchantment>> enchantments){
         List<Holder<Enchantment>> list = new ArrayList<>(enchantments); //make mutable

@@ -5,15 +5,12 @@ import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.ModFeature;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.data.DataProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.DropperBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import java.io.IOException;
 import java.nio.file.Files;

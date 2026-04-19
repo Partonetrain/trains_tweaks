@@ -49,6 +49,7 @@ public final class Constants {
 	public static final ResourceLocation ENCHANT_CURSE = getResourceLocation( "enchant_curse");
 	public static final ResourceLocation ENCHANT_MAX = getResourceLocation( "enchant_max");
 	public static final ResourceLocation ENCHANT_ALL = getResourceLocation( "enchant_all");
+	public static final ResourceLocation RANDOMIZE = getResourceLocation( "randomize");
 	//MobDrops
 	public static ResourceKey<LootTable> GENERIC_DROP_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/generic"));
 	public static ResourceKey<LootTable> STAR_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/extended_wither_drop"));
