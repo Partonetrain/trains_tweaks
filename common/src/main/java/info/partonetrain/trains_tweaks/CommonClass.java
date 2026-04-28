@@ -16,7 +16,7 @@ public final class CommonClass {
             List<String> incompatibleMods = mf.getIncompatibleMods();
             if(!incompatibleMods.isEmpty()){
                 for(String s : incompatibleMods){
-                    if(Services.PLATFORM.isModLoaded(s)){
+                    if(Services.PLATFORM.isModLoaded(s)){ //hopefully this classloads Services as early as possible
                         mf.setIncompatibleLoaded(false);
                         Constants.LOG.info("Feature " + mf.getFeatureName() + " was disabled due " +
                                 "incompatible mod " + s);

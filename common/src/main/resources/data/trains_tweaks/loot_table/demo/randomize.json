@@ -13,11 +13,11 @@
               "name": "Limited exclude, 50 tries"
             },
             {
-              "function": "trains_tweaks:randomize",
+              "function": "trains_tweaks:randomize_exclude",
               "exclude": [
                 "#c:hidden_from_recipe_viewers"
               ],
-              "_comment": "exclude only works with tags",
+              "_comment": "these functions only work with tags",
               "max_tries": 50
             }
           ]
@@ -36,7 +36,7 @@
               "name": "Extensive exclude, 1 try"
             },
             {
-              "function": "trains_tweaks:randomize",
+              "function": "trains_tweaks:randomize_exclude",
               "exclude": [
                 "#c:hidden_from_recipe_viewers",
                 "#minecraft:stairs",
@@ -72,6 +72,32 @@
                 "#c:glass_blocks"
               ],
               "max_tries": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wooden_sword",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": "Limited include, 50 tries"
+            },
+            {
+              "function": "trains_tweaks:randomize_include",
+              "exclude": [
+                "#minecraft:pickaxes",
+                "#minecraft:axes",
+                "#minecraft:shovels"
+              ],
+              "_comment2": "it's better to use entries of type minecraft:tag (with expand set to true) in most cases",
+              "_comment3": "both randomize functions use ItemStack#transmuteCopy which has some nuance",
+              "max_tries": 50
             }
           ]
         }

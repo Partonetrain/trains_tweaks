@@ -35,7 +35,7 @@ public class DifficultyFeatureConfig {
                 .define("Damage Scaling", true);
 
         REGIONAL_DIFFICULTY_MOD = builder.comment("This is a constant modifier to Regional Difficulty")
-                .comment("This value is added to the vanilla calculation. Higher values are more difficult. End result cannot go below 0")
+                .comment("This value is added to the vanilla calculation. Higher values are more difficult. End result will not go below 0")
                 .comment("See https://minecraft.wiki/w/Difficulty#Regional_difficulty for more information on calculation and effects")
                 .defineInRange("Regional Difficulty Mod", 0D, -10D, 10D);
 

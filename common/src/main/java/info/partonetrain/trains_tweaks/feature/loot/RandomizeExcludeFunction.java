@@ -4,8 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import info.partonetrain.trains_tweaks.Constants;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
@@ -21,9 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Optional;
 
-public class RandomizeFunction extends LootItemConditionalFunction {
+public class RandomizeExcludeFunction extends LootItemConditionalFunction {
 
-    public static final MapCodec<RandomizeFunction> CODEC = RecordCodecBuilder.mapCodec(
+    public static final MapCodec<RandomizeExcludeFunction> CODEC = RecordCodecBuilder.mapCodec(
             recordCodecBuilder -> commonFields(recordCodecBuilder)
                     .and(
                             recordCodecBuilder.group(
@@ -31,19 +29,19 @@ public class RandomizeFunction extends LootItemConditionalFunction {
                                     Codec.INT.optionalFieldOf("max_tries", 500).forGetter(randomizeFunction -> randomizeFunction.max_tries)
                             )
                     )
-                    .apply(recordCodecBuilder, RandomizeFunction::new)
+                    .apply(recordCodecBuilder, RandomizeExcludeFunction::new)
     );
     private final Optional<List<TagKey<Item>>> exclude;
     private final int max_tries;
 
-    RandomizeFunction(List<LootItemCondition> conditons, Optional<List<TagKey<Item>>> exclude, int maxTries) {
+    RandomizeExcludeFunction(List<LootItemCondition> conditons, Optional<List<TagKey<Item>>> exclude, int maxTries) {
         super(conditons);
         this.exclude = exclude;
         this.max_tries = maxTries;
     }
 
-    public @NotNull LootItemFunctionType<RandomizeFunction> getType() {
-        return LootFeature.RANDOMIZE_FUNCTION;
+    public @NotNull LootItemFunctionType<RandomizeExcludeFunction> getType() {
+        return LootFeature.RANDOMIZE_EXCLUDE_FUNCTION;
     }
 
     public @NotNull ItemStack run(ItemStack stack, LootContext context) {
@@ -55,14 +53,14 @@ public class RandomizeFunction extends LootItemConditionalFunction {
             Item item = BuiltInRegistries.ITEM.getRandom(randomsource).get().value();
 
             ItemStack itemStack = item.getDefaultInstance();
-            Constants.LOG.info("RandomizeFunction: randomly chose a " + itemStack.getDisplayName().getString());
+            //Constants.LOG.info("RandomizeExcludeFunction: randomly chose a " + itemStack.getDisplayName().getString());
 
             boolean good = true;
             if(exclude.isPresent()) {
                 List<TagKey<Item>> tags = exclude.get();
                 for(TagKey<Item> itemTag : tags){
                     if(itemStack.is(itemTag)){
-                        Constants.LOG.info("RandomizeFunction: " + itemStack.getDisplayName().getString() + " was in " + itemTag.location().toString() + ". try: " + tries);
+                        //Constants.LOG.info("RandomizeExcludeFunction: " + itemStack.getDisplayName().getString() + " was in " + itemTag.location().toString() + ". try: " + tries);
                         tries++;
                         good = false;
                         break;
@@ -76,7 +74,7 @@ public class RandomizeFunction extends LootItemConditionalFunction {
             return stack.transmuteCopy(item); //keeps components applied from other functions.
         }
 
-        Constants.LOG.info("RandomizeFunction: could not find an item that wasn't in exclude");
+        Constants.LOG.info("RandomizeExcludeFunction: could not find an item that wasn't in exclude");
         return stack;
     }
 }
