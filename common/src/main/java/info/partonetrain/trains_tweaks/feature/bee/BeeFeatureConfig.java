@@ -9,6 +9,8 @@ public class BeeFeatureConfig {
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.BooleanValue BEES_KEEP_STINGER;
     public static ModConfigSpec.BooleanValue ALWAYS_SEDATED;
+    public static ModConfigSpec.IntValue HONEYCOMB_DROPPED;
+    public static ModConfigSpec.IntValue HONEY_LEVEL_BONUS_CHANCE;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -27,5 +29,11 @@ public class BeeFeatureConfig {
 
         ALWAYS_SEDATED = builder.comment("If enabled, campfires below beehives/bee nests are not necessary to prevent bees from becoming angry")
                 .define("Always Sedated", false);
+
+        HONEYCOMB_DROPPED = builder.comment("The number of honey combs dropped when shearing a beehive/bee nest")
+                .defineInRange("Honeycomb Dropped", 3, 1, 64);
+
+        HONEY_LEVEL_BONUS_CHANCE = builder.comment("The chance (1/x) that the honey level of a beehive/bee nest is incremented by 2 instead of 1 when a pollinated bee exits a beehive")
+                .defineInRange("Honey Level Bonus", 100, 1, 100);
     }
 }

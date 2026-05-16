@@ -9,6 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BeehiveBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(BeehiveBlock.class)
 public class Bee_BeehiveBlockMixin {
@@ -18,5 +19,13 @@ public class Bee_BeehiveBlockMixin {
             return true;
         }
         return original.call(level, blockpos);
+    }
+
+    @ModifyArg(method = "dropHoneycomb", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;<init>(Lnet/minecraft/world/level/ItemLike;I)V"), index = 1)
+    private static int trains_tweaks$dropHoneycomb(int count){
+        if (!AllFeatures.BEE_FEATURE.isIncompatibleLoaded() && BeeFeatureConfig.ENABLED.getAsBoolean() && BeeFeatureConfig.HONEYCOMB_DROPPED.getAsInt() != BeeFeatureConfig.HONEYCOMB_DROPPED.getDefault()) {
+            return BeeFeatureConfig.HONEYCOMB_DROPPED.getAsInt();
+        }
+        return count;
     }
 }
