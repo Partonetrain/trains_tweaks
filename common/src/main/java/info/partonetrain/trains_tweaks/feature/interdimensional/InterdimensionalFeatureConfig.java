@@ -1,7 +1,11 @@
 package info.partonetrain.trains_tweaks.feature.interdimensional;
 
 import info.partonetrain.trains_tweaks.Constants;
+import net.minecraft.core.Vec3i;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InterdimensionalFeatureConfig {
     public static ModConfigSpec.Builder builder;
@@ -15,6 +19,8 @@ public class InterdimensionalFeatureConfig {
     public static ModConfigSpec.ConfigValue<String> EFFECT_RESTRICTIONS;
     public static ModConfigSpec.ConfigValue<String> EFFECT_RESTRICTION_MESSAGE;
 
+    public static ModConfigSpec.ConfigValue<String> DRAGON_FIGHT_GATEWAY_SPAWNS;
+
     static {
         builder = new ModConfigSpec.Builder();
         registerConfig(builder);
@@ -27,7 +33,7 @@ public class InterdimensionalFeatureConfig {
                 .comment("Whether or not to enable any tweaks relating to dimensions and portals")
                 .define("Interdimensional Tweaks", false);
 
-        NETHER_PORTAL_BLOCK_TAG = builder.comment("Whether or not the tag " + Constants.NETHER_PORTAL_FRAME_TAG.location() + " function")
+        NETHER_PORTAL_BLOCK_TAG = builder.comment("Whether or not the tag " + Constants.NETHER_PORTAL_FRAME_TAG.location() + " functions")
                 .comment("This option outright replaces the predicate, meaning it could cause issues if other mods attempt to add different portal frame blocks")
                 .comment("You can remove obsidian by replacing this tag via datapack")
                 .define("Nether Portal Frame tags", true);
@@ -51,6 +57,13 @@ public class InterdimensionalFeatureConfig {
                 .comment("You can use the placeholders $EFFECT, $DIMENSION, and $ADVANCEMENT, but they must not be the very first or very last part of the string")
                 .comment("Set to blank for no message")
                 .define("Effect Restriction Message", "You cannot have the $EFFECT effect in $DIMENSION until you unlock the advancement $ADVANCEMENT.");
+
+        DRAGON_FIGHT_GATEWAY_SPAWNS = builder.comment("End Gateways will spawn at these block positions after the Ender Dragon is defeated for the first time")
+                .comment("This disables the regular gateway spawn mechanics; Leave as default (0,0,0) for vanilla gateway mechanics")
+                .comment("The format is x,y,z;x,y,z;x,y,z;x,y,z")
+                .comment("For example: 0, 72, -20; 0, 72, 20; -20, 72, 0; 20, 72, 0; spawns 4 gateways around the exit portal")
+                .comment("If Yung's Better End Island is installed and its useVanillaEndGateways option is false, this will spawn the YBEI version of the gateway in these positions. Keep in mind these are slightly larger than the vanilla gateways")
+                .define("Dragon Fight Gateway Spawns", "0,0,0");
 
     }
 }

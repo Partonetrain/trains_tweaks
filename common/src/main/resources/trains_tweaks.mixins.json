@@ -24,6 +24,7 @@
     "Horse_AbstractHorseMixin",
     "Horse_LlamaMixin",
     "Interdimensional_BaseFireBlockMixin",
+    "Interdimensional_EndDragonFightMixin",
     "Interdimensional_EyeOfEnderMixin",
     "Interdimensional_PortalShapeMixin",
     "Interdimensional_ServerPlayerMixin",

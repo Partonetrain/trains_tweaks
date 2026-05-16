@@ -14,7 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class Interdimensional_BaseFireBlockMixin {
     @Inject(method = "inPortalDimension", at=@At("RETURN"), cancellable = true)
     private static void trains_tweaks$inPortalDimension(Level level, CallbackInfoReturnable<Boolean> cir){
-        if (!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.NETHER_PORTAL_DIMENSIONS_TAG.getAsBoolean()) {
+        if (!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.ENABLED.getAsBoolean()
+                && InterdimensionalFeatureConfig.NETHER_PORTAL_DIMENSIONS_TAG.getAsBoolean()) {
             cir.setReturnValue(level.dimensionTypeRegistration().is(Constants.SUPPORTS_NETHER_PORTALS_TAG));
         }
     }

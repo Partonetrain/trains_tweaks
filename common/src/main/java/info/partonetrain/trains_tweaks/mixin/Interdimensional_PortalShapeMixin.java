@@ -25,7 +25,7 @@ public class Interdimensional_PortalShapeMixin {
 
     @Inject(method = {"<init>(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction$Axis;)V"}, at = {@At("RETURN")})
     private void trains_tweaks$init(LevelAccessor level, BlockPos bottomLeft, Direction.Axis axis, CallbackInfo ci){
-        if (!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.NETHER_PORTAL_BLOCK_TAG.getAsBoolean()) {
+        if (!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.ENABLED.getAsBoolean() && InterdimensionalFeatureConfig.NETHER_PORTAL_BLOCK_TAG.getAsBoolean()) {
             FRAME = (blockState, blockGetter, blockPos) -> blockState.is(Constants.NETHER_PORTAL_FRAME_TAG);
         }
     }

@@ -24,7 +24,8 @@ public class Interdimensional_EyeOfEnderMixin {
 
     @Inject(method = "signalTo", at=@At("TAIL"))
     public void trains_tweaks$signalTo(BlockPos pos, CallbackInfo ci){
-        if(!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.EYE_OF_ENDER_IMPLODE_CHANCE.getAsInt() != InterdimensionalFeatureConfig.EYE_OF_ENDER_IMPLODE_CHANCE.getDefault()){
+        if(!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.ENABLED.getAsBoolean()
+                && InterdimensionalFeatureConfig.EYE_OF_ENDER_IMPLODE_CHANCE.getAsInt() != InterdimensionalFeatureConfig.EYE_OF_ENDER_IMPLODE_CHANCE.getDefault()){
             int cfg = InterdimensionalFeatureConfig.EYE_OF_ENDER_IMPLODE_CHANCE.getAsInt();
             if(cfg == 0) //prevent div by 0
             {

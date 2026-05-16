@@ -13,7 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Interdimensional_ServerPlayerMixin {
     @Inject(method = "tick", at=@At("TAIL"))
     public void trains_tweaks$tick(CallbackInfo ci){
-        if(!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.ENABLE_EFFECT_RESTRICTIONS.getAsBoolean()){
+        if(!AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded() && InterdimensionalFeatureConfig.ENABLED.getAsBoolean()
+                && InterdimensionalFeatureConfig.ENABLE_EFFECT_RESTRICTIONS.getAsBoolean()){
             ServerPlayer self = (ServerPlayer) (Object) this;
             InterdimensionalFeature.applyEffectRestrictions(self);
         }

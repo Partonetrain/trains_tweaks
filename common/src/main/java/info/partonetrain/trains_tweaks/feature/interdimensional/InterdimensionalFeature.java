@@ -6,6 +6,7 @@ import info.partonetrain.trains_tweaks.ModFeature;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -18,6 +19,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.dimension.DimensionType;
 
 import java.util.*;
@@ -26,6 +28,8 @@ public class InterdimensionalFeature extends ModFeature {
 
     public static boolean effectRestrictionsParsed = false;
     public static List<EffectRestriction> restrictions = new ArrayList<>();
+
+    public static List<BlockPos> endGatewaySpawns = new ArrayList<>();
 
     public InterdimensionalFeature()
     {
@@ -135,5 +139,36 @@ public class InterdimensionalFeature extends ModFeature {
         }
 
         return ret.withStyle(ChatFormatting.ITALIC);
+    }
+
+    public static List<BlockPos> parseEndGatewaySpawns(){
+        if (endGatewaySpawns.isEmpty()){
+            if(InterdimensionalFeatureConfig.DRAGON_FIGHT_GATEWAY_SPAWNS.get().equals(InterdimensionalFeatureConfig.DRAGON_FIGHT_GATEWAY_SPAWNS.getDefault()))
+            {
+                //the config is default. return nothing
+                //this is technically already checked for when called...
+                return Collections.emptyList();
+            }
+
+            //start parsing
+            String[] split = InterdimensionalFeatureConfig.DRAGON_FIGHT_GATEWAY_SPAWNS.get().strip().split("[;|]");
+            for (String s : split){
+                String[] coords = s.split(",");
+                try{
+                    int x = Integer.parseInt(coords[0].strip());
+                    int y = Integer.parseInt(coords[1].strip());
+                    int z = Integer.parseInt(coords[2].strip());
+                    BlockPos pos = new BlockPos(x, y, z);
+                    endGatewaySpawns.add(pos);
+                }
+                catch(ArrayIndexOutOfBoundsException | NumberFormatException e){
+                    Constants.LOG.info("Failed to parse coordinate for end gateway: " + e.getMessage());
+                    return Collections.emptyList();
+                }
+            }
+        }
+        //at this point endGatewaySpawns is not empty
+        //we must have already parsed successfully
+        return endGatewaySpawns;
     }
 }

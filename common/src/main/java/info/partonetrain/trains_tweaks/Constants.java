@@ -20,6 +20,10 @@ public final class Constants {
 	public static final String MOD_ID = "trains_tweaks";
 	public static final String MOD_NAME = "Train's Tweaks";
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
+	//CONVENTION TAGS
+	public static final TagKey<EntityType<?>> CONVENTION_BOSSES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("c:bosses"));
+
+
 	//AttackSpeed
 	public static final ResourceLocation DEXTERITY_EFFECT_ID = getResourceLocation("dexterity");
 	public static final ResourceLocation CLUMSY_EFFECT_ID = getResourceLocation("clumsy");
