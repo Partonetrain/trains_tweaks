@@ -1,0 +1,28 @@
+{
+  "parent": "trains_tweaks:demo/root",
+  "criteria": {
+    "date": {
+      "trigger": "trains_tweaks:system_date",
+      "conditions": {
+        "month": 15,
+        "day": 45
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:sculk_sensor"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "TT Demo System Date 4"
+    },
+    "description": {
+      "text": "Invalid date!"
+    },
+    "hidden": false
+  },
+  "sends_telemetry_event": true
+}

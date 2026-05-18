@@ -1,0 +1,31 @@
+{
+  "parent": "trains_tweaks:demo/root",
+  "criteria": {
+    "date": {
+      "trigger": "trains_tweaks:system_date",
+      "conditions": {
+        "year": {
+          "min": 2000,
+          "max": 2030
+        },
+        "month": 5
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:sculk_sensor"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "TT Demo System Date 1"
+    },
+    "description": {
+      "text": "You are playing in May between the year 2000 and 2030 (inclusive)"
+    },
+    "hidden": false
+  },
+  "sends_telemetry_event": true
+}

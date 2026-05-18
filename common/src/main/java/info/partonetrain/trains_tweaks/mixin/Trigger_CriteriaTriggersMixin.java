@@ -5,6 +5,7 @@ import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.IEarlyConfigReader;
 import info.partonetrain.trains_tweaks.feature.trigger.DayTrigger;
 import info.partonetrain.trains_tweaks.feature.trigger.GameTimeTrigger;
+import info.partonetrain.trains_tweaks.feature.trigger.SystemDateTrigger;
 import info.partonetrain.trains_tweaks.feature.trigger.TriggerFeature;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Registry;
@@ -27,6 +28,9 @@ public class Trigger_CriteriaTriggersMixin {
             }
             if(TriggerFeature.dayEnabled){
                 TriggerFeature.DAY_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.DAY_TRIGGER, new DayTrigger());
+            }
+            if(TriggerFeature.systemDateEnabled){
+                TriggerFeature.SYSTEM_DATE_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.SYSTEM_DATE_TRIGGER, new SystemDateTrigger());
             }
         }
     }

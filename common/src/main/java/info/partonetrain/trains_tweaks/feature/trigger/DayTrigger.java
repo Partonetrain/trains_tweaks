@@ -2,9 +2,6 @@ package info.partonetrain.trains_tweaks.feature.trigger;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import info.partonetrain.trains_tweaks.Constants;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -27,10 +24,6 @@ public class DayTrigger extends SimpleCriterionTrigger<DayTrigger.TriggerInstanc
                     EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(DayTrigger.TriggerInstance::player),
                     MinMaxBounds.Ints.CODEC.optionalFieldOf("day").forGetter(DayTrigger.TriggerInstance::days)
             ).apply(p_337396_, DayTrigger.TriggerInstance::new));
-
-        public static Criterion<DayTrigger.TriggerInstance> checkDay(EntityPredicate.Builder player) {
-            return TriggerFeature.DAY_TRIGGER.createCriterion(new DayTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player)), Optional.empty()));
-        }
 
         public boolean matches(ServerPlayer player){
             long time = player.level().getDayTime();

@@ -2,8 +2,6 @@ package info.partonetrain.trains_tweaks.feature.trigger;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import info.partonetrain.trains_tweaks.Constants;
-import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -29,10 +27,6 @@ public class GameTimeTrigger extends SimpleCriterionTrigger<GameTimeTrigger.Trig
                     EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(GameTimeTrigger.TriggerInstance::player),
                     MinMaxBounds.Ints.CODEC.optionalFieldOf("gametime").forGetter(GameTimeTrigger.TriggerInstance::gametime)
             ).apply(p_337396_, GameTimeTrigger.TriggerInstance::new));
-
-        public static Criterion<GameTimeTrigger.TriggerInstance> checkGameTime(EntityPredicate.Builder player) {
-            return TriggerFeature.GAME_TIME_TRIGGER.createCriterion(new GameTimeTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player)), Optional.empty()));
-        }
 
 
         public boolean matches(ServerPlayer player){

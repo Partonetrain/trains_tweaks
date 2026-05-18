@@ -12,11 +12,15 @@ public class Trigger_ServerPlayerMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/PlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;)V"))
     private void trains_tweaks$tick(CallbackInfo ci){
         if(TriggerFeature.enabled){
+            ServerPlayer self = (ServerPlayer)(Object)this;
             if(TriggerFeature.gameTimeEnabled){
-                TriggerFeature.GAME_TIME_TRIGGER.trigger((ServerPlayer)(Object)this);
+                TriggerFeature.GAME_TIME_TRIGGER.trigger(self);
             }
             if(TriggerFeature.dayEnabled){
-                TriggerFeature.DAY_TRIGGER.trigger((ServerPlayer)(Object)this);
+                TriggerFeature.DAY_TRIGGER.trigger(self);
+            }
+            if(TriggerFeature.systemDateEnabled){
+                TriggerFeature.SYSTEM_DATE_TRIGGER.trigger(self);
             }
         }
     }

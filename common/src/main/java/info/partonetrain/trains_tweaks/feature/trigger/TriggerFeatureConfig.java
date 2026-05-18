@@ -10,6 +10,7 @@ public class TriggerFeatureConfig {
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.BooleanValue GAME_TIME_TRIGGER;
     public static ModConfigSpec.BooleanValue DAY_TRIGGER;
+    public static ModConfigSpec.BooleanValue SYSTEM_DATE_TRIGGER;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -30,5 +31,9 @@ public class TriggerFeatureConfig {
         DAY_TRIGGER = builder.comment("Whether or not to register the " + Constants.DAY_TRIGGER + " trigger")
                 .comment("This allows advancements to check for amount of days since world creation")
                 .define("Day trigger", true);
+
+        SYSTEM_DATE_TRIGGER = builder.comment("Whether or not to register the " + Constants.SYSTEM_DATE_TRIGGER + " trigger")
+                .comment("This allows advancements to check for the system's year, month, and/or day")
+                .define("System Date trigger", false);
     }
 }

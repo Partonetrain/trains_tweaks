@@ -1,4 +1,5 @@
 {
+  "_comment": "This function has the same options as minecraft:enchant_randomly, but it always provides one max-level, non-treasure, non-curse relevant enchantment",
   "type": "minecraft:gift",
   "pools": [
     {

@@ -19,9 +19,11 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
     public static boolean enabled = false;
     public static boolean gameTimeEnabled = false;
     public static boolean dayEnabled = false;
+    public static boolean systemDateEnabled = false;
 
     public static GameTimeTrigger GAME_TIME_TRIGGER;
     public static DayTrigger DAY_TRIGGER;
+    public static SystemDateTrigger SYSTEM_DATE_TRIGGER;
 
     public void readConfigsEarly(){
 
@@ -47,6 +49,12 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
             }
             else {
                 dayEnabled = false;
+            }
+            if (allLines.contains("\"System Date trigger\" = true")) {
+                systemDateEnabled = true;
+            }
+            else {
+                systemDateEnabled = false;
             }
 
         } catch (IOException e) {
