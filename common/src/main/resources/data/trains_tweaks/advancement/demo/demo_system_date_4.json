@@ -1,10 +1,25 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "trains_tweaks"
+        ]
+      }
+    }
+  ],
   "parent": "trains_tweaks:demo/root",
   "criteria": {
     "date": {
       "trigger": "trains_tweaks:system_date",
       "conditions": {
-        "month": 15,
         "day": 45
       }
     }
@@ -20,7 +35,7 @@
       "text": "TT Demo System Date 4"
     },
     "description": {
-      "text": "Invalid date!"
+      "text": "Invalid date! This advancement fails to parse and demonstrates the validation code"
     },
     "hidden": false
   },
