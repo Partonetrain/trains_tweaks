@@ -1,7 +1,9 @@
 package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.platform.Services;
-
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import java.util.List;
 
 public final class CommonClass {
@@ -36,5 +38,11 @@ public final class CommonClass {
         if(Services.PLATFORM.isDevelopmentEnvironment()){
             System.out.println(s);
         }
+    }
+
+    public static void runCommand(ServerLevel level, String command) {
+        MinecraftServer server = level.getServer();
+        CommandSourceStack source = server.createCommandSourceStack().withLevel(level);
+        server.getCommands().performPrefixedCommand(source, command);
     }
 }

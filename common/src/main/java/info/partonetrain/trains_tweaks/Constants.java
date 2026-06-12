@@ -55,6 +55,7 @@ public final class Constants {
 	public static final ResourceLocation ENCHANT_ALL = getResourceLocation( "enchant_all");
 	public static final ResourceLocation RANDOMIZE_INCLUDE = getResourceLocation( "randomize_include");
 	public static final ResourceLocation RANDOMIZE_EXCLUDE = getResourceLocation( "randomize_exclude");
+	public static final ResourceLocation INTERNET_TEXT_BOOK = getResourceLocation( "internet_text_book");
 	//MobDrops
 	public static ResourceKey<LootTable> GENERIC_DROP_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/generic"));
 	public static ResourceKey<LootTable> STAR_LOOT_TABLE = ResourceKey.create(Registries.LOOT_TABLE, getResourceLocation( "entities/extended_wither_drop"));

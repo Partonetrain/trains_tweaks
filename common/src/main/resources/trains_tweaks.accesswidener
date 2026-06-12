@@ -6,3 +6,5 @@ accessible field net/minecraft/world/entity/monster/ZombieVillager conversionSta
 accessible field net/minecraft/world/entity/LivingEntity lastHurtByPlayer Lnet/minecraft/world/entity/player/Player;
 accessible class net/minecraft/world/entity/npc/VillagerTrades$EnchantBookForEmeralds
 accessible method net/minecraft/world/level/dimension/end/EndDragonFight spawnNewGateway (Lnet/minecraft/core/BlockPos;)V
+accessible class net/minecraft/world/level/border/WorldBorder$Settings
+accessible method net/minecraft/world/level/border/WorldBorder$Settings <init> (DDDDIIDJD)V

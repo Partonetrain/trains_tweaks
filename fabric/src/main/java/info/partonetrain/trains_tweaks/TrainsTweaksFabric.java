@@ -9,6 +9,9 @@ import net.fabricmc.api.ModInitializer;
 import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -90,6 +93,46 @@ public class TrainsTweaksFabric implements ModInitializer {
             }
 
         }
+
+        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
+            /*
+            if(InterdimensionalFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded()){
+                if(!AutoResetHandler.configParsed && !InterdimensionalFeatureConfig.AUTO_RESET.get().isBlank()){
+                    AutoResetHandler.parseAutoResets();
+                }
+            }
+
+            if(InterdimensionalFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded()) {
+                if(!InterdimensionalFeatureConfig.AUTO_WORLDBORDER.get().isBlank()){
+                    if(!InterdimensionalFeature.autoWorldbordersParsed){
+                        InterdimensionalFeature.parseAutoBorders();
+                    }
+
+                    for(ResourceKey<Level> levelKey : InterdimensionalFeature.autoBorders.keySet()){
+                        if(server.getLevel(levelKey) instanceof ServerLevel serverLevel) {
+                            InterdimensionalFeature.applyAutoBorders(serverLevel);
+                        }
+                    }
+                }
+            }
+             */
+        });
+
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+            /*
+            if(InterdimensionalFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded()){
+                if(!InterdimensionalFeatureConfig.AUTO_RESET.get().isBlank()){
+                    AutoResetHandler.tick(server);
+                }
+            }
+            */
+        });
+
+        ServerWorldEvents.LOAD.register((server, serverLevel) -> {
+
+        });
+
+
         CommonClass.init();
     }
 }

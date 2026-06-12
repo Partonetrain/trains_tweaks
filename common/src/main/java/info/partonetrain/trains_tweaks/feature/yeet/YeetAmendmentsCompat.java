@@ -7,13 +7,13 @@ public class YeetAmendmentsCompat {
 
     public static boolean isAmendmentsFireballEnabled(){
         boolean ret = Services.PLATFORM.isModLoaded("amendments") && Services.PLATFORM.isAmendmentsFireballEnabled();
-        Constants.LOG.info("!Amendments fireball: " + ret);
+        //Constants.LOG.info("!Amendments fireball: " + ret);
         return ret;
     }
 
     public static boolean isAmendmentsSnowballEnabled(){
         boolean ret = Services.PLATFORM.isModLoaded("amendments") && Services.PLATFORM.isAmendmentsSnowballEnabled();
-        Constants.LOG.info("!Amendments snowball: " + ret);
+        //Constants.LOG.info("!Amendments snowball: " + ret);
         return ret;
     }
 }

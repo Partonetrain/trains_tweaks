@@ -18,8 +18,12 @@ public class InterdimensionalFeatureConfig {
     public static ModConfigSpec.BooleanValue ENABLE_EFFECT_RESTRICTIONS;
     public static ModConfigSpec.ConfigValue<String> EFFECT_RESTRICTIONS;
     public static ModConfigSpec.ConfigValue<String> EFFECT_RESTRICTION_MESSAGE;
-
     public static ModConfigSpec.ConfigValue<String> DRAGON_FIGHT_GATEWAY_SPAWNS;
+
+    /*
+    public static ModConfigSpec.ConfigValue<String> AUTO_WORLDBORDER;
+    public static ModConfigSpec.ConfigValue<String> AUTO_RESET;
+     */
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -50,11 +54,13 @@ public class InterdimensionalFeatureConfig {
                 .comment("If you want to ban an effect in a dimension entirely, create an impossible advancement")
                 .define("Enable Effect Restrictions", false);
 
-        EFFECT_RESTRICTIONS = builder.comment("Format is effectId,dimensionTypeId,unlockingAdvancementId;effectId,dimensionTypeId,unlockingAdvancementId;")
+        EFFECT_RESTRICTIONS = builder.comment("Format is effectId,dimensionId,unlockingAdvancementId;effectId,dimensionTypeId,unlockingAdvancementId;")
+                .comment("Dimension Id is not to be confused with Dimension Type ID")
                 .define("Effect Restrictions", "minecraft:fire_resistance,minecraft:the_nether,minecraft:nether/get_wither_skull;");
 
         EFFECT_RESTRICTION_MESSAGE = builder.comment("The message sent to players when an effect is removed due to a restriction")
                 .comment("You can use the placeholders $EFFECT, $DIMENSION, and $ADVANCEMENT, but they must not be the very first or very last part of the string")
+                .comment("$DIMENSION expects to have a lang key in the format \"dimension.namespace_here.dimension_type_here\"; Train's Tweaks provides these for the vanilla dimensions")
                 .comment("Set to blank for no message")
                 .define("Effect Restriction Message", "You cannot have the $EFFECT effect in $DIMENSION until you unlock the advancement $ADVANCEMENT.");
 
@@ -64,6 +70,20 @@ public class InterdimensionalFeatureConfig {
                 .comment("For example: 0, 72, -20; 0, 72, 20; -20, 72, 0; 20, 72, 0; spawns 4 gateways around the exit portal")
                 .comment("If Yung's Better End Island is installed and its useVanillaEndGateways option is false, this will spawn the YBEI version of the gateway in these positions. Keep in mind these are slightly larger than the vanilla gateways")
                 .define("Dragon Fight Gateway Spawns", "0,0,0");
+
+        /*
+        AUTO_WORLDBORDER = builder.comment("Dimensions that should automatically have a non-default worldborder set for them")
+                .comment("Format is dimensionNamespace:dimensionId,size;")
+                .comment("The center of auto-borders will always be default 0,0, and is applied every time that dimension is loaded")
+                .define("Auto Worldborder", "minecraft:the_end,100;");
+
+        AUTO_RESET = builder.comment("Dimensions that should be reset (completely deleted, and then re-generated when needed) automatically")
+                .comment("Format is dimensionNamespace:dimensionId,timeInServerTicksBeforeReset;")
+                .comment("The dimension will only be reset when its timer reaches 0 and there are no online players in it")
+                .comment("For example, minecraft:the_end,864000; will reset the end every 12 hours of real time")
+                .define("Auto Reset", "minecraft:the_end,100;");
+
+         */
 
     }
 }

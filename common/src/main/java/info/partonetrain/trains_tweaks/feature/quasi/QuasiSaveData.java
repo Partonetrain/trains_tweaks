@@ -55,8 +55,6 @@ public class QuasiSaveData extends SavedData {
 
     public void add(BlockPos pos) {
         CommonClass.printInDev(pos.toShortString() + " added: " + toggledBlocks.add(pos));
-        // Change data in saved data
-        // Call set dirty if data changes
         this.setDirty();
     }
 

@@ -21,6 +21,7 @@ public class Loot_LootItemFunctionsMixin {
         LootFeature.ENCHANT_MAX_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.ENCHANT_MAX, new LootItemFunctionType(EnchantMaxFunction.CODEC));
         LootFeature.ENCHANT_ALL_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.ENCHANT_ALL, new LootItemFunctionType(EnchantAllFunction.CODEC));
         LootFeature.RANDOMIZE_EXCLUDE_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.RANDOMIZE_EXCLUDE, new LootItemFunctionType(RandomizeExcludeFunction.CODEC));
-        LootFeature.RANDOMIZE_EXCLUDE_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.RANDOMIZE_INCLUDE, new LootItemFunctionType(RandomizeExcludeFunction.CODEC));
+        LootFeature.RANDOMIZE_INCLUDE_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.RANDOMIZE_INCLUDE, new LootItemFunctionType(RandomizeExcludeFunction.CODEC));
+        LootFeature.INTERNET_TEXT_BOOK_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.INTERNET_TEXT_BOOK, new LootItemFunctionType(InternetTextBookFunction.CODEC));
     }
 }

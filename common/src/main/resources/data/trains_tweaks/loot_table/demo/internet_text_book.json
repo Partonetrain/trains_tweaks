@@ -1,0 +1,78 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "trains_tweaks:internet_text_book",
+              "title": "Train's Tweaks Source Code",
+              "author": "Partonetrain",
+              "text_source": "https://raw.githubusercontent.com/Partonetrain/trains_tweaks/refs/heads/1.21.1/common/src/main/java/info/partonetrain/trains_tweaks/CommonClass.java",
+              "lines_per_page": 3
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                "This item will not be transformed into a written book if the connection fails"
+              ],
+              "mode": "append"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "trains_tweaks:internet_text_book"
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                "All arguments of the function are optional, but it's recommended you fill out each one",
+                "As you can see, only plaintext should be used"
+              ],
+              "mode": "append"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "trains_tweaks:internet_text_book",
+              "title": "Vanilla Splashes",
+              "author": "Mojang",
+              "text_source": "https://raw.githubusercontent.com/misode/mcmeta/refs/heads/assets/assets/minecraft/texts/splashes.txt",
+              "lines_per_page": 10
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                "Section sign formatting codes work too"
+              ],
+              "mode": "append"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "trains_tweaks:demo_internet_text_book"
+}

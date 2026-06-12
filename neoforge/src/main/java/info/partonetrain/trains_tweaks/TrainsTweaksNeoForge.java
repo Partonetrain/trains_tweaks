@@ -4,6 +4,7 @@ import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedEffects;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeatureConfig;
+import info.partonetrain.trains_tweaks.feature.interdimensional.InterdimensionalFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.kritz.KritzEffects;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -39,6 +41,9 @@ import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -94,7 +99,7 @@ public class TrainsTweaksNeoForge {
                 }
             }
             if(mf.getFeatureName().equals("Quasi") && QuasiFeature.enabled){
-                NeoForge.EVENT_BUS.addListener(this::useItemOnBlock);
+                NeoForge.EVENT_BUS.addListener(this::quasiUseItemOnBlock);
             }
             if(mf.getFeatureName().equals("UtilityCommands") && UtilityCommandsFeature.enabled){
                 NeoForge.EVENT_BUS.addListener(this::registerCommands);
@@ -149,7 +154,7 @@ public class TrainsTweaksNeoForge {
         }
     }
 
-    public InteractionResult useItemOnBlock(PlayerInteractEvent.RightClickBlock event){
+    public InteractionResult quasiUseItemOnBlock(PlayerInteractEvent.RightClickBlock event){
         Level world = event.getLevel();
         Player player = event.getEntity();
         InteractionHand hand = event.getHand();
@@ -178,6 +183,49 @@ public class TrainsTweaksNeoForge {
         }
         return InteractionResult.PASS;
 
+    }
+
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+        /*
+        if(InterdimensionalFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded()){
+            if(!AutoResetHandler.configParsed && !InterdimensionalFeatureConfig.AUTO_RESET.get().isBlank()){
+                AutoResetHandler.parseAutoResets();
+            }
+        }
+         */
+    }
+
+    @SubscribeEvent
+    public void onServerStarted(ServerStartedEvent event) { //fabric equivalent: ServerLifecycleEvents.SERVER_STARTED.register(
+        /*
+        if(InterdimensionalFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded()) {
+            if(!InterdimensionalFeatureConfig.AUTO_WORLDBORDER.get().isBlank()){
+                for(ResourceKey<Level> levelKey : InterdimensionalFeature.autoBorders.keySet()){
+                    if(event.getServer().getLevel(levelKey) instanceof ServerLevel serverLevel) {
+                        if(!InterdimensionalFeature.autoWorldbordersParsed){
+                            InterdimensionalFeature.parseAutoBorders();
+                        }
+
+                        InterdimensionalFeature.applyAutoBorders(serverLevel);
+                    }
+                }
+            }
+        }
+
+         */
+    }
+
+    @SubscribeEvent
+    public void onServerTick(ServerTickEvent event) {
+        /*
+        if(InterdimensionalFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.INTERDIMENSIONAL_FEATURE.isIncompatibleLoaded()){
+            if(!InterdimensionalFeatureConfig.AUTO_RESET.get().isBlank()){
+                AutoResetHandler.tick(event.getServer());
+            }
+        }
+
+         */
     }
 
 }
