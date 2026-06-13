@@ -64,3 +64,4 @@ Your saves should be safe, although your datapack may not load if you use the Lo
 Dexterity, Clumsy, Melee Fury, and Ranged Fury effect icons are based on icons from game-icons.net. These might be replaced in the future, however.
 
 Thanks to TelepathicGrunt and Wormbo for assisting with SpawnsWith issues and subsequent rework.
+Thanks to ssblur for letting me adapt their Markdown-to-Minecraft-component code from their library Unfocused for InternetMarkdownBookFunction.
