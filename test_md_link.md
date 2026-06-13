@@ -1,0 +1,1 @@
+[A link to my blog](https://partonetrain.info)
