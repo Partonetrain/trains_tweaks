@@ -88,7 +88,7 @@ public class InternetTextBookFunction extends LootItemConditionalFunction {
         return stack;
     }
 
-    public List<String> getLinesFromAddress(String address) throws IOException, InterruptedException {
+    public static List<String> getLinesFromAddress(String address) throws IOException, InterruptedException {
         List<String> ret = new ArrayList<>();
 
         if(!address.startsWith("http")){
@@ -113,7 +113,7 @@ public class InternetTextBookFunction extends LootItemConditionalFunction {
     // Source - https://stackoverflow.com/a/50646576
     // Posted by Anshu Srivastava, modified by community. See post 'Timeline' for change history
     // Retrieved 2026-06-12, License - CC BY-SA 4.0
-    private <T> List<List<T>> nPartition(List<T> objs, final int N) {
+    public static <T> List<List<T>> nPartition(List<T> objs, final int N) {
         return new ArrayList<>(IntStream.range(0, objs.size()).boxed().collect(
                 Collectors.groupingBy(e->e/N,Collectors.mapping(e->objs.get(e), Collectors.toList())
                 )).values());

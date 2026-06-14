@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "trains_tweaks:internet_markdown_book",
+              "title": "Example Markdown Book",
+              "author": "Partonetrain",
+              "text_source": "https://raw.githubusercontent.com/Partonetrain/trains_tweaks/refs/heads/1.21.1/test_md.md",
+              "lines_per_page": 5
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                "This item will not be transformed into a written book if the connection fails",
+                "Not all markdown is supported, see contents of book.",
+                "You can easily book-ban yourself with this function, so use it with care."
+              ],
+              "mode": "append"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "trains_tweaks:demo_markdown_text_book"
+}

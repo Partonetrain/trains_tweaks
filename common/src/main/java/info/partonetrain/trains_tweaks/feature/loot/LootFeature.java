@@ -22,6 +22,7 @@ public class LootFeature extends ModFeature {
     public static LootItemFunctionType<RandomizeIncludeFunction> RANDOMIZE_INCLUDE_FUNCTION;
     public static LootItemFunctionType<RandomizeExcludeFunction> RANDOMIZE_EXCLUDE_FUNCTION;
     public static LootItemFunctionType<InternetTextBookFunction> INTERNET_TEXT_BOOK_FUNCTION;
+    public static LootItemFunctionType<InternetMarkdownBookFunction> INTERNET_MARKDOWN_BOOK_FUNCTION;
 
     public static List<Holder<Enchantment>> sortEnchantmentsByValue(List<Holder<Enchantment>> enchantments){
         List<Holder<Enchantment>> list = new ArrayList<>(enchantments); //make mutable

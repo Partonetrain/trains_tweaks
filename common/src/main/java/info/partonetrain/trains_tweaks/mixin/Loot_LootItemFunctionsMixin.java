@@ -23,5 +23,6 @@ public class Loot_LootItemFunctionsMixin {
         LootFeature.RANDOMIZE_EXCLUDE_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.RANDOMIZE_EXCLUDE, new LootItemFunctionType(RandomizeExcludeFunction.CODEC));
         LootFeature.RANDOMIZE_INCLUDE_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.RANDOMIZE_INCLUDE, new LootItemFunctionType(RandomizeExcludeFunction.CODEC));
         LootFeature.INTERNET_TEXT_BOOK_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.INTERNET_TEXT_BOOK, new LootItemFunctionType(InternetTextBookFunction.CODEC));
+        LootFeature.INTERNET_MARKDOWN_BOOK_FUNCTION = Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Constants.INTERNET_MARKDOWN_BOOK, new LootItemFunctionType(InternetMarkdownBookFunction.CODEC));
     }
 }

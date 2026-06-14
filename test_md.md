@@ -20,7 +20,7 @@ This text is ~~strikethrough'd~~.
 * Asterisk List Item
 - Another List Item
 
-[A link to my blog](https://partonetrain.info)
+[Train's Tweaks github](https://github.com/Partonetrain/trains_tweaks)
 
 ---
 Unsupported markdown stuff below this line!

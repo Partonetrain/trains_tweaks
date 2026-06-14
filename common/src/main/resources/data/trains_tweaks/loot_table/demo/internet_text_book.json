@@ -18,7 +18,8 @@
             {
               "function": "minecraft:set_lore",
               "lore": [
-                "This item will not be transformed into a written book if the connection fails"
+                "This item will not be transformed into a written book if the connection fails",
+                "You can easily book-ban yourself with this function, so use it with care."
               ],
               "mode": "append"
             }
