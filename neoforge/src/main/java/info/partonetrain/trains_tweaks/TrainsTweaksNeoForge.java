@@ -4,7 +4,6 @@ import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedEffects;
 import info.partonetrain.trains_tweaks.feature.attackspeed.AttackSpeedFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeatureConfig;
-import info.partonetrain.trains_tweaks.feature.interdimensional.InterdimensionalFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.kritz.KritzEffects;
@@ -179,7 +178,6 @@ public class TrainsTweaksNeoForge {
                     return InteractionResult.CONSUME;
                 }
             }
-
         }
         return InteractionResult.PASS;
 

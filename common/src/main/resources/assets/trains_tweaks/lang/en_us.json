@@ -39,6 +39,8 @@
   "emi_loot.gameplay.trains_tweaks:gameplay/brush_armadillo": "Armadillo Brushing",
   "emi_loot.gameplay.trains_tweaks:gameplay/brush_turtle": "Turtle Brushing",
   "emi_loot.gameplay.trains_tweaks:gameplay/chicken_lay": "Chicken Laying",
-  "emi_loot.gameplay.trains_tweaks:gameplay/turtle_grow": "Turtle Growing"
+  "emi_loot.gameplay.trains_tweaks:gameplay/turtle_grow": "Turtle Growing",
+
+  "trains_tweaks.null_item_registry": "Train's Tweaks: null in item registry detected.\n A report has been saved to crash-reports/trains_tweaks_null_item_registry_check.txt"
 
 }

@@ -2,11 +2,17 @@ package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.platform.Services;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import java.util.List;
 
 public final class CommonClass {
+
+    //debugging stuff
+    private static int itemCount = 0;
+    public static Exception worldOpenException = null;
+    //
 
     public static void init() {
         Constants.LOG.info("TrainsTweaks has " + AllFeatures.features.size() + " Features");
@@ -38,6 +44,20 @@ public final class CommonClass {
         if(Services.PLATFORM.isDevelopmentEnvironment()){
             System.out.println(s);
         }
+    }
+
+    public static int countItemsIfNotYetCounted(){
+        if(itemCount == 0){
+            BuiltInRegistries.ITEM.forEach(item -> {
+                itemCount++;
+                //Constants.LOG.info("countItemsIfNotYetCounted:" + itemCount);
+            });
+        }
+        return itemCount;
+    }
+
+    public static int getItemCount(){
+        return itemCount;
     }
 
     public static void runCommand(ServerLevel level, String command) {

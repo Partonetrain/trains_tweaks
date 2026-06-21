@@ -89,7 +89,10 @@
     "Zzz_ServerLevelMixin"
   ],
   "client": [
+    "_DatapackLoadFailureScreenMixin",
     "_SplashManagerMixin",
+    "_TitleScreenMixin",
+    "_WorldOpenFlowsMixin",
     "Jumpy_LocalPlayerMixin",
     "Zzz_GuiMixin"
   ],

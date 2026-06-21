@@ -27,7 +27,7 @@ public class SystemDateTrigger extends SimpleCriterionTrigger<SystemDateTrigger.
         public static final Codec<SystemDateTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
                 p_337396_ -> p_337396_.group(
                     EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(SystemDateTrigger.TriggerInstance::player),
-                    MinMaxBounds.Ints.CODEC.optionalFieldOf("year", MinMaxBounds.Ints.ANY)
+                    MinMaxBounds.Ints.CODEC.optionalFieldOf("year", MinMaxBounds.Ints.between(Year.MIN_VALUE, Year.MAX_VALUE))
                             .validate(SystemDateTrigger::validateYear).forGetter(SystemDateTrigger.TriggerInstance::year),
                     MinMaxBounds.Ints.CODEC.optionalFieldOf("month", MinMaxBounds.Ints.between(1, 12))
                             .validate(SystemDateTrigger::validateMonth).forGetter(SystemDateTrigger.TriggerInstance::month),
