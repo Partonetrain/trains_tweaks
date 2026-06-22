@@ -38,9 +38,8 @@ public class FabricPlatformHelper implements IPlatformHelper {
             else{
                 return false;
             }
-
         }
-        return true; //don't bother checking of no mod capable of checking is installed
+        return true; //don't bother checking if no mod capable of checking is installed
     }
 
     @Override

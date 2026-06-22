@@ -22,6 +22,9 @@ public class Trigger_ServerPlayerMixin {
             if(TriggerFeature.systemDateEnabled){
                 TriggerFeature.SYSTEM_DATE_TRIGGER.trigger(self);
             }
+            if(TriggerFeature.glideEnabled){
+                TriggerFeature.GLIDE_TRIGGER.trigger(self);
+            }
         }
     }
 }

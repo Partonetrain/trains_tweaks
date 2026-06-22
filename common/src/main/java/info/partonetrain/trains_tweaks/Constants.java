@@ -89,6 +89,7 @@ public final class Constants {
 	public static final String GAME_TIME_TRIGGER = "trains_tweaks:gametime";
 	public static final String DAY_TRIGGER = "trains_tweaks:day";
 	public static final String SYSTEM_DATE_TRIGGER = "trains_tweaks:system_date";
+	public static final String GLIDE_TRIGGER = "trains_tweaks:glide";
 	//Vehicle
 	public static final TagKey<Block> BOAT_BREAKS_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("boat_breaks"));
 	//Wolf

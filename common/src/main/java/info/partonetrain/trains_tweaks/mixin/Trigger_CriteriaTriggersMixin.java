@@ -3,10 +3,7 @@ package info.partonetrain.trains_tweaks.mixin;
 import info.partonetrain.trains_tweaks.AllFeatures;
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.IEarlyConfigReader;
-import info.partonetrain.trains_tweaks.feature.trigger.DayTrigger;
-import info.partonetrain.trains_tweaks.feature.trigger.GameTimeTrigger;
-import info.partonetrain.trains_tweaks.feature.trigger.SystemDateTrigger;
-import info.partonetrain.trains_tweaks.feature.trigger.TriggerFeature;
+import info.partonetrain.trains_tweaks.feature.trigger.*;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -31,6 +28,9 @@ public class Trigger_CriteriaTriggersMixin {
             }
             if(TriggerFeature.systemDateEnabled){
                 TriggerFeature.SYSTEM_DATE_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.SYSTEM_DATE_TRIGGER, new SystemDateTrigger());
+            }
+            if(TriggerFeature.glideEnabled){
+                TriggerFeature.GLIDE_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.GLIDE_TRIGGER, new GlideTrigger());
             }
         }
     }

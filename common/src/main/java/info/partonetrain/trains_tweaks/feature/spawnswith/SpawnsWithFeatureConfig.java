@@ -20,6 +20,7 @@ public class SpawnsWithFeatureConfig {
     public static ModConfigSpec.BooleanValue SPECIFIC_MOB_TABLES;
     public static ModConfigSpec.DoubleValue EQUIPMENT_TABLE_DROP_CHANCE;
     public static ModConfigSpec.ConfigValue<List<MobSpawnType>> APPLIES_TO_SPAWN_TYPES;
+    public static ModConfigSpec.BooleanValue SILENCE_IGNORES_ERRORS;
 
     private static boolean trueIfDev = Services.PLATFORM.isDevelopmentEnvironment();
     private static final List<MobSpawnType> DEFAULT_SPAWN_TYPES = new ArrayList<>(Arrays.asList(MobSpawnType.SPAWN_EGG, MobSpawnType.MOB_SUMMONED, MobSpawnType.CHUNK_GENERATION, MobSpawnType.NATURAL, MobSpawnType.JOCKEY, MobSpawnType.REINFORCEMENT, MobSpawnType.STRUCTURE));
@@ -61,5 +62,8 @@ public class SpawnsWithFeatureConfig {
                 .comment("Valid types are: " + Arrays.toString(MobSpawnType.values()))
                 .comment("This requires PuzzlesLib on Fabric, otherwise it will effect all mobs regardless of spawn type")
                 .define("Applies to Spawn Types", DEFAULT_SPAWN_TYPES);
+
+        SILENCE_IGNORES_ERRORS = builder.comment("If false, entities that spawn lacking a spawn type not in the " + Constants.SPAWNSWITH_IGNORES.location().toString() + " will be logged")
+                .define("Silence Ignores Errors", true);
     }
 }

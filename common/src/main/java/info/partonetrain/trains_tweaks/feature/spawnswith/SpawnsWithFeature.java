@@ -157,6 +157,7 @@ public class SpawnsWithFeature extends ModFeature {
     }
 
     public static boolean markEntityChecked(LivingEntity livingEntity){
+        //this should probably be data attachments, but this is the "most vanilla" way to do this
         return livingEntity.addTag(CHECKED_TAG);
         //NOTE: there is a 1024 limit on per-entity tags
         //technically this means there is a finite amount of mods+datapacks that can add tags like this,

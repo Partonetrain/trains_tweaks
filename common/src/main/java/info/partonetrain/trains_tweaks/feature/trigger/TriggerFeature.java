@@ -20,10 +20,12 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
     public static boolean gameTimeEnabled = false;
     public static boolean dayEnabled = false;
     public static boolean systemDateEnabled = false;
+    public static boolean glideEnabled = false;
 
     public static GameTimeTrigger GAME_TIME_TRIGGER;
     public static DayTrigger DAY_TRIGGER;
     public static SystemDateTrigger SYSTEM_DATE_TRIGGER;
+    public static GlideTrigger GLIDE_TRIGGER;
 
     public void readConfigsEarly(){
 
@@ -55,6 +57,12 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
             }
             else {
                 systemDateEnabled = false;
+            }
+            if (allLines.contains("\"Glide trigger\" = true")) {
+                glideEnabled = true;
+            }
+            else {
+                glideEnabled = false;
             }
 
         } catch (IOException e) {

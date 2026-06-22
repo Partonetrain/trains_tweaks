@@ -11,6 +11,7 @@ public class TriggerFeatureConfig {
     public static ModConfigSpec.BooleanValue GAME_TIME_TRIGGER;
     public static ModConfigSpec.BooleanValue DAY_TRIGGER;
     public static ModConfigSpec.BooleanValue SYSTEM_DATE_TRIGGER;
+    public static ModConfigSpec.BooleanValue GLIDE_TRIGGER;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -35,5 +36,9 @@ public class TriggerFeatureConfig {
         SYSTEM_DATE_TRIGGER = builder.comment("Whether or not to register the " + Constants.SYSTEM_DATE_TRIGGER + " trigger")
                 .comment("This allows advancements to check for the system's year, month, and/or day")
                 .define("System Date trigger", false);
+
+        GLIDE_TRIGGER = builder.comment("Whether or not to register the " + Constants.GLIDE_TRIGGER + " trigger")
+                .comment("This allows advancements to check if the player is gliding with an elytra or other similar effect")
+                .define("Glide trigger", true);
     }
 }

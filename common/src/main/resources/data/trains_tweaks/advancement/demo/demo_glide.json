@@ -1,0 +1,40 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "trains_tweaks"
+        ]
+      }
+    }
+  ],
+  "parent": "trains_tweaks:demo/root",
+  "criteria": {
+    "glide": {
+      "trigger": "trains_tweaks:glide"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:elytra"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "TT Demo Glide"
+    },
+    "description": {
+      "text": "You're gliding"
+    },
+    "hidden": false
+  },
+  "sends_telemetry_event": true
+}
