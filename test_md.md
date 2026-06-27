@@ -1,14 +1,14 @@
-# Heading 1
+# Heading 1: minecraft:uniform font
 Under h1
-## Heading 2
+## Heading 2: minecraft:alt font
 Under h2
-### Heading 3
+### Heading 3: minecraft:illageralt font
 Under h3
-#### Heading 4
+#### Heading 4: obfuscated
 Under h4
-##### Heading 5
+##### Heading 5: trains_tweaks:custom_font_1 font
 Under h5
-###### Heading 6
+###### Heading 6: trains_tweaks:custom_font_2 font
 Under h6
 
 This text is **bold**, and this text is also __bold__.
@@ -24,7 +24,7 @@ This text is ~~strikethrough'd~~.
 
 ---
 Unsupported markdown stuff below this line!
-These things are in the markdown spec but won't be converted with internet_markdown_book
+These things are in the markdown spec but won't be converted with the `internet_markdown_book` loot function
 
 ![Image](https://picsum.photos/id/237/200/300)
 

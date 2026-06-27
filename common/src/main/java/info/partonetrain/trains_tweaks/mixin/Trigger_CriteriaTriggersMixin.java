@@ -32,6 +32,12 @@ public class Trigger_CriteriaTriggersMixin {
             if(TriggerFeature.glideEnabled){
                 TriggerFeature.GLIDE_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.GLIDE_TRIGGER, new GlideTrigger());
             }
+            if(TriggerFeature.takeDamageAndLiveEnabled){
+                TriggerFeature.TAKE_DAMAGE_AND_LIVE_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.TAKE_DAMAGE_AND_LIVE_TRIGGER, new TakeDamageAndLiveTrigger());
+            }
+            if(TriggerFeature.systemDayOfWeekEnabled){
+                TriggerFeature.SYSTEM_DAY_OF_WEEK_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.SYSTEM_DAY_OF_WEEK_TRIGGER, new SystemDayOfWeekTrigger());
+            }
         }
     }
 }

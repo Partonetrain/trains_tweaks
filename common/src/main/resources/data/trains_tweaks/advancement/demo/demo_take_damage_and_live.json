@@ -1,0 +1,29 @@
+{
+  "parent": "trains_tweaks:demo/root",
+  "criteria": {
+    "day": {
+      "trigger": "trains_tweaks:take_damage_and_live",
+      "conditions": {
+        "damage": {
+          "min": 10
+        }
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:wooden_sword"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "TT Demo Take Damage And Live"
+    },
+    "description": {
+      "text": "You took at least 10 damage (post-armor reduction, not counting absorption) at once and lived to tell the tale"
+    },
+    "hidden": false
+  },
+  "sends_telemetry_event": true
+}

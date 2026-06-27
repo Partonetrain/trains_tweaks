@@ -21,11 +21,15 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
     public static boolean dayEnabled = false;
     public static boolean systemDateEnabled = false;
     public static boolean glideEnabled = false;
+    public static boolean takeDamageAndLiveEnabled = false;
+    public static boolean systemDayOfWeekEnabled = false;
 
     public static GameTimeTrigger GAME_TIME_TRIGGER;
     public static DayTrigger DAY_TRIGGER;
     public static SystemDateTrigger SYSTEM_DATE_TRIGGER;
     public static GlideTrigger GLIDE_TRIGGER;
+    public static TakeDamageAndLiveTrigger TAKE_DAMAGE_AND_LIVE_TRIGGER;
+    public static SystemDayOfWeekTrigger SYSTEM_DAY_OF_WEEK_TRIGGER;
 
     public void readConfigsEarly(){
 
@@ -63,6 +67,18 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
             }
             else {
                 glideEnabled = false;
+            }
+            if (allLines.contains("\"Take Damage and Live trigger\" = true")) {
+                takeDamageAndLiveEnabled = true;
+            }
+            else {
+                takeDamageAndLiveEnabled = false;
+            }
+            if (allLines.contains("\"System Day of Week trigger\" = true")) {
+                systemDayOfWeekEnabled = true;
+            }
+            else {
+                systemDayOfWeekEnabled = false;
             }
 
         } catch (IOException e) {

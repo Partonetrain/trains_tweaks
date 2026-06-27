@@ -56,6 +56,7 @@
     "SpawnsWith_LivingEntityMixin",
     "SpawnsWith_MobInvoker",
     "Trigger_CriteriaTriggersMixin",
+    "Trigger_PlayerMixin",
     "Trigger_ServerPlayerMixin",
     "Vehicle_BoatMixin",
     "Vehicle_VehicleEntityMixin",

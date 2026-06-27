@@ -2,15 +2,19 @@ package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.feature.trigger.TriggerFeature;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.CombatRules;
+import net.minecraft.world.damagesource.DamageSource;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ServerPlayer.class)
 public class Trigger_ServerPlayerMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/PlayerTrigger;trigger(Lnet/minecraft/server/level/ServerPlayer;)V"))
     private void trains_tweaks$tick(CallbackInfo ci){
+        //triggers that are checked on tick.
         if(TriggerFeature.enabled){
             ServerPlayer self = (ServerPlayer)(Object)this;
             if(TriggerFeature.gameTimeEnabled){
@@ -24,6 +28,9 @@ public class Trigger_ServerPlayerMixin {
             }
             if(TriggerFeature.glideEnabled){
                 TriggerFeature.GLIDE_TRIGGER.trigger(self);
+            }
+            if(TriggerFeature.systemDayOfWeekEnabled){
+                TriggerFeature.SYSTEM_DAY_OF_WEEK_TRIGGER.trigger(self);
             }
         }
     }

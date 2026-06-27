@@ -196,8 +196,28 @@ public class InternetMarkdownBookFunction extends LootItemConditionalFunction {
             }
 
             if (isTitle) {
-                ret.add(lastComponent.withStyle(Style.EMPTY
-                        .withFont(ResourceLocation.parse("minecraft:uniform"))));
+                if(titleDepth == 1){
+                    ret.add(lastComponent.withStyle(Style.EMPTY.withFont(ResourceLocation.parse("minecraft:uniform"))));
+                }
+                else if (titleDepth == 2){
+                    ret.add(lastComponent.withStyle(Style.EMPTY.withFont(ResourceLocation.parse("minecraft:alt"))));
+                }
+                else if (titleDepth == 3){
+                    ret.add(lastComponent.withStyle(Style.EMPTY.withFont(ResourceLocation.parse("minecraft:illageralt"))));
+                }
+                else if (titleDepth == 4){
+                    ret.add(lastComponent.withStyle(Style.EMPTY.withObfuscated(true)));
+                }
+                else if (titleDepth == 5){
+                    ret.add(lastComponent.withStyle(Style.EMPTY.withFont(ResourceLocation.parse("trains_tweaks:custom_font_1"))));
+                }
+                else if (titleDepth == 6){
+                    ret.add(lastComponent.withStyle(Style.EMPTY.withFont(ResourceLocation.parse("trains_tweaks:custom_font_2"))));
+                }
+                else{ //shouldn't happen
+                    ret.add(lastComponent);
+                }
+
             }
             else {
                 ret.add(lastComponent);

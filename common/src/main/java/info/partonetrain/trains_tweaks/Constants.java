@@ -89,7 +89,9 @@ public final class Constants {
 	public static final String GAME_TIME_TRIGGER = "trains_tweaks:gametime";
 	public static final String DAY_TRIGGER = "trains_tweaks:day";
 	public static final String SYSTEM_DATE_TRIGGER = "trains_tweaks:system_date";
+	public static final String SYSTEM_DAY_OF_WEEK_TRIGGER = "trains_tweaks:system_day_of_week";
 	public static final String GLIDE_TRIGGER = "trains_tweaks:glide";
+	public static final String TAKE_DAMAGE_AND_LIVE_TRIGGER = "trains_tweaks:take_damage_and_live";
 	//Vehicle
 	public static final TagKey<Block> BOAT_BREAKS_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("boat_breaks"));
 	//Wolf
