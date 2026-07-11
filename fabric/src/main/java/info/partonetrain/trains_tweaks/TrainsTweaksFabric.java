@@ -4,6 +4,7 @@ import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.quasi.QuasiFeature;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.KillNonPlayersCommand;
+import info.partonetrain.trains_tweaks.feature.utilitycommands.ShowScheduledFunctionsCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeature;
 import net.fabricmc.api.ModInitializer;
 import fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry;
@@ -43,6 +44,10 @@ public class TrainsTweaksFabric implements ModInitializer {
                 if(UtilityCommandsFeature.addKillNonPlayer){
                     CommandRegistrationCallback.EVENT.register((dispatcher, context, selection) ->
                             KillNonPlayersCommand.register(dispatcher));
+                }
+                if(UtilityCommandsFeature.addShowScheduled){
+                    CommandRegistrationCallback.EVENT.register((dispatcher, context, selection) ->
+                            ShowScheduledFunctionsCommand.register(dispatcher));
                 }
             }
 

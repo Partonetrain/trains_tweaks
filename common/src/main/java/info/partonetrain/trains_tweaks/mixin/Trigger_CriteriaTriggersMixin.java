@@ -38,6 +38,9 @@ public class Trigger_CriteriaTriggersMixin {
             if(TriggerFeature.systemDayOfWeekEnabled){
                 TriggerFeature.SYSTEM_DAY_OF_WEEK_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.SYSTEM_DAY_OF_WEEK_TRIGGER, new SystemDayOfWeekTrigger());
             }
+            if(TriggerFeature.dropItemEnabled){
+                TriggerFeature.DROPPED_ITEM_TRIGGER = Registry.register(BuiltInRegistries.TRIGGER_TYPES, Constants.DROPPED_ITEM_TRIGGER, new DroppedItemTrigger());
+            }
         }
     }
 }

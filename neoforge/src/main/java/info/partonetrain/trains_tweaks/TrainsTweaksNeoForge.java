@@ -10,7 +10,9 @@ import info.partonetrain.trains_tweaks.feature.kritz.KritzEffects;
 import info.partonetrain.trains_tweaks.feature.kritz.KritzFeature;
 import info.partonetrain.trains_tweaks.feature.quasi.QuasiFeature;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.KillNonPlayersCommand;
+import info.partonetrain.trains_tweaks.feature.utilitycommands.ShowScheduledFunctionsCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeature;
+import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
@@ -113,6 +115,9 @@ public class TrainsTweaksNeoForge {
     public void registerCommands(RegisterCommandsEvent event) {
         if(UtilityCommandsFeature.addKillNonPlayer){
             KillNonPlayersCommand.register(event.getDispatcher());
+        }
+        if(UtilityCommandsFeature.addShowScheduled){
+            ShowScheduledFunctionsCommand.register(event.getDispatcher());
         }
     }
 

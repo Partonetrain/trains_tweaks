@@ -81,6 +81,7 @@
     "Yeet_PlayerMixin",
     "Yeet_PointedDripstoneBlockMixin",
     "Yeet_ProjectileMixin",
+    "Yeet_ProjectileWeaponItemMixin",
     "Yeet_SmallFireballMixin",
     "Yeet_SnowballMixin",
     "Yeet_WindChargeMixin",

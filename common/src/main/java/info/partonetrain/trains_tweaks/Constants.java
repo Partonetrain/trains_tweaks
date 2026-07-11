@@ -8,6 +8,7 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -53,6 +54,7 @@ public final class Constants {
 	public static final ResourceLocation ENCHANT_CURSE = getResourceLocation( "enchant_curse");
 	public static final ResourceLocation ENCHANT_MAX = getResourceLocation( "enchant_max");
 	public static final ResourceLocation ENCHANT_ALL = getResourceLocation( "enchant_all");
+	public static final TagKey<Enchantment> FORBIDDEN = TagKey.create(Registries.ENCHANTMENT, getResourceLocation("forbidden"));
 	public static final ResourceLocation RANDOMIZE_INCLUDE = getResourceLocation( "randomize_include");
 	public static final ResourceLocation RANDOMIZE_EXCLUDE = getResourceLocation( "randomize_exclude");
 	public static final ResourceLocation INTERNET_TEXT_BOOK = getResourceLocation( "internet_text_book");
@@ -92,6 +94,7 @@ public final class Constants {
 	public static final String SYSTEM_DAY_OF_WEEK_TRIGGER = "trains_tweaks:system_day_of_week";
 	public static final String GLIDE_TRIGGER = "trains_tweaks:glide";
 	public static final String TAKE_DAMAGE_AND_LIVE_TRIGGER = "trains_tweaks:take_damage_and_live";
+	public static final String DROPPED_ITEM_TRIGGER = "trains_tweaks:dropped_item";
 	//Vehicle
 	public static final TagKey<Block> BOAT_BREAKS_TAG = TagKey.create(Registries.BLOCK, getResourceLocation("boat_breaks"));
 	//Wolf

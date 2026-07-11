@@ -1,0 +1,1 @@
+say This is another example function!

@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "notenoughtrials:storm_front_marker",
+      "required": false
+    },
+    {
+      "id": "ars_nouveau:reactive",
+      "required": false
+    }
+  ]
+}

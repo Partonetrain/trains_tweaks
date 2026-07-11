@@ -1,0 +1,53 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:not",
+      "value": {
+        "condition": "fabric:all_mods_loaded",
+        "values": [
+          "trains_tweaks"
+        ]
+      }
+    }
+  ],
+  "parent": "trains_tweaks:demo/root",
+  "criteria": {
+    "drop": {
+      "trigger": "trains_tweaks:dropped_item",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:barrier",
+              "minecraft:light"
+            ]
+          },
+          {
+            "items": "#minecraft:logs"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:oak_log"
+    },
+    "show_toast": false,
+    "title": {
+      "text": "TT Demo Dropped Item"
+    },
+    "description": {
+      "text": "You dropped either a Barrier, a Light, or any log"
+    },
+    "hidden": false
+  },
+  "sends_telemetry_event": true
+}

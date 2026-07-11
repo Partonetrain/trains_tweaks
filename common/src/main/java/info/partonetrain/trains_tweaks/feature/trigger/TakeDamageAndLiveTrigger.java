@@ -1,7 +1,6 @@
 package info.partonetrain.trains_tweaks.feature.trigger;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -10,7 +9,6 @@ import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.Year;
 import java.util.Optional;
 
 public class TakeDamageAndLiveTrigger extends SimpleCriterionTrigger<TakeDamageAndLiveTrigger.TriggerInstance> {

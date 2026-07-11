@@ -4,6 +4,8 @@ import info.partonetrain.trains_tweaks.feature.trigger.TriggerFeature;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -32,6 +34,13 @@ public class Trigger_ServerPlayerMixin {
             if(TriggerFeature.systemDayOfWeekEnabled){
                 TriggerFeature.SYSTEM_DAY_OF_WEEK_TRIGGER.trigger(self);
             }
+        }
+    }
+
+    @Inject(method = "drop(Lnet/minecraft/world/item/ItemStack;ZZ)Lnet/minecraft/world/entity/item/ItemEntity;", at=@At(value = "HEAD"))
+    private void trains_tweaks$drop(ItemStack droppedItem, boolean dropAround, boolean traceItem, CallbackInfoReturnable<ItemEntity> cir){
+        if(TriggerFeature.dropItemEnabled) {
+            TriggerFeature.DROPPED_ITEM_TRIGGER.trigger((ServerPlayer) (Object) this, droppedItem);
         }
     }
 }

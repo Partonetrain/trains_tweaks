@@ -8,3 +8,4 @@ accessible class net/minecraft/world/entity/npc/VillagerTrades$EnchantBookForEme
 accessible method net/minecraft/world/level/dimension/end/EndDragonFight spawnNewGateway (Lnet/minecraft/core/BlockPos;)V
 accessible class net/minecraft/world/level/border/WorldBorder$Settings
 accessible method net/minecraft/world/level/border/WorldBorder$Settings <init> (DDDDIIDJD)V
+accessible field net/minecraft/world/level/timers/TimerQueue events Lcom/google/common/collect/Table;

@@ -9,6 +9,7 @@ public class UtilityCommandsFeatureConfig {
     public static ModConfigSpec.BooleanValue ENABLED;
     public static ModConfigSpec.BooleanValue VANILLA_DEBUG_COMMANDS;
     public static ModConfigSpec.BooleanValue KILL_NON_PLAYERS_COMMAND;
+    public static ModConfigSpec.BooleanValue SHOW_SCHEDULED_FUNCTIONS;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -29,6 +30,11 @@ public class UtilityCommandsFeatureConfig {
         KILL_NON_PLAYERS_COMMAND = builder.comment("If set to true, /kill_non_players command will be available")
                 .comment("This command simply discards all non-player entities, without dropping items")
                 .define("Kill Non Players",true);
+
+        SHOW_SCHEDULED_FUNCTIONS = builder.comment("If set to true, /show_scheduled_functions command will be available")
+                .comment("This prints the name of every scheduled function to the chat at when the gametime it is scheduled for")
+                .comment("This can be useful for debugging datapacks and/or determining if they are causing any lag")
+                .define("Show Scheduled Functions",true);
 
     }
 }

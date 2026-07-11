@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks.feature.yeet;
 
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class YeetFeatureConfig {
@@ -18,6 +19,7 @@ public class YeetFeatureConfig {
     public static ModConfigSpec.BooleanValue ANY_IMPACT_BREAKS_DRIPSTONE;
     public static ModConfigSpec.BooleanValue REFLECT_ANYTHING;
     public static ModConfigSpec.BooleanValue FIX_REDIRECTED_ARROWS; //MC-270834
+    public static ModConfigSpec.IntValue PROJECTILE_WEAPON_ENCHANTABILITY;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -72,5 +74,10 @@ public class YeetFeatureConfig {
         FIX_REDIRECTED_ARROWS = builder.comment("Fixes MC-270834: https://bugs.mojang.com/browse/MC-270834")
                 .comment("If disabled and Reflect Any Projectile is enabled (or arrows/tridents are added to " + EntityTypeTags.REDIRECTABLE_PROJECTILE.location() + " via datapack), you will be able to pick up reflected arrows/tridents. Recommended you keep enabled")
                 .define("Fix Redirected Arrows", true);
+
+        PROJECTILE_WEAPON_ENCHANTABILITY = builder.comment("The default enchantability of Bows and Crossbows")
+                .comment("This is set to 1 in vanilla which is REALLY low. For reference, stone tools, which are the least enchantable tier, have an enchantability of " + Tiers.STONE.getEnchantmentValue())
+                .comment("Modded bows that don't override this will be affected by it. Leave as default for vanilla value")
+                .defineInRange("Projectile Weapon Enchantability", 1, 1, 50);
     }
 }

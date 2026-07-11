@@ -13,6 +13,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class _TitleScreenMixin {
     @Inject(method = "init", at=@At("RETURN"))
     public void trains_tweask$init(CallbackInfo ci){
-        Constants.LOG.info("Items in registry: " + String.valueOf(CommonClass.countItemsIfNotYetCounted()));
+        //Constants.LOG.info("Items in registry: " + String.valueOf(CommonClass.countItemsIfNotYetCounted()));
     }
 }

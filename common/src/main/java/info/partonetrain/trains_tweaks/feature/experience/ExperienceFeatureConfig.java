@@ -41,7 +41,7 @@ public class ExperienceFeatureConfig {
                 .defineInRange("Level Cap", 50, 0, Integer.MAX_VALUE);
 
         CAPPED_XP = builder
-                .comment("If Level Cap > 0, the amount of experience required for the next level.")
+                .comment("If Level Cap > 0, the amount of experience required for the next level after the cap.")
                 .defineInRange("Capped XP", 107, 0, Integer.MAX_VALUE);
 
         CURVE_MODE_MULTIPLIER = builder

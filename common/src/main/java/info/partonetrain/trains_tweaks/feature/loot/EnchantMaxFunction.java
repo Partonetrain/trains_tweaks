@@ -58,7 +58,7 @@ public class EnchantMaxFunction extends LootItemConditionalFunction {
                 .map(HolderSet::stream)
                 .orElseGet(() -> context.getLevel().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().map(Function.identity()))
                 .filter(enchantmentHolder -> (!checkCompatibility || enchantmentHolder.value().canEnchant(stack))
-                    && !enchantmentHolder.is(EnchantmentTags.CURSE) && !enchantmentHolder.is(EnchantmentTags.TREASURE));
+                    && !enchantmentHolder.is(EnchantmentTags.CURSE) && !enchantmentHolder.is(EnchantmentTags.TREASURE) && !enchantmentHolder.is(Constants.FORBIDDEN));
         List<Holder<Enchantment>> list = stream.toList();
         Optional<Holder<Enchantment>> optional = Util.getRandomSafe(list, randomsource);
         if (optional.isEmpty()) {

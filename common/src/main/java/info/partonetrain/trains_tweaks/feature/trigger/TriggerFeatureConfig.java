@@ -14,6 +14,7 @@ public class TriggerFeatureConfig {
     public static ModConfigSpec.BooleanValue SYSTEM_DAY_OF_WEEK_TRIGGER;
     public static ModConfigSpec.BooleanValue GLIDE_TRIGGER;
     public static ModConfigSpec.BooleanValue TAKE_DAMAGE_AND_LIVE_TRIGGER;
+    public static ModConfigSpec.BooleanValue DROPPED_ITEM_TRIGGER;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -51,5 +52,9 @@ public class TriggerFeatureConfig {
         TAKE_DAMAGE_AND_LIVE_TRIGGER = builder.comment("Whether or not to register the " + Constants.TAKE_DAMAGE_AND_LIVE_TRIGGER + " trigger")
                 .comment("This triggers checks how much (post-armor reduction, not counting absorption) damage you took and if it is within the bounds and if you lived, grants the criteria")
                 .define("Take Damage and Live trigger", true);
+
+        DROPPED_ITEM_TRIGGER = builder.comment("Whether or not to register the " + Constants.DROPPED_ITEM_TRIGGER + " trigger")
+                .comment("This triggers when the player drops an item, and can be set up to require a specific item or tag")
+                .define("Dropped Item trigger", true);
     }
 }

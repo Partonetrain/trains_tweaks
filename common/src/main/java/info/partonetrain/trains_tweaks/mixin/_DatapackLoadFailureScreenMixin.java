@@ -38,14 +38,14 @@ public class _DatapackLoadFailureScreenMixin extends Screen {
 
     @Inject(method = "init", at=@At("HEAD"))
     public void trains_tweaks$init1(CallbackInfo ci){
-        Constants.LOG.info("init1");
+        //Constants.LOG.info("init1");
         trains_tweaks$registryChecked = false;
         trains_tweaks$reportSaved = false;
     }
 
     @Inject(method = "init", at=@At("RETURN"))
     public void trains_tweaks$init2(CallbackInfo ci){
-        Constants.LOG.info("init2");
+        //Constants.LOG.info("init2");
         AtomicInteger itemCount = new AtomicInteger(0);
         AtomicInteger lastItemId = new AtomicInteger();
         AtomicReference<ResourceLocation> lastItem = null;

@@ -15,6 +15,7 @@ public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigRe
     public static boolean enabled = false;
     public static boolean vanillaDebugCommands = false;
     public static boolean addKillNonPlayer = false;
+    public static boolean addShowScheduled = false;
 
     public UtilityCommandsFeature() {
         super("UtilityCommands", UtilityCommandsFeatureConfig.SPEC);
@@ -43,6 +44,12 @@ public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigRe
             }
             else {
                 vanillaDebugCommands = false;
+            }
+            if (allLines.contains("\"Show Scheduled Functions\" = true")) {
+                addShowScheduled = true;
+            }
+            else {
+                addShowScheduled = false;
             }
 
         } catch (IOException e) {

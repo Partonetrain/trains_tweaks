@@ -60,7 +60,7 @@ public class EnchantAllFunction extends LootItemConditionalFunction {
                 .map(HolderSet::stream)
                 .orElseGet(() -> context.getLevel().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().map(Function.identity()))
                 .filter(enchantmentHolder -> (!checkCompatibility || enchantmentHolder.value().canEnchant(stack))
-                    && !enchantmentHolder.is(EnchantmentTags.CURSE));
+                    && !enchantmentHolder.is(EnchantmentTags.CURSE) && !enchantmentHolder.is(Constants.FORBIDDEN));
         List<Holder<Enchantment>> list = stream.toList();
         if (list.isEmpty()) {
             Constants.LOG.warn("Couldn't find a compatible enchantment for {}", stack);

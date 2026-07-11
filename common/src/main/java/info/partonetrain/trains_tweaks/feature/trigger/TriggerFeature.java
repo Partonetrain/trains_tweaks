@@ -23,6 +23,7 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
     public static boolean glideEnabled = false;
     public static boolean takeDamageAndLiveEnabled = false;
     public static boolean systemDayOfWeekEnabled = false;
+    public static boolean dropItemEnabled = false;
 
     public static GameTimeTrigger GAME_TIME_TRIGGER;
     public static DayTrigger DAY_TRIGGER;
@@ -30,6 +31,7 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
     public static GlideTrigger GLIDE_TRIGGER;
     public static TakeDamageAndLiveTrigger TAKE_DAMAGE_AND_LIVE_TRIGGER;
     public static SystemDayOfWeekTrigger SYSTEM_DAY_OF_WEEK_TRIGGER;
+    public static DroppedItemTrigger DROPPED_ITEM_TRIGGER;
 
     public void readConfigsEarly(){
 
@@ -79,6 +81,12 @@ public class TriggerFeature extends ModFeature implements IEarlyConfigReader {
             }
             else {
                 systemDayOfWeekEnabled = false;
+            }
+            if (allLines.contains("\"Dropped Item trigger\" = true")) {
+                dropItemEnabled = true;
+            }
+            else {
+                dropItemEnabled = false;
             }
 
         } catch (IOException e) {
