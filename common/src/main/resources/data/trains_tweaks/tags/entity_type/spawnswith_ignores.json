@@ -150,6 +150,11 @@
     {
       "id": "quark:wraith",
       "required": false
+    },
+
+    {
+      "id": "millenaire:villager",
+      "required": false
     }
   ]
 }
