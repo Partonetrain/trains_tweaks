@@ -72,18 +72,20 @@ public abstract class MobDrops_TurtleMixin extends Mob {
             return false;
         } else {
             Turtle self = (Turtle) (Object) this;
-            ServerLevel serverlevel = (ServerLevel) self.level();
-            LootTable lootTable = serverlevel.getServer().reloadableRegistries().getLootTable(Constants.TURTLE_BRUSH_LOOT_TABLE);
-            LootParams lootParams = (new LootParams.Builder(serverlevel)).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.THIS_ENTITY, self).create(LootContextParamSets.GIFT);
+            if(self.level() instanceof ServerLevel serverLevel) {
+                LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(Constants.TURTLE_BRUSH_LOOT_TABLE);
+                LootParams lootParams = (new LootParams.Builder(serverLevel)).withParameter(LootContextParams.ORIGIN, self.position()).withParameter(LootContextParams.THIS_ENTITY, self).create(LootContextParamSets.GIFT);
 
-            for (ItemStack itemstack : lootTable.getRandomItems(lootParams)) {
-                self.spawnAtLocation(itemstack, 1);
+                for (ItemStack itemstack : lootTable.getRandomItems(lootParams)) {
+                    self.spawnAtLocation(itemstack, 1);
+                }
+
+                this.gameEvent(GameEvent.ENTITY_INTERACT);
+                this.playSound(SoundEvents.ARMADILLO_BRUSH);
+                return true;
             }
-
-            this.gameEvent(GameEvent.ENTITY_INTERACT);
-            this.playSound(SoundEvents.ARMADILLO_BRUSH);
-            return true;
         }
+        return true;
     }
 
 }
