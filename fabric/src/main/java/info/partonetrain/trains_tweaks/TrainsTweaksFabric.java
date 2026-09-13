@@ -4,6 +4,7 @@ import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.quasi.QuasiFeature;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.KillNonPlayersCommand;
+import info.partonetrain.trains_tweaks.feature.utilitycommands.SetHungerCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.ShowScheduledFunctionsCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeature;
 import net.fabricmc.api.ModInitializer;
@@ -48,6 +49,10 @@ public class TrainsTweaksFabric implements ModInitializer {
                 if(UtilityCommandsFeature.addShowScheduled){
                     CommandRegistrationCallback.EVENT.register((dispatcher, context, selection) ->
                             ShowScheduledFunctionsCommand.register(dispatcher));
+                }
+                if(UtilityCommandsFeature.addSetHunger){
+                    CommandRegistrationCallback.EVENT.register((dispatcher, context, selection) ->
+                            SetHungerCommand.register(dispatcher));
                 }
             }
 

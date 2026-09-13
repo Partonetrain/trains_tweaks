@@ -35,7 +35,7 @@ public class YeetFeatureConfig {
         THROW_FIRE_CHARGES = builder.comment("If enabled, you will be able to right-click the air with a fire charge to throw it")
                 .comment("However, the projectile is inaccurate and unable to ignite blocks when spawned this way")
                 .comment("Note: this re-uses the blaze attack sound event, so subtitles will be inaccurate")
-                .comment("If Amendments is installed and its fire_charges_throwable config is enabled, this tweak will be disabled")
+                .comment("If Amendments is installed and its fire_charges_throwable config is enabled, this option will treated as disabled")
                 .define("Throw Fire Charges", true);
 
         FIRE_CHARGES_COOLDOWN = builder.comment("Cooldown in ticks between throwing fire charges (assuming Throw Fire Charges is true)")

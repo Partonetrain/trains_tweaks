@@ -25,7 +25,7 @@ public class ZzzFeatureConfig {
     public static void registerConfig(ModConfigSpec.Builder builder) {
 
         ENABLED = builder.comment("Enable tweaks relating to sleeping")
-                .define("Sleeping Tweaks",true);
+                .define("Sleeping Tweaks",false);
 
         RESPAWN_ANCHOR_FUEL = builder.comment("If true, the Respawn Anchor will accept any item in the tag " + Constants.RESPAWN_FUEL_TAG.location() + " as fuel")
                 .comment("This option isn't technically related to sleeping, but it didn't fit in any other category")

@@ -10,7 +10,6 @@ import info.partonetrain.trains_tweaks.feature.goat.GoatFeature;
 import info.partonetrain.trains_tweaks.feature.horse.HorseFeature;
 import info.partonetrain.trains_tweaks.feature.interdimensional.InterdimensionalFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
-import info.partonetrain.trains_tweaks.feature.kritz.KritzFeature;
 import info.partonetrain.trains_tweaks.feature.loot.LootFeature;
 import info.partonetrain.trains_tweaks.feature.mobdrops.MobDropsFeature;
 import info.partonetrain.trains_tweaks.feature.npc.NpcFeature;
@@ -44,7 +43,7 @@ public class AllFeatures {
     public static final ModFeature HORSE_FEATURE = new HorseFeature();
     public static final ModFeature INTERDIMENSIONAL_FEATURE = new InterdimensionalFeature();
     public static final ModFeature JUMPY_FEATURE = new JumpyFeature();
-    public static final ModFeature KRITZ_FEATURE = new KritzFeature();
+    //public static final ModFeature KRITZ_FEATURE = new KritzFeature();
     public static final ModFeature LOOT_FEATURE = new LootFeature();
     public static final ModFeature MOB_DROPS_FEATURE = new MobDropsFeature();
     public static final ModFeature NPC_FEATURE = new NpcFeature();
@@ -72,7 +71,7 @@ public class AllFeatures {
         features.add(HORSE_FEATURE);
         features.add(INTERDIMENSIONAL_FEATURE);
         features.add(JUMPY_FEATURE);
-        features.add(KRITZ_FEATURE);
+        //features.add(KRITZ_FEATURE);
         features.add(LOOT_FEATURE);
         features.add(MOB_DROPS_FEATURE);
         features.add(NPC_FEATURE);

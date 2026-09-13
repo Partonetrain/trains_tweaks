@@ -16,6 +16,7 @@ public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigRe
     public static boolean vanillaDebugCommands = false;
     public static boolean addKillNonPlayer = false;
     public static boolean addShowScheduled = false;
+    public static boolean addSetHunger = false;
 
     public UtilityCommandsFeature() {
         super("UtilityCommands", UtilityCommandsFeatureConfig.SPEC);
@@ -50,6 +51,12 @@ public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigRe
             }
             else {
                 addShowScheduled = false;
+            }
+            if (allLines.contains("\"Set Hunger\" = true")) {
+                addSetHunger = true;
+            }
+            else {
+                addSetHunger = false;
             }
 
         } catch (IOException e) {

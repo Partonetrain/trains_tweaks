@@ -9,8 +9,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
 public class KillNonPlayersCommand {
-    public KillNonPlayersCommand() {
-    }
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(((Commands.literal("kill_non_players").requires((commandSourceStack) -> {

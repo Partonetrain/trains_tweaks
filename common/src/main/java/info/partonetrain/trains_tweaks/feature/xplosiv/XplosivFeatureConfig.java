@@ -42,7 +42,7 @@ public class XplosivFeatureConfig {
                 .define("Ultrawarm Fire Explosions", false);
         //TODO check if this works with Amendments2.0
 
-        builder.comment("\nAll of the following options default to the vanilla value");
+        builder.push("Explosion Powers");
 
         TNT_POWER = builder.comment("The explosion power that primed TNT explodes with")
                 .defineInRange("TNT Power", 4, 0, 32);
@@ -67,5 +67,7 @@ public class XplosivFeatureConfig {
 
         WITHER_SKULL_POWER = builder.comment("The explosion power of Wither Skull projectiles")
                 .defineInRange("Wither Skull Power", 1, 0, 32);
+
+        builder.pop();
     }
 }

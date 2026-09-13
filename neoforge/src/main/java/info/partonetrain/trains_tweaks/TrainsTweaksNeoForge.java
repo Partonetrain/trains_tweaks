@@ -6,13 +6,11 @@ import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeature;
 import info.partonetrain.trains_tweaks.feature.difficulty.DifficultyFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeature;
 import info.partonetrain.trains_tweaks.feature.jumpy.JumpyFeatureConfig;
-import info.partonetrain.trains_tweaks.feature.kritz.KritzEffects;
-import info.partonetrain.trains_tweaks.feature.kritz.KritzFeature;
 import info.partonetrain.trains_tweaks.feature.quasi.QuasiFeature;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.KillNonPlayersCommand;
+import info.partonetrain.trains_tweaks.feature.utilitycommands.SetHungerCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.ShowScheduledFunctionsCommand;
 import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeature;
-import info.partonetrain.trains_tweaks.feature.utilitycommands.UtilityCommandsFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
@@ -85,20 +83,6 @@ public class TrainsTweaksNeoForge {
                     NeoForge.EVENT_BUS.addListener(this::addJumpyGoals);
                 }
             }
-            if(mf.getFeatureName().equals("Kritz")){
-                if(KritzFeature.enabled && KritzFeature.addAttributes){
-                    meleeAttributeHolder = ATTRIBUTES.register("melee_crit_chance", () -> new PercentageAttribute("attribute.name.trains_tweaks.melee_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true));
-                    KritzFeature.MELEE_CRIT_CHANCE = meleeAttributeHolder.getDelegate();
-                    rangedAttributeHolder = ATTRIBUTES.register("ranged_crit_chance", () -> new PercentageAttribute("attribute.name.trains_tweaks.ranged_crit_chance", KritzFeature.kritChance, 0.0D, 1.00D).setSyncable(true));
-                    KritzFeature.RANGED_CRIT_CHANCE = rangedAttributeHolder.getDelegate();
-                    //add to player
-                    eventBus.addListener(this::registerAttributesToPlayer);
-                }
-                if(KritzFeature.enabled && KritzFeature.addEffects){
-                    KritzFeature.MELEE_CRIT_EFFECT = MOB_EFFECTS.register("melee_fury", () -> KritzEffects.me);
-                    KritzFeature.RANGED_CRIT_EFFECT = MOB_EFFECTS.register("ranged_fury", () -> KritzEffects.re);
-                }
-            }
             if(mf.getFeatureName().equals("Quasi") && QuasiFeature.enabled){
                 NeoForge.EVENT_BUS.addListener(this::quasiUseItemOnBlock);
             }
@@ -119,11 +103,13 @@ public class TrainsTweaksNeoForge {
         if(UtilityCommandsFeature.addShowScheduled){
             ShowScheduledFunctionsCommand.register(event.getDispatcher());
         }
+        if(UtilityCommandsFeature.addSetHunger){
+            SetHungerCommand.register(event.getDispatcher());
+        }
     }
 
     public void registerAttributesToPlayer(EntityAttributeModificationEvent event){
-        event.add(EntityType.PLAYER, KritzFeature.MELEE_CRIT_CHANCE);
-        event.add(EntityType.PLAYER, KritzFeature.RANGED_CRIT_CHANCE);
+
     }
 
     //Difficulty_LivingEntityMixin technically still happens, but this is needed to actually change the damage output.

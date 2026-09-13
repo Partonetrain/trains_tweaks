@@ -10,6 +10,8 @@ public class UtilityCommandsFeatureConfig {
     public static ModConfigSpec.BooleanValue VANILLA_DEBUG_COMMANDS;
     public static ModConfigSpec.BooleanValue KILL_NON_PLAYERS_COMMAND;
     public static ModConfigSpec.BooleanValue SHOW_SCHEDULED_FUNCTIONS;
+    public static ModConfigSpec.BooleanValue LOOT_COMMAND_CONSIDERS_LUCK;
+    public static ModConfigSpec.BooleanValue SET_HUNGER;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -35,6 +37,16 @@ public class UtilityCommandsFeatureConfig {
                 .comment("This prints the name of every scheduled function to the chat at when the gametime it is scheduled for")
                 .comment("This can be useful for debugging datapacks and/or determining if they are causing any lag")
                 .define("Show Scheduled Functions",true);
+
+        LOOT_COMMAND_CONSIDERS_LUCK = builder.comment("If set to true, the vanilla /loot spawn command will attempt to scan for nearby players and use their luck value")
+                .comment("Players are scanned for within 3 blocks of the source of the command, which is not necessarily the same as the position arguments")
+                .comment("This is useful for scripts or datapacks that spawn loot this way. It can apply to mods too, but mods really shouldn't be running serverside commands...")
+                .define("Loot Spawn Command Considers Luck",true);
+
+        SET_HUNGER = builder.comment("If set to true, the set_hunger command will be added")
+                .comment("This is useful for testing foods that aren't always-edible")
+                .comment("Note that the client's hunger bar only shakes when saturation is 0")
+                .define("Set Hunger",true);
 
     }
 }

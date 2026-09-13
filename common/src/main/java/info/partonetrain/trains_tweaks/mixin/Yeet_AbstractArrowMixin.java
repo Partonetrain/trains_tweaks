@@ -3,7 +3,6 @@ package info.partonetrain.trains_tweaks.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import info.partonetrain.trains_tweaks.AllFeatures;
-import info.partonetrain.trains_tweaks.feature.kritz.KritzFeatureConfig;
 import info.partonetrain.trains_tweaks.feature.yeet.YeetFeatureConfig;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
@@ -75,13 +74,7 @@ public class Yeet_AbstractArrowMixin {
         if (!AllFeatures.YEET_FEATURE.isIncompatibleLoaded() && YeetFeatureConfig.ENABLED.getAsBoolean() && YeetFeatureConfig.NORMALIZE_RANGED_CRITS.getAsBoolean()) {
             AbstractArrow thisArrow = (AbstractArrow)(Object)this;
             if(thisArrow.isCritArrow()){
-                if(!AllFeatures.KRITZ_FEATURE.isIncompatibleLoaded() && KritzFeatureConfig.ENABLED.getAsBoolean()){
-                    amount = (float) (amount * KritzFeatureConfig.KRIT_MULTIPLIER.getAsDouble());
-                }
-                else
-                {
-                    amount = amount * 1.5F;
-                }
+                amount = amount * 1.5F;
             }
         }
         return amount;
