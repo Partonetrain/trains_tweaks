@@ -4,6 +4,10 @@
     "minecraft:zombie_villager",
     "minecraft:husk",
     "minecraft:skeleton",
-    "minecraft:stray"
+    "minecraft:stray",
+    {
+      "id": "minecraft:bogged",
+      "required": false
+    }
   ]
 }

@@ -4,6 +4,7 @@ import fuzs.puzzleslib.api.core.v1.CommonAbstractions;
 import info.partonetrain.trains_tweaks.feature.spawnswith.SpawnsWithFeatureConfig;
 import info.partonetrain.trains_tweaks.platform.services.IPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
+import net.mehvahdjukaar.amendments.Amendments;
 import net.mehvahdjukaar.amendments.configs.CommonConfigs;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
@@ -44,11 +45,11 @@ public class FabricPlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean isAmendmentsFireballEnabled() {
-        return CommonConfigs.SNOWBALL_FREEZE.get() > 0;
+        return CommonConfigs.THROWABLE_FIRE_CHARGES.get();
     }
 
     @Override
     public boolean isAmendmentsSnowballEnabled() {
-        return CommonConfigs.THROWABLE_FIRE_CHARGES.get();
+        return CommonConfigs.SNOWBALL_FREEZE.get() > 0;
     }
 }

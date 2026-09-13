@@ -1,6 +1,5 @@
 package info.partonetrain.trains_tweaks.feature.yeet;
 
-import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.platform.Services;
 
 public class YeetAmendmentsCompat {

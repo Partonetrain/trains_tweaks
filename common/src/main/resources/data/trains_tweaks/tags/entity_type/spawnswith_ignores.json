@@ -5,6 +5,10 @@
       "required": false
     },
     {
+      "id": "#c:bosses",
+      "required": false
+    },
+    {
       "id": "#c:creepers",
       "required": false
     },
@@ -73,6 +77,27 @@
     "minecraft:warden",
     "minecraft:wither",
     "minecraft:zoglin",
+
+    {
+      "id": "atmospheric:cochineal",
+      "required": false
+    },
+    {
+      "id": "atmospheric:dragon_fruit",
+      "required": false
+    },
+    {
+      "id": "atmospheric:orange_vapor_cloud",
+      "required": false
+    },
+    {
+      "id": "atmospheric:passion_fruit_seed",
+      "required": false
+    },
+    {
+      "id": "atmospheric:tetra",
+      "required": false
+    },
 
     {
       "id": "environmental:deer",

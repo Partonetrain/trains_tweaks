@@ -50,11 +50,11 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean isAmendmentsFireballEnabled() {
-        return CommonConfigs.SNOWBALL_FREEZE.get() > 0;
+        return CommonConfigs.THROWABLE_FIRE_CHARGES.get();
     }
 
     @Override
     public boolean isAmendmentsSnowballEnabled() {
-        return CommonConfigs.THROWABLE_FIRE_CHARGES.get();
+        return CommonConfigs.SNOWBALL_FREEZE.get() > 0;
     }
 }
