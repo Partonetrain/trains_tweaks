@@ -69,8 +69,7 @@ public class JumpyFeature extends ModFeature implements IEarlyConfigReader {
             return;
         }
 
-        final String configFileLoc = System.getProperty("user.dir") + "\\config\\trains_tweaks\\" + this.getFeatureName() + ".toml";
-        Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
+        Path configFilePath = CommonClass.platformlessPath(this.getFeatureName());
         try {
             List<String> allLines = Files.readAllLines(configFilePath);
             if (allLines.contains("\"Jumpy tweaks\" = true")) {

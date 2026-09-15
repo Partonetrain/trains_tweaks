@@ -127,8 +127,7 @@ public class QuasiFeature extends ModFeature implements IEarlyConfigReader {
         if(configRead){
             return;
         }
-        final String configFileLoc = System.getProperty("user.dir") + "\\config\\trains_tweaks\\" + "Quasi" + ".toml";
-        Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
+        Path configFilePath = CommonClass.platformlessPath(this.featureName);
         try {
             List<String> allLines = Files.readAllLines(configFilePath);
             if (allLines.contains("\"Quasi-connectivity tweaks\" = true")) {

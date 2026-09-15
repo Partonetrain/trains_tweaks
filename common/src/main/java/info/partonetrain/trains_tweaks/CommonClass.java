@@ -5,6 +5,9 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public final class CommonClass {
@@ -64,5 +67,11 @@ public final class CommonClass {
         MinecraftServer server = level.getServer();
         CommandSourceStack source = server.createCommandSourceStack().withLevel(level);
         server.getCommands().performPrefixedCommand(source, command);
+    }
+
+    //ACTUALLY converts to correct path regardless of platform. This did not happen before 1.2.1.
+    //oops trains_tweaks didn't work on linux for two whole years
+    public static Path platformlessPath(String featureName){
+        return Paths.get(System.getProperty("user.dir"), "config", "trains_tweaks", featureName + ".toml");
     }
 }

@@ -23,8 +23,7 @@ public class UtilityCommandsFeature extends ModFeature implements IEarlyConfigRe
     }
 
     public void readConfigsEarly(){
-        final String configFileLoc = System.getProperty("user.dir") + "\\config\\trains_tweaks\\" + this.getFeatureName() + ".toml";
-        Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
+        Path configFilePath = CommonClass.platformlessPath(this.featureName);
         try {
             List<String> allLines = Files.readAllLines(configFilePath);
             if (allLines.contains("\"Utility Commands\" = true")) {

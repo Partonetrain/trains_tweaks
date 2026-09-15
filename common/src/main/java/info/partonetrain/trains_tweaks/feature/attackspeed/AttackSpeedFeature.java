@@ -38,9 +38,7 @@ public class AttackSpeedFeature extends ModFeature implements IEarlyConfigReader
     //we need to read from the config file directly
     //there is probably a better way to do this
     public void readConfigsEarly(){
-
-        final String configFileLoc = System.getProperty("user.dir") + "\\config\\trains_tweaks\\" + this.getFeatureName() + ".toml";
-        Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
+        Path configFilePath = CommonClass.platformlessPath(this.featureName);
         try {
             List<String> allLines = Files.readAllLines(configFilePath);
             if (allLines.contains("\"Attack Speed tweaks\" = true")) {

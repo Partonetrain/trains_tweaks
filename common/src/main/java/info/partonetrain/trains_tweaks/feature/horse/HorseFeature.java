@@ -37,8 +37,7 @@ public class HorseFeature extends ModFeature implements IEarlyConfigReader {
 
     //needed since net.minecraft.world.entity.ai.attributes.DefaultAttributes.<clinit> tries to use these values
     public void readConfigsEarly(){
-        final String configFileLoc = System.getProperty("user.dir") + "\\config\\trains_tweaks\\" + this.getFeatureName() + ".toml";
-        Path configFilePath = Paths.get(configFileLoc); //converts to correct path regardless of platform
+        Path configFilePath = CommonClass.platformlessPath(this.featureName);
         try {
             List<String> allLines = Files.readAllLines(configFilePath);
             if (allLines.contains("\"Horse Tweaks\" = true")) {
