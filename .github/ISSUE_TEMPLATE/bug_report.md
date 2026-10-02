@@ -7,6 +7,11 @@ assignees: ''
 
 ---
 
+<!--
+If you are about to paste an AI summary into this box, STOP!
+
+It's likely your issue is legitimate, but due to a series of AI-generated bug reports making false claims and obfuscating actual fixes, we will be closing any issues that are blatantly AI-generated. While it's technically possible to use AI to help with debugging, it is extremely ill-advised to trust its output. Maintainers have had to waste time checking hallucinations. Please be considerate and write your bug report yourself, with as much relevant details as you can (versions, logs, steps to reproduce) so we can best help.
+-->
 **Describe the bug**
 A clear and concise description of what the bug is.
 
