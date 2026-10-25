@@ -61,6 +61,7 @@
     "Vehicle_VehicleEntityMixin",
     "Vehicle_WaterLilyBlockMixin",
     "Wolf_AbstractSkeletonMixin",
+    "Wolf_BegGoalMixin",
     "Wolf_PowderSnowMixin",
     "Wolf_WolfMixin",
     "Xplosiv_BedBlockMixin",

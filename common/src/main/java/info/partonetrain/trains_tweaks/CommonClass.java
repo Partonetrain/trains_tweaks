@@ -1,21 +1,24 @@
 package info.partonetrain.trains_tweaks;
 
 import info.partonetrain.trains_tweaks.platform.Services;
+import io.netty.handler.codec.serialization.ClassResolvers;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.*;
 
 public final class CommonClass {
 
     //debugging stuff
     private static int itemCount = 0;
     public static Exception worldOpenException = null;
-    //
+    public static Map<String, List<Exception>> createAeronauticsErrors = new HashMap<>();
 
     public static void init() {
         Constants.LOG.info("TrainsTweaks has " + AllFeatures.features.size() + " Features");
@@ -73,5 +76,54 @@ public final class CommonClass {
     //oops trains_tweaks didn't work on linux for two whole years
     public static Path platformlessPath(String featureName){
         return Paths.get(System.getProperty("user.dir"), "config", "trains_tweaks", featureName + ".toml");
+    }
+
+    public static void logExceptionDuringMixin(String mixinName, Exception e){
+        if(Arrays.toString(e.getStackTrace()).contains("dev.simulated_team.simulated")){
+            List<Exception> exceptions = createAeronauticsErrors.getOrDefault(mixinName, new ArrayList<>());
+            exceptions.add(e);
+            createAeronauticsErrors.put(mixinName, exceptions);
+        }
+        else{
+            Constants.LOG.error(mixinName + " caught RuntimeException: " + e.getMessage());
+            printInDev(Arrays.toString(e.getStackTrace()));
+        }
+    }
+
+    public static void writeCreateAeronaticsErrorLog(){
+        long caErrors = CommonClass.createAeronauticsErrors.entrySet().size();
+        if(caErrors > 0){
+            List<String> logLines = new ArrayList<>();
+            logLines.add("Train's Tweaks Suppressed Errors from Create Aeronautics");
+            logLines.add("\n");
+            int errNo = 0;
+            for(var entry: CommonClass.createAeronauticsErrors.entrySet()){
+                logLines.add("* Errors that occured in " + entry.getKey() + " *");
+                logLines.add("\n");
+                for(var value : entry.getValue()){
+                    errNo++;
+                    logLines.add(errNo + ": ");
+                    logLines.add("Exception: " + value.getClass().getName());
+                    logLines.add("Message: " + value.getMessage());
+                    logLines.add("Stacktrace: ");
+                    logLines.add("---");
+                    for(StackTraceElement ste : value.getStackTrace()){
+                        logLines.add(ste.toString());
+                    }
+                    logLines.add("---");
+                }
+                errNo = 0;
+            }
+
+            Path logPath = Paths.get(System.getProperty("user.dir"), "logs", "trains_tweaks_create_aeronautics_errors.txt");
+            try {
+                Files.write(logPath, logLines);
+                Constants.LOG.error("Suppressed " + caErrors + " types of errors from Create Aeronautics during startup. Saved to logs/trains_tweaks_create_aeronautics_errors.txt. See https://github.com/Partonetrain/trains_tweaks/issues/12 for more information.");
+            }
+            catch (IOException e){
+                Constants.LOG.error("Could not write to logs/trains_tweaks_create_aeronautics_errors.txt: " + e.toString());
+            }
+
+        }
     }
 }

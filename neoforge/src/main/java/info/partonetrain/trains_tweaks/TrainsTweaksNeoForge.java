@@ -19,7 +19,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
@@ -33,8 +32,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.PercentageAttribute;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
@@ -43,7 +42,6 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.UUID;
@@ -53,10 +51,6 @@ public class TrainsTweaksNeoForge {
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Constants.MOD_ID);
     private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, Constants.MOD_ID);
-
-    //Kritz
-    DeferredHolder<Attribute, Attribute> meleeAttributeHolder;
-    DeferredHolder<Attribute, Attribute> rangedAttributeHolder;
 
     public TrainsTweaksNeoForge(ModContainer container, IEventBus eventBus) {
         for(ModFeature mf : AllFeatures.features){
@@ -94,6 +88,7 @@ public class TrainsTweaksNeoForge {
         MOB_EFFECTS.register(eventBus);
         ATTRIBUTES.register(eventBus);
         CommonClass.init();
+        eventBus.addListener(this::onLoadComplete);
     }
 
     public void registerCommands(RegisterCommandsEvent event) {
@@ -201,8 +196,8 @@ public class TrainsTweaksNeoForge {
                 }
             }
         }
-
          */
+
     }
 
     @SubscribeEvent
@@ -215,6 +210,11 @@ public class TrainsTweaksNeoForge {
         }
 
          */
+    }
+
+    @SubscribeEvent
+    public void onLoadComplete(FMLLoadCompleteEvent event){
+        CommonClass.writeCreateAeronaticsErrorLog();
     }
 
 }

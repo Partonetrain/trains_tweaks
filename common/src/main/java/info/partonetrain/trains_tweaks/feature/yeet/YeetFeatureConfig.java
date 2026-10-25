@@ -53,7 +53,6 @@ public class YeetFeatureConfig {
                 .defineInRange("Experience Bottle Amount", 10, -1, 2477);
 
         NORMALIZE_RANGED_CRITS = builder.comment("If set to true, critical arrows will deal 1.5x their damage rather than a random amount of damage between (0 and (damage/2)+2)")
-                .comment("This config respects the Crit Multiplier option if the Kritz feature is enabled")
                 .comment("Leave as default (false) for vanilla behavior")
                 .comment("If you have Zenith/Apothic Attributes this should be set to false")
                 .define("Normalize Ranged Crits", true);

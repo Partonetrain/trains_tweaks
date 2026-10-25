@@ -1,6 +1,7 @@
 package info.partonetrain.trains_tweaks.mixin;
 
 import info.partonetrain.trains_tweaks.AllFeatures;
+import info.partonetrain.trains_tweaks.CommonClass;
 import info.partonetrain.trains_tweaks.feature.rarity.RarityFeature;
 import info.partonetrain.trains_tweaks.feature.rarity.RarityFeatureConfig;
 import net.minecraft.world.entity.Entity;
@@ -16,8 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class Rarity_ItemMixin {
     @Inject(at = @At("HEAD"), method = "inventoryTick")
     private void trains_tweaks$inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected, CallbackInfo ci) {
-        if(!AllFeatures.RARITY_FEATURE.isIncompatibleLoaded() && RarityFeatureConfig.ENABLED.getAsBoolean() && RarityFeatureConfig.DATA_TAG_ENABLED.getAsBoolean()) {
-            RarityFeature.setTaggedRarity(stack);
+        try {
+            if (!AllFeatures.RARITY_FEATURE.isIncompatibleLoaded() && RarityFeatureConfig.ENABLED.getAsBoolean() && RarityFeatureConfig.DATA_TAG_ENABLED.getAsBoolean()) {
+                RarityFeature.setTaggedRarity(stack);
+            }
+        }
+        catch (RuntimeException exception){
+            CommonClass.logExceptionDuringMixin("Rarity_ItemMixin#trains_tweaks$inventoryTick", exception);
         }
     }
 

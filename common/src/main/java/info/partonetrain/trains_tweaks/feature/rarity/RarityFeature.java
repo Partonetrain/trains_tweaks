@@ -2,6 +2,7 @@ package info.partonetrain.trains_tweaks.feature.rarity;
 
 import info.partonetrain.trains_tweaks.Constants;
 import info.partonetrain.trains_tweaks.ModFeature;
+import info.partonetrain.trains_tweaks.platform.Services;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -57,5 +58,9 @@ public class RarityFeature extends ModFeature {
             }
         }
         return Rarity.COMMON;
+    }
+
+    public static boolean shouldItemStackMixinBeSkipped(){
+        return Services.PLATFORM.isModLoaded("simulated");
     }
 }

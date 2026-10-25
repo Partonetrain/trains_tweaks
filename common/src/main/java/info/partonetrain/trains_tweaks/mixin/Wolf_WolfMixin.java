@@ -16,6 +16,7 @@ import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Ghast;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -72,6 +73,17 @@ public abstract class Wolf_WolfMixin extends Animal {
             cir.setReturnValue(false);
         }
     }
+
+    @Inject(method = "isFood", at=@At("HEAD"), cancellable = true)
+    private void trains_tweaks$isFood(ItemStack stack, CallbackInfoReturnable<Boolean> cir){
+        if(WolfFeatureConfig.ENABLED.getAsBoolean() && !AllFeatures.WOLF_FEATURE.isIncompatibleLoaded() && WolfFeatureConfig.PREVENT_WILD_MEAT_FEEDING.getAsBoolean()){
+            Wolf self = (Wolf) (Object)this;
+            if(!self.isTame()){
+                cir.setReturnValue(false);
+            }
+        }
+    }
+
 
     /*
     * Turns out these are unnecessary - wolf armor does actually add 11 points of armor attribute,

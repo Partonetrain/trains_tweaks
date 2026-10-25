@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -69,8 +70,8 @@ public class _DatapackLoadFailureScreenMixin extends Screen {
                 Constants.LOG.error("NullPointerException caught: " + npe.getMessage() + " . worldOpenException: " + (CommonClass.worldOpenException == null));
                 Exception exceptionToReport = CommonClass.worldOpenException;
                 CrashReport cr = CrashReport.forThrowable(exceptionToReport, "Train's Tweaks null item registry check: " + "\nNPE at " + lastItemId + ". " + itemCount + " / " + CommonClass.getItemCount());
-                String crashReportPath = System.getProperty("user.dir") + "\\crash-reports\\" + "trains_tweaks_null_item_registry_check.txt";
-                cr.saveToFile(Paths.get(crashReportPath), ReportType.TEST);
+                Path crashReportPath = Paths.get(System.getProperty("user.dir"), "crash-reports", "trains_tweaks_null_item_registry_check.txt");
+                cr.saveToFile(crashReportPath, ReportType.TEST);
                 Constants.LOG.error("Saved " + crashReportPath);
                 trains_tweaks$reportSaved = true;
             }

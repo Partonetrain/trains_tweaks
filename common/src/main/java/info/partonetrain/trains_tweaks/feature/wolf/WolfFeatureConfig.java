@@ -14,6 +14,8 @@ public class WolfFeatureConfig {
     public static ModConfigSpec.BooleanValue SNOWY_WOLF_WALKS_ON_POWDER_SNOW;
     public static ModConfigSpec.BooleanValue DONT_SCARE_SKELETONS;
     public static ModConfigSpec.BooleanValue DONT_CHASE_SKELETONS;
+    public static ModConfigSpec.BooleanValue BETTER_BEGGING;
+    public static ModConfigSpec.BooleanValue PREVENT_WILD_MEAT_FEEDING;
 
     static {
         builder = new ModConfigSpec.Builder();
@@ -43,10 +45,19 @@ public class WolfFeatureConfig {
                 .define("Snowy Wolf Walks on Powder Snow", true);
 
         DONT_SCARE_SKELETONS = builder.comment("If enabled, wolves will not scare away skeletons")
-                .comment("If Don't Chase Skeletons is disabled, this will usually result in wild wolves dying from skeleton retaliation")
+                .comment("If Don't Chase Skeletons is disabled,  this will usually result in wild wolves dying from skeleton retaliation")
                 .define("Don't Scare Skeletons", true);
 
         DONT_CHASE_SKELETONS = builder.comment("If enabled, wolves will not attack skeletons unprovoked")
                 .define("Don't Chase Skeletons", true);
+
+        BETTER_BEGGING = builder.comment("If enabled, tamed wolves will no longer tilt their head if you hold a bone")
+                .comment("It's weird that this happens in vanilla since tamed wolves no longer interact with bones")
+                .define("Better Begging", true);
+
+        PREVENT_WILD_MEAT_FEEDING = builder.comment("If true, you will not be able to feed wild wolves their breeding item (meat)")
+                .comment("It's weird that this is possible in vanilla since they cannot breed and feeding them doesn't heal them either")
+                .comment("This also makes wild wolves not tilt their head if you hold meat near them")
+                .define("Prevent Wild Meat Feeding", true);
     }
 }
